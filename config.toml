@@ -1,0 +1,6 @@
+baseURL = "https://vallyscode.github.io"
+languageCode = "en-us"
+theme = "cloud"
+
+
+pygmentsUseClasses=true

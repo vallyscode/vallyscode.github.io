@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>VALLYSCODE - {{ .Title }}</title>
+    {{ partial "meta" . }}
+    {{ partial "link" . }}
+    {{ partial "analytics" . }}
+  </head>
+
+  <body>
+    <header>
+      <div>
+        <div id="logo">
+          <a href="{{ .Site.BaseURL }}"><img src="/images/cloud.svg" width="100px"></img></a>
+        </div>
+      </div>
+    </header>
+
+    <main class="tag-list">
+      <p id="tag-name">
+        <h1>Tag: {{ .Title }}</h1>
+      </p>
+      {{ range .Data.Pages }}
+      <div class="one-post">
+        <h1><a href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
+        <div class="post-time">{{ .Date.Format "January 2, 2006" }}</div>
+      </div>
+      {{ end }}
+    </main>
+
+    <footer class="copyright">
+      <p>© VALERII lYSENKO 2019</p>
+    </footer>
+
+  </body>
+
+</html>
