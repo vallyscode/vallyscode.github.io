@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>VALLYSCODE - Intro to Emacs lisp</title>
+    <meta name="author" content="Valerii Lysenko">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta name="description" content="Just a notes that are either usefull or just interesting." />
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+
+
+
+    <link href="/css/normalize.css" rel="stylesheet">
+<link href="/css/cloud.css" rel="stylesheet">
+<link href="/css/syntax.css" rel="stylesheet">
+<link rel="shortcut icon" href="/images/cloud.ico">
+<link rel="canonical" href="https://vallyscode.github.io/posts/elisp-basics/">
+<link rel="apple-touch-icon" href="">
+
+    
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-142469594-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-142469594-1');
+</script>
+
+  </head>
+
+  <body>
+    <header>
+      <div>
+        <div id="logo">
+          <a href="https://vallyscode.github.io/"><img src="/images/cloud.svg" width="100px"></img></a>
+        </div>
+      </div>
+    </header>
+
+    
+
+    <div class="post">
+      <header class="post-header">
+        <h1><a href="/posts/elisp-basics/">Intro to Emacs lisp</a></h1>
+        <div class="post-time">September 7, 2019</div>
+      </header>
+      <div class="post-after">
+        <div class="tags">
+          
+          <a href="https://vallyscode.github.io//tags/elisp">elisp</a>
+          
+        </div>
+      </div>
+      <div class="post content">
+        
+
+<p>A basic overview of elisp to start crafting plugins and customizing Emacs. For more details see <a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/index.html">docs</a></p>
+
+<h2 id="comments">Comments</h2>
+
+<p>Semicolon <strong>;;</strong> defines comment enywhere in a line</p>
+
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">0
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp"><span style="color:#75715e">;; Some text as comment</span></code></pre></td></tr></table>
+</div>
+</div>
+
+<h2 id="arithmetic">Arithmetic</h2>
+
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">0
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp">(<span style="color:#a6e22e">+</span> <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">1</span>) <span style="color:#75715e">;; 6</span>
+(<span style="color:#a6e22e">-</span> <span style="color:#ae81ff">8</span> <span style="color:#ae81ff">5</span>) <span style="color:#75715e">;; 3</span>
+(<span style="color:#a6e22e">*</span> <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">4</span>) <span style="color:#75715e">;; 12</span>
+<span style="display:block;width:100%;background-color:#3c3d38">(<span style="color:#a6e22e">/</span> <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">2.0</span>) <span style="color:#75715e">;; 0.5</span>
+</span><span style="display:block;width:100%;background-color:#3c3d38">(<span style="color:#a6e22e">/</span> <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">2</span>) <span style="color:#75715e">;; 0</span>
+</span>(<span style="color:#a6e22e">%</span> <span style="color:#ae81ff">12</span> <span style="color:#ae81ff">5</span>) <span style="color:#75715e">;; 2</span>
+(<span style="color:#a6e22e">expt</span> <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">4</span>) <span style="color:#75715e">;; 81</span></code></pre></td></tr></table>
+</div>
+</div>
+
+<h2 id="type-conversions">Type conversions</h2>
+
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">0
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp">(<span style="color:#a6e22e">float</span> <span style="color:#ae81ff">6</span>) <span style="color:#75715e">;; 6.0</span>
+(<span style="color:#a6e22e">truncate</span> <span style="color:#ae81ff">6.3</span>) <span style="color:#75715e">;; 6</span>
+(<span style="color:#a6e22e">floor</span> <span style="color:#ae81ff">6.3</span>) <span style="color:#75715e">;; 6</span>
+(<span style="color:#a6e22e">ceiling</span> <span style="color:#ae81ff">6.3</span>) <span style="color:#75715e">;; 7</span>
+(<span style="color:#a6e22e">round</span> <span style="color:#ae81ff">6.3</span>) <span style="color:#75715e">;; 6</span>
+(<span style="color:#a6e22e">string-to-number</span> <span style="color:#e6db74">&#34;2&#34;</span>) <span style="color:#75715e">;; 2</span>
+(<span style="color:#a6e22e">number-to-string</span> <span style="color:#ae81ff">2</span>) <span style="color:#75715e">;; &#34;2&#34;</span>
+(<span style="color:#a6e22e">char-to-string</span> <span style="color:#ae81ff">#xe0b0</span>) <span style="color:#75715e">;; &#34;&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+
+<h2 id="variables">Variables</h2>
+
+<h3 id="global">Global</h3>
+
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">0
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp">(setq x <span style="color:#ae81ff">1</span>)
+(setq a <span style="color:#ae81ff">3</span> b <span style="color:#ae81ff">2</span> c <span style="color:#ae81ff">7</span>)</code></pre></td></tr></table>
+</div>
+</div>
+
+<h3 id="local">Local</h3>
+
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">0
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp">(let (a b)
+ (setq a <span style="color:#ae81ff">3</span>)
+ (setq b <span style="color:#ae81ff">4</span>)
+ (<span style="color:#a6e22e">+</span> a b))</code></pre></td></tr></table>
+</div>
+</div>
+
+<h3 id="buffer-local">Buffer-local</h3>
+
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">0
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp"> (setq-local x <span style="color:#e6db74">&#34;some value&#34;</span>)</code></pre></td></tr></table>
+</div>
+</div>
+
+<h2 id="constants">Constants</h2>
+
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">0
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp">(defconst a <span style="color:#e6db74">&#34;some value&#34;</span>
+  <span style="color:#e6db74">&#34;Some documentation.&#34;</span>)</code></pre></td></tr></table>
+</div>
+</div>
+
+<h2 id="functions">Functions</h2>
+
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp"></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp"></code></pre></td></tr></table>
+</div>
+</div>
+
+<h2 id="lambdas">Lambdas</h2>
+
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp"></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp"></code></pre></td></tr></table>
+</div>
+</div>
+
+<h2 id="control-structures">Control structures</h2>
+
+<h3 id="sequencing">Sequencing</h3>
+
+<p>Evaluates all of the forms, in textual order, returning the result of the final form.</p>
+
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">0
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp"> (progn a b c <span style="color:#f92672">...</span>)</code></pre></td></tr></table>
+</div>
+</div>
+
+<p>Example:</p>
+
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">0
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp">(progn (<span style="color:#a6e22e">print</span> <span style="color:#e6db74">&#34;The first form&#34;</span>)
+       (<span style="color:#a6e22e">print</span> <span style="color:#e6db74">&#34;The second form&#34;</span>)
+       (<span style="color:#a6e22e">print</span> <span style="color:#e6db74">&#34;The third form&#34;</span>))
+    -| <span style="color:#e6db74">&#34;The first form&#34;</span>
+    -| <span style="color:#e6db74">&#34;The second form&#34;</span>
+    -| <span style="color:#e6db74">&#34;The third form&#34;</span>
+  <span style="color:#960050;background-color:#1e0010">⇒</span> <span style="color:#e6db74">&#34;The third form&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+
+<h3 id="conditionals">Conditionals</h3>
+
+<p>If condition has the value nil, and no else-forms are given, <strong>if</strong> returns nil.</p>
+
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">0
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp">(if <span style="color:#66d9ef">nil</span>
+    (<span style="color:#a6e22e">message</span> <span style="color:#e6db74">&#34;true&#34;</span>)
+  (<span style="color:#a6e22e">message</span> <span style="color:#e6db74">&#34;false&#34;</span>))
+<span style="color:#960050;background-color:#1e0010">⇒</span> <span style="color:#e6db74">&#34;false&#34;&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+
+<p>Variant of <strong>if</strong> where there are no else-forms, and possibly several then-forms.</p>
+
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">0
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp">(when condition a b c)</code></pre></td></tr></table>
+</div>
+</div>
+
+<p>Same as can be represented using <strong>if</strong> expression</p>
+
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">0
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp">(if condition (progn a b c) <span style="color:#66d9ef">nil</span>)</code></pre></td></tr></table>
+</div>
+</div>
+
+<p>Variant of <strong>if</strong> where there is no then-form</p>
+
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">0
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp">(unless condition a b c)</code></pre></td></tr></table>
+</div>
+</div>
+
+<p>Same as can be represented using <strong>if</strong> expression</p>
+
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">0
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp">(if condition <span style="color:#66d9ef">nil</span> (progn a b c))</code></pre></td></tr></table>
+</div>
+</div>
+
+<p>Conditional selects matching expressions</p>
+
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">0
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp">(setq a <span style="color:#ae81ff">5</span>)
+(cond ((<span style="color:#a6e22e">eq</span> a <span style="color:#e6db74">&#39;hack</span>) <span style="color:#e6db74">&#39;foo</span>)
+       (<span style="color:#66d9ef">t</span> <span style="color:#e6db74">&#34;default&#34;</span>))
+ <span style="color:#960050;background-color:#1e0010">⇒</span> <span style="color:#e6db74">&#34;default&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+
+<h3 id="combining-conditions">Combining conditions</h3>
+
+<p><strong>not</strong> special form returns t if condition is nil, and nil otherwise.</p>
+
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">0
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp">(not <span style="color:#66d9ef">nil</span>)
+<span style="color:#960050;background-color:#1e0010">⇒</span> t</code></pre></td></tr></table>
+</div>
+</div>
+
+<p><strong>and</strong> special form tests whether all the conditions are true.</p>
+
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">0
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp">(and arg1 arg2 arg3)</code></pre></td></tr></table>
+</div>
+</div>
+
+<p><strong>or</strong> special form tests whether at least one of the conditions is true.</p>
+
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">0
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp">(or arg1 arg2 arg3)</code></pre></td></tr></table>
+</div>
+</div>
+
+<h3 id="pattern-matching">Pattern-Matching</h3>
+
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 0
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp">(pcase (get-return-code x)
+       <span style="color:#75715e">;; string</span>
+       ((and (pred <span style="color:#a6e22e">stringp</span>) msg)
+        (<span style="color:#a6e22e">message</span> <span style="color:#e6db74">&#34;%s&#34;</span> msg))
+       <span style="color:#75715e">;; symbol</span>
+       (<span style="color:#e6db74">&#39;success</span>       (<span style="color:#a6e22e">message</span> <span style="color:#e6db74">&#34;Done!&#34;</span>))
+       (<span style="color:#e6db74">&#39;would-block</span>   (<span style="color:#a6e22e">message</span> <span style="color:#e6db74">&#34;Sorry, can&#39;t do it now&#34;</span>))
+       (<span style="color:#e6db74">&#39;read-only</span>     (<span style="color:#a6e22e">message</span> <span style="color:#e6db74">&#34;The shmliblick is read-only&#34;</span>))
+       (<span style="color:#e6db74">&#39;access-denied</span> (<span style="color:#a6e22e">message</span> <span style="color:#e6db74">&#34;You do not have the needed rights&#34;</span>))
+       <span style="color:#75715e">;; default</span>
+       (code           (<span style="color:#a6e22e">message</span> <span style="color:#e6db74">&#34;Unknown return code %S&#34;</span> code)))</code></pre></td></tr></table>
+</div>
+</div>
+
+<h3 id="iteration">Iteration</h3>
+
+<p><strong>while</strong> first evaluates condition. If the result is non-nil, it evaluates forms in textual order then it reevaluates condition, and if the result is non-nil, it evaluates forms again.</p>
+
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 0
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp">(setq num <span style="color:#ae81ff">0</span>)
+      <span style="color:#960050;background-color:#1e0010">⇒</span> <span style="color:#ae81ff">0</span>
+(while (<span style="color:#a6e22e">&lt;</span> num <span style="color:#ae81ff">4</span>)
+  (<span style="color:#a6e22e">princ</span> (<span style="color:#a6e22e">format</span> <span style="color:#e6db74">&#34;Iteration %d.&#34;</span> num))
+  (setq num (<span style="color:#a6e22e">1+</span> num)))
+      -| Iteration <span style="color:#ae81ff">0.</span>
+      -| Iteration <span style="color:#ae81ff">1.</span>
+      -| Iteration <span style="color:#ae81ff">2.</span>
+      -| Iteration <span style="color:#ae81ff">3.</span>
+      <span style="color:#960050;background-color:#1e0010">⇒</span> nil</code></pre></td></tr></table>
+</div>
+</div>
+
+<p>Repeat-until loop, which will execute something on each iteration and then do the end-test</p>
+
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">0
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp">(while (progn
+        (<span style="color:#a6e22e">forward-line</span> <span style="color:#ae81ff">1</span>)
+        (not (<span style="color:#a6e22e">looking-at</span> <span style="color:#e6db74">&#34;^$&#34;</span>)))
+    (do-something))</code></pre></td></tr></table>
+</div>
+</div>
+
+<p>Executes body once for each element of list, binding the variable var locally to hold the current element.</p>
+
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">0
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp">(dolist (<span style="color:#a6e22e">elt</span> <span style="color:#a6e22e">list</span>)
+            (setq value (<span style="color:#a6e22e">cons</span> <span style="color:#a6e22e">elt</span> value)))</code></pre></td></tr></table>
+</div>
+</div>
+
+<p>Executes body once for each integer from 0 (inclusive) to count (exclusive), binding the variable var to the integer for the current iteration.</p>
+
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">0
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp">(dotimes (i <span style="color:#ae81ff">100</span>)
+          (<span style="color:#a6e22e">insert</span> (<span style="color:#a6e22e">format</span> <span style="color:#e6db74">&#34;i: %s&#34;</span> i)))</code></pre></td></tr></table>
+</div>
+</div>
+
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp"></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp"></code></pre></td></tr></table>
+</div>
+</div>
+
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">199
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">200
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">201
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">202
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp">(let ((x <span style="color:#ae81ff">1</span>)
+      (y <span style="color:#ae81ff">2</span>)
+      (z <span style="color:#ae81ff">3</span>))
+  <span style="color:#f92672">....</span>)</code></pre></td></tr></table>
+</div>
+</div>
+
+      </div>
+
+      <nav id="pagination">
+        
+        
+      </nav>
+
+      <footer class="copyright">
+        <p>© VALERII lYSENKO 2019</p>
+      </footer>
+
+  </body>
+
+</html>

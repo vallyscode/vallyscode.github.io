@@ -1,9 +1,0 @@
-name = "cloud"
-license = "MIT"
-min_version = 0.57
-
-tags = ["ValeriiLysenko", ]
-features = ["blog", ]
-
-[author]
-    name = "Valerii Lysenko"
