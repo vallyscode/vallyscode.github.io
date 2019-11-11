@@ -6,10 +6,20 @@
     <description>Recent content in Posts on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 07 Sep 2019 13:23:10 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 11 Nov 2019 20:56:10 +0100</lastBuildDate>
     
 	<atom:link href="https://vallyscode.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Tabulated list mode in Emacs (tabulated-list-mode)</title>
+      <link>https://vallyscode.github.io/posts/tabulated-list-mode/</link>
+      <pubDate>Mon, 11 Nov 2019 20:56:10 +0100</pubDate>
+      
+      <guid>https://vallyscode.github.io/posts/tabulated-list-mode/</guid>
+      <description>A simple example of tabulated-list-mode usage in Emacs. For more details see docs
+Tabulated list is a major mode, so in order to use it we need to:  Extend tabulated-list-mode Specify tabulated-list-format (Format of the Tabulated List data) Specify tabulated-list-revert-hook Optional (Hook run before reverting a Tabulated List buffer. This is commonly used to recompute `tabulated-list-entries&amp;rsquo;) Compute tabulated-list-entries (Entries displayed in the Tabulated List buffer) Define tabulated-list-printer (Function called to insert an entry at point, including its terminating newline) Specify tabulated-list-padding Call tabulated-list-init-header (Function which will populate a header with the names of the columns)  Define major mode: (define-derived-mode list-demo-mode tabulated-list-mode &amp;#34;list-demo-mode&amp;#34; &amp;#34;Major mode for tabulated list example.</description>
+    </item>
     
     <item>
       <title>Intro to Emacs lisp</title>
