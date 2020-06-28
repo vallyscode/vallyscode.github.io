@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>VALLYSCODE - Tabulated list mode in Emacs (tabulated-list-mode)</title>
+    <title>vally's code - Tabulated list mode in Emacs (tabulated-list-mode)</title>
     <meta name="description" content="Tabulated list mode in Emacs (tabulated-list-mode). Simple example of tabulated-list-mode." />
     <meta name="author" content="Valerii Lysenko">
 <meta charset="utf-8">
@@ -34,29 +34,39 @@
   </head>
 
   <body>
+
     <header>
-      <div>
-        <div id="logo">
-          <a href="https://vallyscode.github.io/"><img src="/images/cloud.svg" width="100px"></img></a>
-        </div>
-      </div>
+      <nav>
+        <ul>
+          <li><a href="https://vallyscode.github.io/">Posts</a></li>
+          <li><a href="https://vallyscode.github.io//about/">About</a></li>
+        </ul>
+      </nav>
     </header>
 
     
 
-    <div class="post">
-      <header class="post-header">
-        <h1><a href="/posts/tabulated-list-mode/">Tabulated list mode in Emacs (tabulated-list-mode)</a></h1>
-        <div class="post-time">November 11, 2019</div>
-      </header>
-      <div class="post-after">
-        <div class="tags">
-          
-          <a href="https://vallyscode.github.io//tags/elisp">elisp</a>
-          
+    <main class="posts">
+      <article class="post">
+
+        <header class="post-header">
+          <h2>
+            <a href="/posts/tabulated-list-mode/">Tabulated list mode in Emacs (tabulated-list-mode)</a>
+          </h2>
+          <div class="post-time">
+            November 11, 2019
+          </div>
+        </header>
+
+        <div class="post-after">
+          <div class="tags">
+            
+            <a href="https://vallyscode.github.io//tags/elisp">elisp</a>
+            
+          </div>
         </div>
-      </div>
-      <div class="post content">
+
+      <div class="content">
         <p>A simple example of tabulated-list-mode usage in Emacs. For more details see <a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Tabulated-List-Mode.html">docs</a></p>
 <h3 id="tabulated-list-is-a-major-mode-so-in-order-to-use-it-we-need-to">Tabulated list is a major mode, so in order to use it we need to:</h3>
 <ul>
@@ -69,33 +79,31 @@
 <li>Call tabulated-list-init-header (Function which will populate a header with the names of the columns)</li>
 </ul>
 <h3 id="define-major-mode">Define major mode:</h3>
-<div class="highlight"><pre class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">define-derived-mode</span> <span class="nv">list-demo-mode</span> <span class="nv">tabulated-list-mode</span> <span class="s">&#34;</span><span class="s">list-demo-mode</span><span class="s">&#34;</span>
-  <span class="s">&#34;</span><span class="s">Major mode for tabulated list example.</span><span class="s">&#34;</span>
-  <span class="p">(</span><span class="nb">setq</span> <span class="nv">tabulated-list-format</span> <span class="p">[</span><span class="p">(</span><span class="s">&#34;</span><span class="s">Column_1</span><span class="s">&#34;</span> <span class="mi">10</span> <span class="no">t</span><span class="p">)</span>
-                               <span class="p">(</span><span class="s">&#34;</span><span class="s">Column_2</span><span class="s">&#34;</span> <span class="mi">10</span> <span class="no">nil</span><span class="p">)</span>
-                               <span class="p">(</span><span class="s">&#34;</span><span class="s">Column_3</span><span class="s">&#34;</span>  <span class="mi">10</span> <span class="no">t</span><span class="p">)</span>
-                               <span class="p">(</span><span class="s">&#34;</span><span class="s">Column_4</span><span class="s">&#34;</span> <span class="mi">0</span> <span class="no">nil</span><span class="p">)</span><span class="p">]</span><span class="p">)</span><span class="c1">;; last columnt takes what left</span>
+<div class="highlight"><pre class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">define-derived-mode</span> <span class="nv">list-demo-mode</span> <span class="nv">tabulated-list-mode</span> <span class="s">&#34;list-demo-mode&#34;</span>
+  <span class="s">&#34;Major mode for tabulated list example.&#34;</span>
+  <span class="p">(</span><span class="nb">setq</span> <span class="nv">tabulated-list-format</span> <span class="p">[(</span><span class="s">&#34;Column_1&#34;</span> <span class="mi">10</span> <span class="no">t</span><span class="p">)</span>
+                               <span class="p">(</span><span class="s">&#34;Column_2&#34;</span> <span class="mi">10</span> <span class="no">nil</span><span class="p">)</span>
+                               <span class="p">(</span><span class="s">&#34;Column_3&#34;</span>  <span class="mi">10</span> <span class="no">t</span><span class="p">)</span>
+                               <span class="p">(</span><span class="s">&#34;Column_4&#34;</span> <span class="mi">0</span> <span class="no">nil</span><span class="p">)])</span><span class="c1">;; last columnt takes what left</span>
   <span class="p">(</span><span class="nb">setq</span> <span class="nv">tabulated-list-entries</span> <span class="p">(</span><span class="nf">list</span>
-                                <span class="p">(</span><span class="nf">list</span> <span class="s">&#34;</span><span class="s">1</span><span class="s">&#34;</span> <span class="p">[</span><span class="s">&#34;</span><span class="s">50</span><span class="s">&#34;</span> <span class="s">&#34;</span><span class="s">A2</span><span class="s">&#34;</span> <span class="s">&#34;</span><span class="s">A3</span><span class="s">&#34;</span> <span class="s">&#34;</span><span class="s">A4</span><span class="s">&#34;</span><span class="p">]</span><span class="p">)</span>
-                                <span class="p">(</span><span class="nf">list</span> <span class="s">&#34;</span><span class="s">2</span><span class="s">&#34;</span> <span class="p">[</span><span class="s">&#34;</span><span class="s">10</span><span class="s">&#34;</span> <span class="s">&#34;</span><span class="s">B2</span><span class="s">&#34;</span> <span class="s">&#34;</span><span class="s">B3</span><span class="s">&#34;</span> <span class="s">&#34;</span><span class="s">B4</span><span class="s">&#34;</span><span class="p">]</span><span class="p">)</span>
-                                <span class="p">(</span><span class="nf">list</span> <span class="s">&#34;</span><span class="s">3</span><span class="s">&#34;</span> <span class="p">[</span><span class="s">&#34;</span><span class="s">15</span><span class="s">&#34;</span> <span class="s">&#34;</span><span class="s">C2</span><span class="s">&#34;</span> <span class="s">&#34;</span><span class="s">C3</span><span class="s">&#34;</span> <span class="s">&#34;</span><span class="s">C4</span><span class="s">&#34;</span><span class="p">]</span><span class="p">)</span><span class="p">)</span><span class="p">)</span>
+                                <span class="p">(</span><span class="nf">list</span> <span class="s">&#34;1&#34;</span> <span class="p">[</span><span class="s">&#34;50&#34;</span> <span class="s">&#34;A2&#34;</span> <span class="s">&#34;A3&#34;</span> <span class="s">&#34;A4&#34;</span><span class="p">])</span>
+                                <span class="p">(</span><span class="nf">list</span> <span class="s">&#34;2&#34;</span> <span class="p">[</span><span class="s">&#34;10&#34;</span> <span class="s">&#34;B2&#34;</span> <span class="s">&#34;B3&#34;</span> <span class="s">&#34;B4&#34;</span><span class="p">])</span>
+                                <span class="p">(</span><span class="nf">list</span> <span class="s">&#34;3&#34;</span> <span class="p">[</span><span class="s">&#34;15&#34;</span> <span class="s">&#34;C2&#34;</span> <span class="s">&#34;C3&#34;</span> <span class="s">&#34;C4&#34;</span><span class="p">])))</span>
   <span class="p">(</span><span class="nb">setq</span> <span class="nv">tabulated-list-padding</span> <span class="mi">4</span><span class="p">)</span>
-  <span class="p">(</span><span class="nb">setq</span> <span class="nv">tabulated-list-sort-key</span> <span class="p">(</span><span class="nf">cons</span> <span class="s">&#34;</span><span class="s">Column_1</span><span class="s">&#34;</span> <span class="no">nil</span><span class="p">)</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">setq</span> <span class="nv">tabulated-list-sort-key</span> <span class="p">(</span><span class="nf">cons</span> <span class="s">&#34;Column_1&#34;</span> <span class="no">nil</span><span class="p">))</span>
   <span class="p">(</span><span class="nv">tabulated-list-init-header</span><span class="p">)</span>
-  <span class="p">(</span><span class="nv">tabulated-list-print</span> <span class="no">t</span><span class="p">)</span><span class="p">)</span></code></pre></div>
+  <span class="p">(</span><span class="nv">tabulated-list-print</span> <span class="no">t</span><span class="p">))</span></code></pre></div>
 <h3 id="and-resulting-table-will-look-like-that">And resulting table will look like that:</h3>
 <p><img src="/tabulated-list-example.png" alt="Tabulated list:"></p>
 
       </div>
 
-      <nav id="pagination">
-        
-        <a class="next" href="https://vallyscode.github.io/posts/elisp-basics/">Next</a>
-      </nav>
+      </article>
+    </main>
 
-      <footer class="copyright">
-        <p>© VALERII lYSENKO 2019</p>
-      </footer>
+    <footer class="copyright">
+      <p>© VALERII lYSENKO 2020</p>
+    </footer>
 
   </body>
 
