@@ -171,17 +171,27 @@
 <h2 id="functions">Functions</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code></code></pre></td>
+<pre class="chroma"><code><span class="lnt">0
+</span><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-elisp" data-lang="elisp"></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">foo-bar</span> <span class="p">(</span><span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span><span class="p">)</span>
+  <span class="s">&#34;Some doc text A B C.&#34;</span>
+  <span class="p">(</span><span class="nf">concat</span> <span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span><span class="p">))</span></code></pre></td></tr></table>
 </div>
 </div>
 <h2 id="lambdas">Lambdas</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code></code></pre></td>
+<pre class="chroma"><code><span class="lnt">0
+</span><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-elisp" data-lang="elisp"></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">lambda</span> <span class="p">(</span><span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span><span class="p">)</span>
+  <span class="s">&#34;Some doc text A B C.&#34;</span>
+  <span class="p">(</span><span class="nf">concat</span> <span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span><span class="p">))</span></code></pre></td></tr></table>
 </div>
 </div>
 <h2 id="control-structures">Control structures</h2>
@@ -229,7 +239,7 @@
 <pre class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">if</span> <span class="no">nil</span>
     <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;true&#34;</span><span class="p">)</span>
   <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;false&#34;</span><span class="p">))</span>
-<span class="err">⇒</span> <span class="s">&#34;false&#34;&#34;</span></code></pre></td></tr></table>
+  <span class="err">⇒</span> <span class="s">&#34;false&#34;&#34;</span></code></pre></td></tr></table>
 </div>
 </div>
 <p>Variant of <strong>if</strong> where there are no else-forms, and possibly several then-forms.</p>
@@ -280,7 +290,7 @@
 <pre class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">setq</span> <span class="nv">a</span> <span class="mi">5</span><span class="p">)</span>
 <span class="p">(</span><span class="nb">cond</span> <span class="p">((</span><span class="nf">eq</span> <span class="nv">a</span> <span class="ss">&#39;hack</span><span class="p">)</span> <span class="ss">&#39;foo</span><span class="p">)</span>
        <span class="p">(</span><span class="no">t</span> <span class="s">&#34;default&#34;</span><span class="p">))</span>
- <span class="err">⇒</span> <span class="s">&#34;default&#34;</span></code></pre></td></tr></table>
+  <span class="err">⇒</span> <span class="s">&#34;default&#34;</span></code></pre></td></tr></table>
 </div>
 </div>
 <h3 id="combining-conditions">Combining conditions</h3>
@@ -292,7 +302,7 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nv">not</span> <span class="no">nil</span><span class="p">)</span>
-<span class="err">⇒</span> <span class="nv">t</span></code></pre></td></tr></table>
+  <span class="err">⇒</span> <span class="nv">t</span></code></pre></td></tr></table>
 </div>
 </div>
 <p><strong>and</strong> special form tests whether all the conditions are true.</p>
@@ -367,7 +377,7 @@
       <span class="nv">-|</span> <span class="nv">Iteration</span> <span class="mi">1.</span>
       <span class="nv">-|</span> <span class="nv">Iteration</span> <span class="mi">2.</span>
       <span class="nv">-|</span> <span class="nv">Iteration</span> <span class="mi">3.</span>
-      <span class="err">⇒</span> <span class="nv">nil</span></code></pre></td></tr></table>
+  <span class="err">⇒</span> <span class="nv">nil</span></code></pre></td></tr></table>
 </div>
 </div>
 <p>Repeat-until loop, which will execute something on each iteration and then do the end-test</p>
