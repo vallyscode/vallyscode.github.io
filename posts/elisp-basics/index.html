@@ -1,25 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>vally's code - Intro to Emacs lisp</title>
-    <meta name="description" content="Intro to Emacs list (elisp). A basic overview of elisp." />
-    <meta name="author" content="Valerii Lysenko">
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
-
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-
-
-
-    <link href="/css/normalize.css" rel="stylesheet">
-<link href="/css/cloud.css" rel="stylesheet">
-<link href="/css/syntax.css" rel="stylesheet">
-<link rel="shortcut icon" href="/images/cloud.ico">
-<link rel="canonical" href="https://vallyscode.github.io/posts/elisp-basics/">
-<link rel="apple-touch-icon" href="">
+<html lang="en-us"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Intro to Emacs list (elisp). A basic overview of elisp.">
+    <meta name="author" content="Valerii Lysenko"/>
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/cloud.css">
+    <link rel="stylesheet" type="text/css" href="/css/syntax.css">
+    
+    
+    
+    <title>vally&#39;s code | Intro to Emacs lisp</title>
 
     
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-142469594-1"></script>
@@ -30,43 +22,66 @@
 
   gtag('config', 'UA-142469594-1');
 </script>
+</head>
+<body><header>
+  <nav>
+    <ul>
+      
+      <li>
+        <a href="/">
+        
+        Blog
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags/">
+        
+        Tags
+        </a>
+      </li>
+      
+      <li>
+        <a href="/about/">
+        
+        About
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</header>
 
-  </head>
 
-  <body>
+<main>
 
-    <header>
-      <nav>
-        <ul>
-          <li><a href="https://vallyscode.github.io/">Posts</a></li>
-        </ul>
-      </nav>
-    </header>
+  <article class="article">
 
+    <section class="article-title">
+      <h2><a href="/posts/elisp-basics/">Intro to Emacs lisp</a></h2>
+    </section>
+
+    <section class="article-time">
+  
+  
+  <time datetime="2019-09-07">September 7, 2019</time>
+</section>
+
+<section class="tags">
+  
     
+    
+    <a href="https://vallyscode.github.io/tags/elisp">elisp</a>
+    
+    
+    <a href="https://vallyscode.github.io/tags/emacs">emacs</a>
+    
+  
+</section>
 
-    <main class="posts">
-      <article class="post">
 
-        <header class="post-header">
-          <h2>
-            <a href="/posts/elisp-basics/">Intro to Emacs lisp</a>
-          </h2>
-          <div class="post-time">
-            September 7, 2019
-          </div>
-        </header>
-
-        <div class="post-after">
-          <div class="tags">
-            
-            <a href="https://vallyscode.github.io//tags/elisp">elisp</a>
-            
-          </div>
-        </div>
-
-      <div class="content">
-        <p>A basic overview of elisp to start crafting plugins and customizing Emacs. For more details see <a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/index.html">docs</a></p>
+    <section class="article-content">
+      <p>A basic overview of elisp to start crafting plugins and customizing Emacs. For more details see <a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/index.html">docs</a></p>
 <h2 id="comments">Comments</h2>
 <p>Semicolon <strong>;;</strong> defines comment enywhere in a line</p>
 <div class="highlight"><div class="chroma">
@@ -309,18 +324,22 @@
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">0
+</span><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">and</span> <span class="nv">arg1</span> <span class="nv">arg2</span> <span class="nv">arg3</span><span class="p">)</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">and</span> <span class="nv">arg1</span> <span class="nv">arg2</span> <span class="nv">arg3</span><span class="p">)</span>
+  <span class="err">⇒</span> <span class="nv">t</span></code></pre></td></tr></table>
 </div>
 </div>
 <p><strong>or</strong> special form tests whether at least one of the conditions is true.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">0
+</span><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">or</span> <span class="nv">arg1</span> <span class="nv">arg2</span> <span class="nv">arg3</span><span class="p">)</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">or</span> <span class="nv">arg1</span> <span class="nv">arg2</span> <span class="nv">arg3</span><span class="p">)</span>
+  <span class="err">⇒</span> <span class="nv">t</span></code></pre></td></tr></table>
 </div>
 </div>
 <h3 id="pattern-matching">Pattern-Matching</h3>
@@ -369,7 +388,7 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">setq</span> <span class="nv">num</span> <span class="mi">0</span><span class="p">)</span>
-      <span class="err">⇒</span> <span class="mi">0</span>
+  <span class="err">⇒</span> <span class="mi">0</span>
 <span class="p">(</span><span class="nb">while</span> <span class="p">(</span><span class="nf">&lt;</span> <span class="nv">num</span> <span class="mi">4</span><span class="p">)</span>
   <span class="p">(</span><span class="nf">princ</span> <span class="p">(</span><span class="nf">format</span> <span class="s">&#34;Iteration %d.&#34;</span> <span class="nv">num</span><span class="p">))</span>
   <span class="p">(</span><span class="nb">setq</span> <span class="nv">num</span> <span class="p">(</span><span class="nf">1+</span> <span class="nv">num</span><span class="p">)))</span>
@@ -425,15 +444,15 @@
 </div>
 </div>
 
-      </div>
+    </section>
 
-      </article>
-    </main>
+  </article>
 
-    <footer class="copyright">
-      <p>© VALERII lYSENKO 2020</p>
-    </footer>
+</main>
 
-  </body>
+<footer class="copyright">
+    <p>© 2020 VALERII LYSENKO</p>
+</footer>
+</body>
 
 </html>

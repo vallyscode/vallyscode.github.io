@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>elisp on </title>
+    <title>elisp on vally&#39;s code</title>
     <link>https://vallyscode.github.io/tags/elisp/</link>
-    <description>Recent content in elisp on </description>
+    <description>Recent content in elisp on vally&#39;s code</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 11 Nov 2019 17:23:10 +0100</lastBuildDate>
@@ -12,13 +12,12 @@
     
     
     <item>
-      <title>Tabulated list mode in Emacs (tabulated-list-mode)</title>
+      <title>Emacs tabulated list mode</title>
       <link>https://vallyscode.github.io/posts/tabulated-list-mode/</link>
       <pubDate>Mon, 11 Nov 2019 17:23:10 +0100</pubDate>
       
       <guid>https://vallyscode.github.io/posts/tabulated-list-mode/</guid>
-      <description>A simple example of tabulated-list-mode usage in Emacs. For more details see docs
-Tabulated list is a major mode, so in order to use it we need to:  Extend tabulated-list-mode Specify tabulated-list-format (Format of the Tabulated List data) Specify tabulated-list-revert-hook Optional (Hook run before reverting a Tabulated List buffer. This is commonly used to recompute `tabulated-list-entries’) Compute tabulated-list-entries (Entries displayed in the Tabulated List buffer) Define tabulated-list-printer (Function called to insert an entry at point, including its terminating newline) Specify tabulated-list-padding Call tabulated-list-init-header (Function which will populate a header with the names of the columns)  Define major mode: (define-derived-mode list-demo-mode tabulated-list-mode &amp;#34;list-demo-mode&amp;#34; &amp;#34;Major mode for tabulated list example.</description>
+      <description>Example of tabulated-list-mode use.</description>
     </item>
     
     <item>
@@ -27,9 +26,7 @@ Tabulated list is a major mode, so in order to use it we need to:  Extend tabula
       <pubDate>Sat, 07 Sep 2019 13:23:10 +0100</pubDate>
       
       <guid>https://vallyscode.github.io/posts/elisp-basics/</guid>
-      <description>A basic overview of elisp to start crafting plugins and customizing Emacs. For more details see docs
-Comments Semicolon ;; defines comment enywhere in a line
-0  ;; Some text as comment   Arithmetic 0 1 2 3 4 5 6  (+ 3 2 1) ;; 6 (- 8 5) ;; 3 (* 3 4) ;; 12 (/ 1 2.0) ;; 0.5 (/ 1 2) ;; 0 (% 12 5) ;; 2 (expt 3 4) ;; 81   Type conversions 0 1 2 3 4 5 6 7  (float 6) ;; 6.</description>
+      <description>Simple cheat sheet for elisp.</description>
     </item>
     
   </channel>
