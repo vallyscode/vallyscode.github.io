@@ -102,13 +102,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yml" data-lang="yml"><span class="k">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;2010-09-09&#39;</span><span class="w">
-</span><span class="w"></span><span class="k">Description</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;IAM User with S3 access.&#39;</span><span class="w">
+<pre class="chroma"><code class="language-yml" data-lang="yml"><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;2010-09-09&#39;</span><span class="w">
+</span><span class="w"></span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;IAM User with S3 access.&#39;</span><span class="w">
 </span><span class="w">
-</span><span class="w"></span><span class="k">Parameters</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">Env</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">Type</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;String&#39;</span><span class="w">
-</span><span class="w">    </span><span class="k">Description</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Environment name (String parameter dev|test etc).&#39;</span></code></pre></td></tr></table>
+</span><span class="w"></span><span class="nt">Parameters</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">Env</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;String&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Environment name (String parameter dev|test etc).&#39;</span></code></pre></td></tr></table>
 </div>
 </div>
 <h4 id="managed-policies">Managed policies</h4>
@@ -129,18 +129,18 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yml" data-lang="yml"><span class="w">  </span><span class="k">PermissionsBucketA</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">Type</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;AWS::IAM::ManagedPolicy&#39;</span><span class="w">
-</span><span class="w">    </span><span class="k">Properties</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">ManagedPolicyName</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;permissions.bucket.a&#39;</span><span class="w">
-</span><span class="w">      </span><span class="k">PolicyDocument</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="k">Version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;2012-10-17&#39;</span><span class="w">
-</span><span class="w">        </span><span class="k">Statement</span><span class="p">:</span><span class="w">
-</span><span class="w">          </span>- <span class="k">Effect</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Allow&#39;</span><span class="w">
-</span><span class="w">            </span><span class="k">Action</span><span class="p">:</span><span class="w">
+<pre class="chroma"><code class="language-yml" data-lang="yml"><span class="w">  </span><span class="nt">PermissionsBucketA</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;AWS::IAM::ManagedPolicy&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">ManagedPolicyName</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;permissions.bucket.a&#39;</span><span class="w">
+</span><span class="w">      </span><span class="nt">PolicyDocument</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">Version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;2012-10-17&#39;</span><span class="w">
+</span><span class="w">        </span><span class="nt">Statement</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span>- <span class="nt">Effect</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Allow&#39;</span><span class="w">
+</span><span class="w">            </span><span class="nt">Action</span><span class="p">:</span><span class="w">
 </span><span class="w">              </span>- <span class="s1">&#39;s3:PutObject&#39;</span><span class="w">
-</span><span class="w">            </span><span class="k">Resource</span><span class="p">:</span><span class="w">
-</span><span class="w">              </span>- !Sub<span class="w"> </span><span class="s1">&#39;arn:aws:s3:::${Env}-bucket-a/*&#39;</span></code></pre></td></tr></table>
+</span><span class="w">            </span><span class="nt">Resource</span><span class="p">:</span><span class="w">
+</span><span class="w">              </span>- !<span class="l">Sub &#39;arn:aws:s3:::${Env}-bucket-a/*&#39;</span></code></pre></td></tr></table>
 </div>
 </div>
 <p>Allow list and get objects from bucket</p>
@@ -165,23 +165,23 @@
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yml" data-lang="yml"><span class="w">  </span><span class="k">PolicyBucketB</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">Type</span><span class="p">:</span><span class="w"> </span>AWS<span class="p">::</span>IAM<span class="p">::</span>ManagedPolicy<span class="w">
-</span><span class="w">    </span><span class="k">Properties</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">ManagedPolicyName</span><span class="p">:</span><span class="w"> </span>!Sub<span class="w"> </span><span class="s1">&#39;${Env}.policy.bucket.b&#39;</span><span class="w">
-</span><span class="w">      </span><span class="k">PolicyDocument</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="k">Version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;2012-10-17&#39;</span><span class="w">
-</span><span class="w">        </span><span class="k">Statement</span><span class="p">:</span><span class="w">
-</span><span class="w">          </span>- <span class="k">Effect</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Allow&#39;</span><span class="w">
-</span><span class="w">            </span><span class="k">Action</span><span class="p">:</span><span class="w">
+<pre class="chroma"><code class="language-yml" data-lang="yml"><span class="w">  </span><span class="nt">PolicyBucketB</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::IAM::ManagedPolicy</span><span class="w">
+</span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">ManagedPolicyName</span><span class="p">:</span><span class="w"> </span>!<span class="l">Sub &#39;${Env}.policy.bucket.b&#39;</span><span class="w">
+</span><span class="w">      </span><span class="nt">PolicyDocument</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">Version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;2012-10-17&#39;</span><span class="w">
+</span><span class="w">        </span><span class="nt">Statement</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span>- <span class="nt">Effect</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Allow&#39;</span><span class="w">
+</span><span class="w">            </span><span class="nt">Action</span><span class="p">:</span><span class="w">
 </span><span class="w">              </span>- <span class="s1">&#39;s3:ListBucket&#39;</span><span class="w">
-</span><span class="w">            </span><span class="k">Resource</span><span class="p">:</span><span class="w">
-</span><span class="w">              </span>- !Sub<span class="w"> </span><span class="s1">&#39;arn:aws:s3:::${Env}-bucket-b/*&#39;</span><span class="w">
-</span><span class="w">          </span>- <span class="k">Effect</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Allow&#39;</span><span class="w">
-</span><span class="w">            </span><span class="k">Action</span><span class="p">:</span><span class="w">
+</span><span class="w">            </span><span class="nt">Resource</span><span class="p">:</span><span class="w">
+</span><span class="w">              </span>- !<span class="l">Sub &#39;arn:aws:s3:::${Env}-bucket-b/*&#39;</span><span class="w">
+</span><span class="w">          </span>- <span class="nt">Effect</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Allow&#39;</span><span class="w">
+</span><span class="w">            </span><span class="nt">Action</span><span class="p">:</span><span class="w">
 </span><span class="w">              </span>- <span class="s1">&#39;s3:GetObject&#39;</span><span class="w">
-</span><span class="w">            </span><span class="k">Resource</span><span class="p">:</span><span class="w">
-</span><span class="w">              </span>- !Sub<span class="w"> </span><span class="s1">&#39;arn:aws:s3:::${Env}-bucket-b/*&#39;</span></code></pre></td></tr></table>
+</span><span class="w">            </span><span class="nt">Resource</span><span class="p">:</span><span class="w">
+</span><span class="w">              </span>- !<span class="l">Sub &#39;arn:aws:s3:::${Env}-bucket-b/*&#39;</span></code></pre></td></tr></table>
 </div>
 </div>
 <h4 id="group">Group</h4>
@@ -200,16 +200,16 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yml" data-lang="yml"><span class="w">  </span><span class="k">SimpleGroup</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">DependsOn</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- PolicyBucketA<span class="w">
-</span><span class="w">      </span>- PolicyBucketB<span class="w">
-</span><span class="w">    </span><span class="k">Type</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;AWS::IAM::Group&#39;</span><span class="w">
-</span><span class="w">    </span><span class="k">Properties</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">GroupName</span><span class="p">:</span><span class="w"> </span>!Sub<span class="w"> </span><span class="s1">&#39;${Env}-simple-group&#39;</span><span class="w">
-</span><span class="w">      </span><span class="k">ManagedPolicyArns</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span>- <span class="k">Ref</span><span class="p">:</span><span class="w"> </span>PolicyBucketA<span class="w">
-</span><span class="w">        </span>- <span class="k">Ref</span><span class="p">:</span><span class="w"> </span>PolicyBucketB</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-yml" data-lang="yml"><span class="w">  </span><span class="nt">SimpleGroup</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">DependsOn</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="l">PolicyBucketA</span><span class="w">
+</span><span class="w">      </span>- <span class="l">PolicyBucketB</span><span class="w">
+</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;AWS::IAM::Group&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">GroupName</span><span class="p">:</span><span class="w"> </span>!<span class="l">Sub &#39;${Env}-simple-group&#39;</span><span class="w">
+</span><span class="w">      </span><span class="nt">ManagedPolicyArns</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span>- <span class="nt">Ref</span><span class="p">:</span><span class="w"> </span><span class="l">PolicyBucketA</span><span class="w">
+</span><span class="w">        </span>- <span class="nt">Ref</span><span class="p">:</span><span class="w"> </span><span class="l">PolicyBucketB</span></code></pre></td></tr></table>
 </div>
 </div>
 <h4 id="user">User</h4>
@@ -225,75 +225,75 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yml" data-lang="yml"><span class="w">  </span><span class="k">SimpleUser</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">DependsOn</span><span class="p">:</span><span class="w"> </span>SimpleGroup<span class="w">
-</span><span class="w">    </span><span class="k">Type</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;AWS::IAM::User&#39;</span><span class="w">
-</span><span class="w">    </span><span class="k">Properties</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">UserName</span><span class="p">:</span><span class="w"> </span>!Sub<span class="w"> </span><span class="s1">&#39;${Env}.simple.user&#39;</span><span class="w">
-</span><span class="w">      </span><span class="k">Groups</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span>- !Ref<span class="w"> </span>SimpleGroup</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-yml" data-lang="yml"><span class="w">  </span><span class="nt">SimpleUser</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">DependsOn</span><span class="p">:</span><span class="w"> </span><span class="l">SimpleGroup</span><span class="w">
+</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;AWS::IAM::User&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">UserName</span><span class="p">:</span><span class="w"> </span>!<span class="l">Sub &#39;${Env}.simple.user&#39;</span><span class="w">
+</span><span class="w">      </span><span class="nt">Groups</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span>- !<span class="l">Ref SimpleGroup</span></code></pre></td></tr></table>
 </div>
 </div>
 <h2 id="complete-template">Complete template</h2>
-<div class="highlight"><pre class="chroma"><code class="language-yml" data-lang="yml"><span class="k">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;2010-09-09&#39;</span><span class="w">
-</span><span class="w"></span><span class="k">Description</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Example IAM user with s3 access.&#39;</span><span class="w">
+<div class="highlight"><pre class="chroma"><code class="language-yml" data-lang="yml"><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;2010-09-09&#39;</span><span class="w">
+</span><span class="w"></span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Example IAM user with s3 access.&#39;</span><span class="w">
 </span><span class="w">
-</span><span class="w"></span><span class="k">Parameters</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">Env</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">Type</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;String&#39;</span><span class="w">
-</span><span class="w">    </span><span class="k">Description</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Environment name (String parameter dev|test etc).&#39;</span><span class="w">
+</span><span class="w"></span><span class="nt">Parameters</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">Env</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;String&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Environment name (String parameter dev|test etc).&#39;</span><span class="w">
 </span><span class="w">
-</span><span class="w"></span><span class="k">Resources</span><span class="p">:</span><span class="w">
+</span><span class="w"></span><span class="nt">Resources</span><span class="p">:</span><span class="w">
 </span><span class="w">
-</span><span class="w">  </span><span class="k">PolicyBucketA</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">Type</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;AWS::IAM::ManagedPolicy&#39;</span><span class="w">
-</span><span class="w">    </span><span class="k">Properties</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">ManagedPolicyName</span><span class="p">:</span><span class="w"> </span>!Sub<span class="w"> </span><span class="s1">&#39;${Env}.policy.bucket.a&#39;</span><span class="w">
-</span><span class="w">      </span><span class="k">PolicyDocument</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="k">Version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;2012-10-17&#39;</span><span class="w">
-</span><span class="w">        </span><span class="k">Statement</span><span class="p">:</span><span class="w">
-</span><span class="w">          </span>- <span class="k">Effect</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Allow&#39;</span><span class="w">
-</span><span class="w">            </span><span class="k">Action</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">PolicyBucketA</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;AWS::IAM::ManagedPolicy&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">ManagedPolicyName</span><span class="p">:</span><span class="w"> </span>!<span class="l">Sub &#39;${Env}.policy.bucket.a&#39;</span><span class="w">
+</span><span class="w">      </span><span class="nt">PolicyDocument</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">Version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;2012-10-17&#39;</span><span class="w">
+</span><span class="w">        </span><span class="nt">Statement</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span>- <span class="nt">Effect</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Allow&#39;</span><span class="w">
+</span><span class="w">            </span><span class="nt">Action</span><span class="p">:</span><span class="w">
 </span><span class="w">              </span>- <span class="s1">&#39;s3:PutObject&#39;</span><span class="w">
-</span><span class="w">            </span><span class="k">Resource</span><span class="p">:</span><span class="w">
-</span><span class="w">              </span>- !Sub<span class="w"> </span><span class="s1">&#39;arn:aws:s3:::${Env}-bucket-a/*&#39;</span><span class="w">
+</span><span class="w">            </span><span class="nt">Resource</span><span class="p">:</span><span class="w">
+</span><span class="w">              </span>- !<span class="l">Sub &#39;arn:aws:s3:::${Env}-bucket-a/*&#39;</span><span class="w">
 </span><span class="w">
-</span><span class="w">  </span><span class="k">PolicyBucketB</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">Type</span><span class="p">:</span><span class="w"> </span>AWS<span class="p">::</span>IAM<span class="p">::</span>ManagedPolicy<span class="w">
-</span><span class="w">    </span><span class="k">Properties</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">ManagedPolicyName</span><span class="p">:</span><span class="w"> </span>!Sub<span class="w"> </span><span class="s1">&#39;${Env}.policy.bucket.b&#39;</span><span class="w">
-</span><span class="w">      </span><span class="k">PolicyDocument</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="k">Version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;2012-10-17&#39;</span><span class="w">
-</span><span class="w">        </span><span class="k">Statement</span><span class="p">:</span><span class="w">
-</span><span class="w">          </span>- <span class="k">Effect</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Allow&#39;</span><span class="w">
-</span><span class="w">            </span><span class="k">Action</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">PolicyBucketB</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::IAM::ManagedPolicy</span><span class="w">
+</span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">ManagedPolicyName</span><span class="p">:</span><span class="w"> </span>!<span class="l">Sub &#39;${Env}.policy.bucket.b&#39;</span><span class="w">
+</span><span class="w">      </span><span class="nt">PolicyDocument</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">Version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;2012-10-17&#39;</span><span class="w">
+</span><span class="w">        </span><span class="nt">Statement</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span>- <span class="nt">Effect</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Allow&#39;</span><span class="w">
+</span><span class="w">            </span><span class="nt">Action</span><span class="p">:</span><span class="w">
 </span><span class="w">              </span>- <span class="s1">&#39;s3:ListBucket&#39;</span><span class="w">
-</span><span class="w">            </span><span class="k">Resource</span><span class="p">:</span><span class="w">
-</span><span class="w">              </span>- !Sub<span class="w"> </span><span class="s1">&#39;arn:aws:s3:::${Env}-bucket-b/*&#39;</span><span class="w">
-</span><span class="w">          </span>- <span class="k">Effect</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Allow&#39;</span><span class="w">
-</span><span class="w">            </span><span class="k">Action</span><span class="p">:</span><span class="w">
+</span><span class="w">            </span><span class="nt">Resource</span><span class="p">:</span><span class="w">
+</span><span class="w">              </span>- !<span class="l">Sub &#39;arn:aws:s3:::${Env}-bucket-b/*&#39;</span><span class="w">
+</span><span class="w">          </span>- <span class="nt">Effect</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Allow&#39;</span><span class="w">
+</span><span class="w">            </span><span class="nt">Action</span><span class="p">:</span><span class="w">
 </span><span class="w">              </span>- <span class="s1">&#39;s3:GetObject&#39;</span><span class="w">
-</span><span class="w">            </span><span class="k">Resource</span><span class="p">:</span><span class="w">
-</span><span class="w">              </span>- !Sub<span class="w"> </span><span class="s1">&#39;arn:aws:s3:::${Env}-bucket-b/*&#39;</span><span class="w">
+</span><span class="w">            </span><span class="nt">Resource</span><span class="p">:</span><span class="w">
+</span><span class="w">              </span>- !<span class="l">Sub &#39;arn:aws:s3:::${Env}-bucket-b/*&#39;</span><span class="w">
 </span><span class="w">
-</span><span class="w">  </span><span class="k">SimpleGroup</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">DependsOn</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- PolicyBucketA<span class="w">
-</span><span class="w">      </span>- PolicyBucketB<span class="w">
-</span><span class="w">    </span><span class="k">Type</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;AWS::IAM::Group&#39;</span><span class="w">
-</span><span class="w">    </span><span class="k">Properties</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">GroupName</span><span class="p">:</span><span class="w"> </span>!Sub<span class="w"> </span><span class="s1">&#39;${Env}-simple-group&#39;</span><span class="w">
-</span><span class="w">      </span><span class="k">ManagedPolicyArns</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span>- <span class="k">Ref</span><span class="p">:</span><span class="w"> </span>PolicyBucketA<span class="w">
-</span><span class="w">        </span>- <span class="k">Ref</span><span class="p">:</span><span class="w"> </span>PolicyBucketB<span class="w">
+</span><span class="w">  </span><span class="nt">SimpleGroup</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">DependsOn</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="l">PolicyBucketA</span><span class="w">
+</span><span class="w">      </span>- <span class="l">PolicyBucketB</span><span class="w">
+</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;AWS::IAM::Group&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">GroupName</span><span class="p">:</span><span class="w"> </span>!<span class="l">Sub &#39;${Env}-simple-group&#39;</span><span class="w">
+</span><span class="w">      </span><span class="nt">ManagedPolicyArns</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span>- <span class="nt">Ref</span><span class="p">:</span><span class="w"> </span><span class="l">PolicyBucketA</span><span class="w">
+</span><span class="w">        </span>- <span class="nt">Ref</span><span class="p">:</span><span class="w"> </span><span class="l">PolicyBucketB</span><span class="w">
 </span><span class="w">
-</span><span class="w">  </span><span class="k">SimpleUser</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">DependsOn</span><span class="p">:</span><span class="w"> </span>SimpleGroup<span class="w">
-</span><span class="w">    </span><span class="k">Type</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;AWS::IAM::User&#39;</span><span class="w">
-</span><span class="w">    </span><span class="k">Properties</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">UserName</span><span class="p">:</span><span class="w"> </span>!Sub<span class="w"> </span><span class="s1">&#39;${Env}.simple.user&#39;</span><span class="w">
-</span><span class="w">      </span><span class="k">Groups</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span>- !Ref<span class="w"> </span>SimpleGroup</code></pre></div>
+</span><span class="w">  </span><span class="nt">SimpleUser</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">DependsOn</span><span class="p">:</span><span class="w"> </span><span class="l">SimpleGroup</span><span class="w">
+</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;AWS::IAM::User&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">UserName</span><span class="p">:</span><span class="w"> </span>!<span class="l">Sub &#39;${Env}.simple.user&#39;</span><span class="w">
+</span><span class="w">      </span><span class="nt">Groups</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span>- !<span class="l">Ref SimpleGroup</span></code></pre></div>
 
     </section>
 
