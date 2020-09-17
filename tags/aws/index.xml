@@ -6,7 +6,16 @@
     <description>Recent content in aws on vally&#39;s code</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 15 Sep 2020 15:34:03 +0200</lastBuildDate><atom:link href="https://vallyscode.github.io/tags/aws/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 16 Sep 2020 15:34:26 +0200</lastBuildDate><atom:link href="https://vallyscode.github.io/tags/aws/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Aws Cloudformation S3 Lambda Trigger</title>
+      <link>https://vallyscode.github.io/posts/aws-cloudformation-s3-lambda-trigger/</link>
+      <pubDate>Wed, 16 Sep 2020 15:34:26 +0200</pubDate>
+      
+      <guid>https://vallyscode.github.io/posts/aws-cloudformation-s3-lambda-trigger/</guid>
+      <description>Simple example template for s3 lambda trigger</description>
+    </item>
+    
     <item>
       <title>Aws Cloudformation Embedded Python Lambda</title>
       <link>https://vallyscode.github.io/posts/aws-cloudformation-embedded-python-lambda/</link>
