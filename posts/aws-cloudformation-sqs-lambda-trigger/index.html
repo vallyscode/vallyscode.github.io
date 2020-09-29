@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Simple example template for sqs lambda trigger">
+    <meta name="author" content="Valerii Lysenko"/>
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/cloud.css">
+    <link rel="stylesheet" type="text/css" href="/css/syntax.css">
+    
+    
+    
+    <title>vally&#39;s code | Aws Cloudformation Sqs Lambda Trigger</title>
+
+    
+</head>
+<body><header>
+  <nav>
+    <ul>
+      
+      <li>
+        <a href="/">
+        
+        Blog
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags/">
+        
+        Tags
+        </a>
+      </li>
+      
+      <li>
+        <a href="/about/">
+        
+        About
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</header>
+
+
+<main>
+
+  <article class="article">
+
+    <section class="article-title">
+      <h2><a href="/posts/aws-cloudformation-sqs-lambda-trigger/">Aws Cloudformation Sqs Lambda Trigger</a></h2>
+    </section>
+
+    <section class="article-time">
+  
+  
+  <time datetime="2020-09-28">September 28, 2020</time>
+</section>
+
+
+<section class="tags">
+  
+    
+    
+    <a href="https://vallyscode.github.io/tags/aws">aws</a>
+    
+    
+    <a href="https://vallyscode.github.io/tags/lambda">lambda</a>
+    
+    
+    <a href="https://vallyscode.github.io/tags/cloudformation">cloudformation</a>
+    
+    
+    <a href="https://vallyscode.github.io/tags/sqs">sqs</a>
+    
+  
+</section>
+
+
+    <section class="article-content">
+      <p>Simple example template for lambda trigger whe event published on SQS queue.</p>
+<h2 id="use-case">Use case</h2>
+<p>Simple use case when system is expected to react on SQS event and somehow process the data or perform an action.</p>
+<p><img src="/img/aws-cf-sqs-lambda-trigger/sqs-lambda-trigger-use-case.png" alt="Resources diagram:"></p>
+<h2 id="resources-diagram">Resources diagram</h2>
+<p><img src="/img/aws-cf-sqs-lambda-trigger/sqs-lambda-trigger-cf.png" alt="Resources diagram:"></p>
+<h2 id="cloudformation">Cloudformation</h2>
+<h4 id="event-source">Event source</h4>
+<p>Allow trigger specified lambda by defined event source mapping</p>
+<div class="highlight"><pre class="chroma"><code class="language-yml" data-lang="yml"><span class="w">  </span><span class="nt">WsEgressLambdaSourceMapping</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;AWS::Lambda::EventSourceMapping&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">DependsOn</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="l">SimpleQueue</span><span class="w">
+</span><span class="w">      </span>- <span class="l">SimpleLambda</span><span class="w">
+</span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">BatchSize</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="c"># maximum number of items to retrieve in a single batch</span><span class="w">
+</span><span class="w">      </span><span class="nt">Enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">      </span><span class="nt">EventSourceArn</span><span class="p">:</span><span class="w"> </span>!<span class="l">GetAtt SimpleQueue.Arn</span><span class="w">
+</span><span class="w">      </span><span class="nt">FunctionName</span><span class="p">:</span><span class="w"> </span>!<span class="l">GetAtt SimpleLambda.Arn</span></code></pre></div>
+<h4 id="queue-configuration">Queue configuration</h4>
+<p>In this setup, event can remain in queue up to 4 days, and will be invisible for other listeners up to 30 seconds.</p>
+<div class="highlight"><pre class="chroma"><code class="language-yml" data-lang="yml"><span class="w">  </span><span class="nt">SimpleQueue</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;AWS::SQS::Queue&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">QueueName</span><span class="p">:</span><span class="w"> </span>!<span class="l">Sub &#39;${Env}-queue&#39;</span><span class="w">
+</span><span class="w">      </span><span class="nt">DelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="w">
+</span><span class="w">      </span><span class="nt">MaximumMessageSize</span><span class="p">:</span><span class="w"> </span><span class="m">262144</span><span class="w">
+</span><span class="w">      </span><span class="nt">MessageRetentionPeriod</span><span class="p">:</span><span class="w"> </span><span class="m">345600</span><span class="w"> </span><span class="c">## 4 days</span><span class="w">
+</span><span class="w">      </span><span class="nt">VisibilityTimeout</span><span class="p">:</span><span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="c">## seconds</span></code></pre></div>
+<h2 id="template">Template</h2>
+<div class="highlight"><pre class="chroma"><code class="language-yml" data-lang="yml"><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;2010-09-09&#39;</span><span class="w">
+</span><span class="w"></span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Simple SQS lambda trigger.&#39;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">Parameters</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">Env</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;String&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Logical environment dev|test etc&#39;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">Resources</span><span class="p">:</span><span class="w">
+</span><span class="w">
+</span><span class="w">  </span><span class="nt">SimpleQueue</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;AWS::SQS::Queue&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">QueueName</span><span class="p">:</span><span class="w"> </span>!<span class="l">Sub &#39;${Env}-queue&#39;</span><span class="w">
+</span><span class="w">      </span><span class="nt">DelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="w">
+</span><span class="w">      </span><span class="nt">MaximumMessageSize</span><span class="p">:</span><span class="w"> </span><span class="m">262144</span><span class="w">
+</span><span class="w">      </span><span class="nt">MessageRetentionPeriod</span><span class="p">:</span><span class="w"> </span><span class="m">345600</span><span class="w"> </span><span class="c">## 4 days</span><span class="w">
+</span><span class="w">      </span><span class="nt">VisibilityTimeout</span><span class="p">:</span><span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="c">## seconds</span><span class="w">
+</span><span class="w">
+</span><span class="w">  </span><span class="nt">SimpleLambdaLogGroup</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;AWS::Logs::LogGroup&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">LogGroupName</span><span class="p">:</span><span class="w"> </span>!<span class="l">Sub &#39;/aws/lambda/${Env}-simple-lambda&#39;</span><span class="w">
+</span><span class="w">      </span><span class="nt">RetentionInDays</span><span class="p">:</span><span class="w"> </span><span class="m">3</span><span class="w">
+</span><span class="w">
+</span><span class="w">  </span><span class="nt">SimpleLambdaRole</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;AWS::IAM::Role&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">DependsOn</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="l">SimpleQueue</span><span class="w">
+</span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">AssumeRolePolicyDocument</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">Version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;2012-10-17&#39;</span><span class="w">
+</span><span class="w">        </span><span class="nt">Statement</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span>- <span class="nt">Effect</span><span class="p">:</span><span class="w"> </span><span class="l">Allow</span><span class="w">
+</span><span class="w">            </span><span class="nt">Principal</span><span class="p">:</span><span class="w">
+</span><span class="w">              </span><span class="nt">Service</span><span class="p">:</span><span class="w">
+</span><span class="w">                </span>- <span class="l">lambda.amazonaws.com</span><span class="w">
+</span><span class="w">            </span><span class="nt">Action</span><span class="p">:</span><span class="w">
+</span><span class="w">              </span>- <span class="l">sts:AssumeRole</span><span class="w">
+</span><span class="w">      </span><span class="nt">Policies</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span>- <span class="nt">PolicyName</span><span class="p">:</span><span class="w"> </span>!<span class="l">Sub &#39;${Env}-simple-lambda&#39;</span><span class="w">
+</span><span class="w">          </span><span class="nt">PolicyDocument</span><span class="p">:</span><span class="w">
+</span><span class="w">            </span><span class="nt">Version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;2012-10-17&#39;</span><span class="w">
+</span><span class="w">            </span><span class="nt">Statement</span><span class="p">:</span><span class="w">
+</span><span class="w">              </span>- <span class="nt">Effect</span><span class="p">:</span><span class="w"> </span><span class="l">Allow</span><span class="w">
+</span><span class="w">                </span><span class="nt">Action</span><span class="p">:</span><span class="w">
+</span><span class="w">                  </span>- <span class="l">logs:CreateLogStream</span><span class="w">
+</span><span class="w">                  </span>- <span class="l">logs:PutLogEvents</span><span class="w">
+</span><span class="w">                </span><span class="nt">Resource</span><span class="p">:</span><span class="w"> </span>!<span class="l">Sub &#39;arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/${Env}-simple-lambda:*:*&#39;</span><span class="w">
+</span><span class="w">              </span>- <span class="nt">Effect</span><span class="p">:</span><span class="w"> </span><span class="l">Allow</span><span class="w">
+</span><span class="w">                </span><span class="nt">Action</span><span class="p">:</span><span class="w">
+</span><span class="w">                  </span>- <span class="l">sqs:ReceiveMessage</span><span class="w">
+</span><span class="w">                  </span>- <span class="l">sqs:DeleteMessage</span><span class="w">
+</span><span class="w">                  </span>- <span class="l">sqs:GetQueueAttributes</span><span class="w">
+</span><span class="w">                  </span>- <span class="l">sqs:ChangeMessageVisibility</span><span class="w">
+</span><span class="w">                </span><span class="nt">Resource</span><span class="p">:</span><span class="w"> </span>!<span class="l">GetAtt SimpleQueue.Arn</span><span class="w">
+</span><span class="w">              </span>- <span class="nt">Effect</span><span class="p">:</span><span class="w"> </span><span class="l">Allow</span><span class="w">
+</span><span class="w">                </span><span class="nt">Action</span><span class="p">:</span><span class="w">
+</span><span class="w">                  </span>- <span class="l">xray:PutTraceSegments</span><span class="w">
+</span><span class="w">                  </span>- <span class="l">xray:PutTelemetryRecords</span><span class="w">
+</span><span class="w">                </span><span class="nt">Resource</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;*&#39;</span><span class="w">
+</span><span class="w">
+</span><span class="w">  </span><span class="nt">WsEgressLambdaSourceMapping</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;AWS::Lambda::EventSourceMapping&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">DependsOn</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="l">SimpleQueue</span><span class="w">
+</span><span class="w">      </span>- <span class="l">SimpleLambda</span><span class="w">
+</span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">BatchSize</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="w">      </span><span class="nt">Enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">      </span><span class="nt">EventSourceArn</span><span class="p">:</span><span class="w"> </span>!<span class="l">GetAtt SimpleQueue.Arn</span><span class="w">
+</span><span class="w">      </span><span class="nt">FunctionName</span><span class="p">:</span><span class="w"> </span>!<span class="l">GetAtt SimpleLambda.Arn</span><span class="w">
+</span><span class="w">
+</span><span class="w">  </span><span class="nt">SimpleLambda</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;AWS::Lambda::Function&#39;</span><span class="w">
+</span><span class="w">    </span><span class="nt">DependsOn</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="l">SimpleLambdaRole</span><span class="w">
+</span><span class="w">      </span>- <span class="l">SimpleLambdaLogGroup</span><span class="w">
+</span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;SQS triggered lambda.&#39;</span><span class="w">
+</span><span class="w">      </span><span class="nt">FunctionName</span><span class="p">:</span><span class="w"> </span>!<span class="l">Sub &#39;${Env}-simple-lambda&#39;</span><span class="w">
+</span><span class="w">      </span><span class="nt">Handler</span><span class="p">:</span><span class="w"> </span><span class="l">index.handler</span><span class="w">
+</span><span class="w">      </span><span class="nt">Runtime</span><span class="p">:</span><span class="w"> </span><span class="l">python3.7</span><span class="w">
+</span><span class="w">      </span><span class="nt">MemorySize</span><span class="p">:</span><span class="w"> </span><span class="m">128</span><span class="w">
+</span><span class="w">      </span><span class="nt">Timeout</span><span class="p">:</span><span class="w"> </span><span class="m">30</span><span class="w">
+</span><span class="w">      </span><span class="nt">TracingConfig</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">Mode</span><span class="p">:</span><span class="w"> </span><span class="l">Active</span><span class="w">
+</span><span class="w">      </span><span class="nt">Role</span><span class="p">:</span><span class="w"> </span>!<span class="l">GetAtt SimpleLambdaRole.Arn</span><span class="w">
+</span><span class="w">      </span><span class="nt">Code</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">ZipFile</span><span class="p">:</span><span class="w"> </span><span class="sd">|
+</span><span class="sd">          import os
+</span><span class="sd">          import json
+</span><span class="sd">
+</span><span class="sd">          def handler(event, context):
+</span><span class="sd">            print(&#34;Event: {}&#34;.format(event))</span></code></pre></div>
+
+    </section>
+
+  </article>
+
+</main>
+
+<footer class="copyright">
+    <p>© 2020 VALERII LYSENKO</p>
+</footer>
+</body>
+
+</html>
