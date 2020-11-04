@@ -207,12 +207,12 @@
 </span><span class="w">        </span><span class="nt">Mode</span><span class="p">:</span><span class="w"> </span><span class="l">Active</span><span class="w">
 </span><span class="w">      </span><span class="nt">Role</span><span class="p">:</span><span class="w"> </span>!<span class="l">GetAtt SimpleLambdaRole.Arn</span><span class="w">
 </span><span class="w">      </span><span class="nt">Code</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="nt">ZipFile</span><span class="p">:</span><span class="w"> </span><span class="sd">|
+</span><span class="w">        </span><span class="nt">ZipFile</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
 </span><span class="sd">          import os
 </span><span class="sd">          import json
 </span><span class="sd">
 </span><span class="sd">          def handler(event, context):
-</span><span class="sd">            print(&#34;Event: {}&#34;.format(event))</span></code></pre></div>
+</span><span class="sd">            print(&#34;Event: {}&#34;.format(event))</span><span class="w">          </span></code></pre></div>
 
     </section>
 

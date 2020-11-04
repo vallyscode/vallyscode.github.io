@@ -168,7 +168,7 @@
 </span><span class="w">        </span><span class="nt">Mode</span><span class="p">:</span><span class="w"> </span><span class="l">Active</span><span class="w">
 </span><span class="w">      </span><span class="nt">Role</span><span class="p">:</span><span class="w"> </span>!<span class="l">GetAtt LambdaRole.Arn</span><span class="w">
 </span><span class="w">      </span><span class="nt">Code</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="nt">ZipFile</span><span class="p">:</span><span class="w"> </span><span class="sd">|
+</span><span class="w">        </span><span class="nt">ZipFile</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
 </span><span class="sd">          import os
 </span><span class="sd">          import json
 </span><span class="sd">
@@ -186,7 +186,7 @@
 </span><span class="sd">              &#39;headers&#39;: {},
 </span><span class="sd">              &#39;body&#39;: body,
 </span><span class="sd">            }
-</span><span class="sd">            return result</span></code></pre></div>
+</span><span class="sd">            return result</span><span class="w">          </span></code></pre></div>
 <h5 id="vpc-and-subnets">VPC and Subnets</h5>
 <blockquote>
 <p>Configuration must be provided with security group ENI will be bound and a list of subnets lambda will be deployed to.</p>
@@ -270,7 +270,7 @@
 </span><span class="w">        </span><span class="nt">Mode</span><span class="p">:</span><span class="w"> </span><span class="l">Active</span><span class="w">
 </span><span class="w">      </span><span class="nt">Role</span><span class="p">:</span><span class="w"> </span>!<span class="l">GetAtt LambdaRole.Arn</span><span class="w">
 </span><span class="w">      </span><span class="nt">Code</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="nt">ZipFile</span><span class="p">:</span><span class="w"> </span><span class="sd">|
+</span><span class="w">        </span><span class="nt">ZipFile</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
 </span><span class="sd">          import os
 </span><span class="sd">          import json
 </span><span class="sd">
@@ -288,7 +288,7 @@
 </span><span class="sd">              &#39;headers&#39;: {},
 </span><span class="sd">              &#39;body&#39;: body,
 </span><span class="sd">            }
-</span><span class="sd">            return result</span></code></pre></div>
+</span><span class="sd">            return result</span><span class="w">          </span></code></pre></div>
 <h5 id="notes">Notes</h5>
 <blockquote>
 <p>Handy thing when lambda is used as a glue point between services and can simply be part of infrastructure configuration.</p>

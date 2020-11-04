@@ -6,7 +6,16 @@
     <description>Recent content in cloudformation on vally&#39;s code</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 29 Sep 2020 13:04:38 +0200</lastBuildDate><atom:link href="https://vallyscode.github.io/tags/cloudformation/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 02 Nov 2020 09:19:14 +0100</lastBuildDate><atom:link href="https://vallyscode.github.io/tags/cloudformation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Aws Vpc Peering</title>
+      <link>https://vallyscode.github.io/posts/aws-vpc-peering/</link>
+      <pubDate>Mon, 02 Nov 2020 09:19:14 +0100</pubDate>
+      
+      <guid>https://vallyscode.github.io/posts/aws-vpc-peering/</guid>
+      <description>Simple example of AWS VPC peering configuration</description>
+    </item>
+    
     <item>
       <title>Aws Billing Alarm</title>
       <link>https://vallyscode.github.io/posts/aws-billing-alarm/</link>
