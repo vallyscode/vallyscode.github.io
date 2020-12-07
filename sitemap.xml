@@ -4,37 +4,32 @@
   
   <url>
     <loc>https://vallyscode.github.io/tags/aws/</loc>
-    <lastmod>2020-11-02T09:19:14+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vallyscode.github.io/posts/aws-vpc-peering/</loc>
-    <lastmod>2020-11-02T09:19:14+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vallyscode.github.io/tags/cloudformation/</loc>
-    <lastmod>2020-11-02T09:19:14+01:00</lastmod>
+    <lastmod>2020-12-07T10:10:28+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://vallyscode.github.io/posts/</loc>
-    <lastmod>2020-11-02T09:19:14+01:00</lastmod>
+    <lastmod>2020-12-07T10:10:28+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vallyscode.github.io/tags/sam/</loc>
+    <lastmod>2020-12-07T10:10:28+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vallyscode.github.io/posts/sam-cli-linux/</loc>
+    <lastmod>2020-12-07T10:10:28+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://vallyscode.github.io/tags/</loc>
-    <lastmod>2020-11-02T09:19:14+01:00</lastmod>
+    <lastmod>2020-12-07T10:10:28+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://vallyscode.github.io/</loc>
-    <lastmod>2020-11-02T09:19:14+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vallyscode.github.io/tags/vpc/</loc>
-    <lastmod>2020-11-02T09:19:14+01:00</lastmod>
+    <lastmod>2020-12-07T10:10:28+01:00</lastmod>
   </url>
   
   <url>
@@ -44,6 +39,11 @@
   
   <url>
     <loc>https://vallyscode.github.io/posts/aws-billing-alarm/</loc>
+    <lastmod>2020-09-29T13:04:38+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://vallyscode.github.io/tags/cloudformation/</loc>
     <lastmod>2020-09-29T13:04:38+02:00</lastmod>
   </url>
   
