@@ -1,125 +1,80 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>https://vallyscode.github.io/tags/aws/</loc>
-    <lastmod>2020-12-07T10:10:28+01:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-04-10T12:48:44+02:00</lastmod>
+  </url><url>
+    <loc>https://vallyscode.github.io/posts/aws-sam-basics/</loc>
+    <lastmod>2021-04-10T12:48:44+02:00</lastmod>
+  </url><url>
     <loc>https://vallyscode.github.io/posts/</loc>
-    <lastmod>2020-12-07T10:10:28+01:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-04-10T12:48:44+02:00</lastmod>
+  </url><url>
     <loc>https://vallyscode.github.io/tags/sam/</loc>
-    <lastmod>2020-12-07T10:10:28+01:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-04-10T12:48:44+02:00</lastmod>
+  </url><url>
+    <loc>https://vallyscode.github.io/tags/</loc>
+    <lastmod>2021-04-10T12:48:44+02:00</lastmod>
+  </url><url>
+    <loc>https://vallyscode.github.io/</loc>
+    <lastmod>2021-04-10T12:48:44+02:00</lastmod>
+  </url><url>
     <loc>https://vallyscode.github.io/posts/sam-cli-linux/</loc>
     <lastmod>2020-12-07T10:10:28+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vallyscode.github.io/tags/</loc>
-    <lastmod>2020-12-07T10:10:28+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://vallyscode.github.io/</loc>
-    <lastmod>2020-12-07T10:10:28+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://vallyscode.github.io/posts/data-store-concepts/</loc>
     <lastmod>2020-10-12T20:46:27+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://vallyscode.github.io/posts/aws-billing-alarm/</loc>
     <lastmod>2020-09-29T13:04:38+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://vallyscode.github.io/tags/cloudformation/</loc>
     <lastmod>2020-09-29T13:04:38+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://vallyscode.github.io/posts/aws-cloudformation-sqs-lambda-trigger/</loc>
     <lastmod>2020-09-28T10:48:51+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://vallyscode.github.io/tags/lambda/</loc>
     <lastmod>2020-09-28T10:48:51+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://vallyscode.github.io/tags/sqs/</loc>
     <lastmod>2020-09-28T10:48:51+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://vallyscode.github.io/posts/aws-cloudformation-s3-lambda-trigger/</loc>
     <lastmod>2020-09-16T15:34:26+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://vallyscode.github.io/tags/s3/</loc>
     <lastmod>2020-09-16T15:34:26+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://vallyscode.github.io/posts/aws-cloudformation-embedded-python-lambda/</loc>
     <lastmod>2020-09-15T15:34:03+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://vallyscode.github.io/posts/aws-cloudformation-iam-user/</loc>
     <lastmod>2020-09-14T15:34:46+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://vallyscode.github.io/tags/iam/</loc>
     <lastmod>2020-09-14T15:34:46+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://vallyscode.github.io/tags/arch/</loc>
     <lastmod>2020-09-14T12:50:39+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://vallyscode.github.io/posts/virtualbox-arch-guest/</loc>
     <lastmod>2020-09-14T12:50:39+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://vallyscode.github.io/tags/elisp/</loc>
     <lastmod>2019-11-11T17:23:10+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://vallyscode.github.io/tags/emacs/</loc>
     <lastmod>2019-11-11T17:23:10+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://vallyscode.github.io/posts/tabulated-list-mode/</loc>
     <lastmod>2019-11-11T17:23:10+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://vallyscode.github.io/posts/elisp-basics/</loc>
     <lastmod>2019-09-07T13:23:10+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://vallyscode.github.io/about/</loc>
     <lastmod>2019-02-28T00:00:00+00:00</lastmod>
   </url>
-  
 </urlset>
