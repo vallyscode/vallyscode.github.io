@@ -6,20 +6,29 @@
     <description>Recent content in Tags on vally&#39;s code</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 10 Apr 2021 12:48:44 +0200</lastBuildDate><atom:link href="https://vallyscode.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 18 Apr 2021 14:16:41 +0200</lastBuildDate><atom:link href="https://vallyscode.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>aws</title>
       <link>https://vallyscode.github.io/tags/aws/</link>
-      <pubDate>Sat, 10 Apr 2021 12:48:44 +0200</pubDate>
+      <pubDate>Sun, 18 Apr 2021 14:16:41 +0200</pubDate>
       
       <guid>https://vallyscode.github.io/tags/aws/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>lambda</title>
+      <link>https://vallyscode.github.io/tags/lambda/</link>
+      <pubDate>Sun, 18 Apr 2021 14:16:41 +0200</pubDate>
+      
+      <guid>https://vallyscode.github.io/tags/lambda/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>sam</title>
       <link>https://vallyscode.github.io/tags/sam/</link>
-      <pubDate>Sat, 10 Apr 2021 12:48:44 +0200</pubDate>
+      <pubDate>Sun, 18 Apr 2021 14:16:41 +0200</pubDate>
       
       <guid>https://vallyscode.github.io/tags/sam/</guid>
       <description></description>
@@ -31,15 +40,6 @@
       <pubDate>Tue, 29 Sep 2020 13:04:38 +0200</pubDate>
       
       <guid>https://vallyscode.github.io/tags/cloudformation/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>lambda</title>
-      <link>https://vallyscode.github.io/tags/lambda/</link>
-      <pubDate>Mon, 28 Sep 2020 10:48:51 +0200</pubDate>
-      
-      <guid>https://vallyscode.github.io/tags/lambda/</guid>
       <description></description>
     </item>
     
