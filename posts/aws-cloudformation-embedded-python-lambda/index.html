@@ -96,14 +96,14 @@
 <h2 id="cloudformation">Cloudformation</h2>
 <h4 id="cloudwatch">CloudWatch</h4>
 <p>Log group for streaming lambda execution logs</p>
-<div class="highlight"><pre class="chroma"><code class="language-yml" data-lang="yml"><span class="w">  </span><span class="nt">LambdaLogGroup</span><span class="p">:</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="w">  </span><span class="nt">LambdaLogGroup</span><span class="p">:</span><span class="w">
 </span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;AWS::Logs::LogGroup&#39;</span><span class="w">
 </span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
 </span><span class="w">      </span><span class="nt">LogGroupName</span><span class="p">:</span><span class="w"> </span>!<span class="l">Sub &#39;/aws/lambda/${Environment}-python-lambda&#39;</span><span class="w">
 </span><span class="w">      </span><span class="nt">RetentionInDays</span><span class="p">:</span><span class="w"> </span><span class="m">5</span></code></pre></div>
 <h4 id="iam-role">IAM Role</h4>
 <p>Allow creating log stream and xray tracking</p>
-<div class="highlight"><pre class="chroma"><code class="language-yml" data-lang="yml"><span class="w">  </span><span class="nt">LambdaRole</span><span class="p">:</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="w">  </span><span class="nt">LambdaRole</span><span class="p">:</span><span class="w">
 </span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::IAM::Role</span><span class="w">
 </span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
 </span><span class="w">      </span><span class="nt">AssumeRolePolicyDocument</span><span class="p">:</span><span class="w">
@@ -142,7 +142,7 @@
 <p>Provides minimum permissions for a Lambda function to execute while accessing a resource within a VPC - create, describe, delete network interfaces and write permissions to CloudWatch Logs.</p>
 </blockquote>
 <h4 id="python-lambda">Python lambda</h4>
-<div class="highlight"><pre class="chroma"><code class="language-yml" data-lang="yml"><span class="w">  </span><span class="nt">LambdaFunction</span><span class="p">:</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="w">  </span><span class="nt">LambdaFunction</span><span class="p">:</span><span class="w">
 </span><span class="w">    </span><span class="nt">DependsOn</span><span class="p">:</span><span class="w">
 </span><span class="w">      </span>- <span class="l">LambdaRole</span><span class="w">
 </span><span class="w">      </span>- <span class="l">LambdaLogGroup</span><span class="w">
@@ -193,7 +193,7 @@
 </blockquote>
 <h2 id="template">Template</h2>
 <p>Complete cloudformation template</p>
-<div class="highlight"><pre class="chroma"><code class="language-yml" data-lang="yml"><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;2010-09-09&#39;</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;2010-09-09&#39;</span><span class="w">
 </span><span class="w"></span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Embedded python lambda.&#39;</span><span class="w">
 </span><span class="w">
 </span><span class="w"></span><span class="nt">Parameters</span><span class="p">:</span><span class="w">

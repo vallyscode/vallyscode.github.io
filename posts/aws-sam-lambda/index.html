@@ -90,7 +90,7 @@
 <h2 id="template">Template</h2>
 <p>Template for AWS Lambda is almost the same for officially supported languages, it varies more only in case of custom runtimes (custom runtimes are not covered here).</p>
 <p>Example template for AWS Lambda in Golang.</p>
-<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;2010-09-09&#39;</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;2010-09-09&#39;</span><span class="w">
 </span><span class="w"></span><span class="nt">Transform</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::Serverless-2016-10-31</span><span class="w">
 </span><span class="w"></span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="p">&gt;</span><span class="sd">
 </span><span class="sd">  app02
@@ -131,7 +131,7 @@
 <p><img src="/img/aws-lambda-go/sam-lambda-go.png" alt="SAM catalog structure:"></p>
 <h2 id="golang-lambda-code">Golang lambda code</h2>
 <p>Probably the simplest lambda, returns stringified request back to caller.</p>
-<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">import</span> <span class="p">(</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kn">import</span> <span class="p">(</span>
 	<span class="s">&#34;context&#34;</span>
 	<span class="s">&#34;fmt&#34;</span>
 
@@ -147,7 +147,7 @@
 	<span class="nx">lambda</span><span class="p">.</span><span class="nf">Start</span><span class="p">(</span><span class="nx">handler</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div><h2 id="sam-configuration">SAM Configuration</h2>
-<div class="highlight"><pre class="chroma"><code class="language-toml" data-lang="toml"><span class="nx">version</span> <span class="p">=</span> <span class="mf">0.1</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="nx">version</span> <span class="p">=</span> <span class="mf">0.1</span>
 <span class="p">[</span><span class="nx">dev</span><span class="p">]</span>
 <span class="p">[</span><span class="nx">dev</span><span class="p">.</span><span class="nx">deploy</span><span class="p">]</span>
 <span class="p">[</span><span class="nx">dev</span><span class="p">.</span><span class="nx">deploy</span><span class="p">.</span><span class="nx">parameters</span><span class="p">]</span>
@@ -170,9 +170,9 @@
 <span class="nx">capabilities</span> <span class="p">=</span> <span class="s2">&#34;CAPABILITY_NAMED_IAM&#34;</span>
 <span class="nx">parameter_overrides</span> <span class="p">=</span> <span class="s2">&#34;Env=\&#34;test\&#34;&#34;</span>
 </code></pre></div><h2 id="building">Building</h2>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sam build
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sam build
 </code></pre></div><h2 id="deployment">Deployment</h2>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sam deploy --profile default --config-env dev --no-fail-on-empty-changeset
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sam deploy --profile default --config-env dev --no-fail-on-empty-changeset
 </code></pre></div><h2 id="deployed-cloudformation-template">Deployed cloudformation template</h2>
 <p><img src="/img/aws-lambda-go/lambda-go-cf.png" alt="SAM deployed template:"></p>
 <h2 id="deployed-resources">Deployed resources</h2>

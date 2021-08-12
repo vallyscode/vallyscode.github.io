@@ -84,13 +84,13 @@
 <p>Download Arch iso from <a href="https://www.archlinux.org/download/">official page</a> and launch a machine using iso image.</p>
 <h2 id="disk-partitioning">Disk partitioning</h2>
 <p>Legacy mode approach.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"> cfdisk /dev/sda</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"> cfdisk /dev/sda</code></pre></div>
 <p>Screen will look like this, <strong>dos</strong> label type should be selected.</p>
 <p><img src="/img/arch-guest/1.png" alt="Tabulated list:"></p>
 <p>Create partitions as following</p>
 <p><img src="/img/arch-guest/2.png" alt="Tabulated list:"></p>
 <p>Format and mount partitions</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"> mkswap /dev/sda2
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"> mkswap /dev/sda2
  swapon /dev/sda2
 
  mkfs.ext2 /dev/sda1
@@ -101,58 +101,58 @@
  mount /dev/sda1 /mnt/boot</code></pre></div>
 <h2 id="installing-the-system">Installing the system</h2>
 <h4 id="installing-base-packages">Installing base packages</h4>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"> pacstrap /mnt base linux-lts linux-firmware</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"> pacstrap /mnt base linux-lts linux-firmware</code></pre></div>
 <h4 id="generating-fstab">Generating fstab</h4>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"> genfstab -U /mnt &gt;&gt; /mnt/etc/fstab</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"> genfstab -U /mnt &gt;&gt; /mnt/etc/fstab</code></pre></div>
 <p>Result should look like this</p>
 <p><img src="/img/arch-guest/3.png" alt="Tabulated list:"></p>
 <h4 id="chroot">Chroot</h4>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"> arch-chroot /mnt</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"> arch-chroot /mnt</code></pre></div>
 <h4 id="time-zone">Time zone</h4>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"> ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"> ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
  hwclock --systohc</code></pre></div>
 <h4 id="localization">Localization</h4>
 <p>Edit /etc/locale.gen and uncomment en_US.UTF-8 UTF-8 and other needed locales. Generate the locales by running</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"> locale-gen</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"> locale-gen</code></pre></div>
 <p>Edit /etc/locale.conf</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"> <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"> <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8</code></pre></div>
 <h4 id="network">Network</h4>
 <p>Edit /etc/hostname</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"> arch</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"> arch</code></pre></div>
 <p>Edit /etc/hosts</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"> 127.0.0.1       localhost
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"> 127.0.0.1       localhost
  ::1             localhost
  127.0.0.1       arch.localdomain arch</code></pre></div>
 <p>Add dhcp</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"> pacman -S dhcpcd
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"> pacman -S dhcpcd
  systemctl <span class="nb">enable</span> dhcpcd</code></pre></div>
 <h4 id="root-password">Root password</h4>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"> passwd</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"> passwd</code></pre></div>
 <h4 id="boot-loader">Boot loader</h4>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"> pacman -S grub
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"> pacman -S grub
  grub-install /dev/sda
  grub-mkconfig -o /boot/grub/grub.cfg</code></pre></div>
 <h4 id="add-regular-user">Add regular user</h4>
-<p><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"> useradd -m user
+<p><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"> useradd -m user
  gpasswd -a user group
  visudo</code></pre></div>
 Or
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"> useradd -m -G wheel -s /bin/bash user
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"> useradd -m -G wheel -s /bin/bash user
  passwd user
  visudo</code></pre></div></p>
 <h2 id="post-install">Post-install</h2>
 <h4 id="update">Update</h4>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"> sudo pacman -Syu</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"> sudo pacman -Syu</code></pre></div>
 <h4 id="install-xorg">Install xorg</h4>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"> sudo pacman -S xorg-server linux-lts-headers</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"> sudo pacman -S xorg-server linux-lts-headers</code></pre></div>
 <h4 id="virtualbox">VirtualBox</h4>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"> sudo pacman -S virtualbox-guest-utils
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"> sudo pacman -S virtualbox-guest-utils
  sudo systemctl <span class="nb">enable</span> vboxservice</code></pre></div>
 <h4 id="kde">KDE</h4>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"> sudo pacman -S plasma-meta dolphin konsole
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"> sudo pacman -S plasma-meta dolphin konsole
  sudo systemctl <span class="nb">enable</span> sddm</code></pre></div>
 <h4 id="general-purpose">General purpose</h4>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"> sudo pacman -S firefox vim git man spectacle unzip zsh</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"> sudo pacman -S firefox vim git man spectacle unzip zsh</code></pre></div>
 
     </section>
 

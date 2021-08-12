@@ -94,7 +94,7 @@
 <p>Template with stack parameters</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">0
+<pre tabindex="0" class="chroma"><code><span class="lnt">0
 </span><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
@@ -103,7 +103,7 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yml" data-lang="yml"><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;2010-09-09&#39;</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;2010-09-09&#39;</span><span class="w">
 </span><span class="w"></span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;IAM User with S3 access.&#39;</span><span class="w">
 </span><span class="w">
 </span><span class="w"></span><span class="nt">Parameters</span><span class="p">:</span><span class="w">
@@ -116,7 +116,7 @@
 <p>Allow put objects into bucket (containing environment parameter in it&rsquo;s name)</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 0
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 0
 </span><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
@@ -130,7 +130,7 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yml" data-lang="yml"><span class="w">  </span><span class="nt">PermissionsBucketA</span><span class="p">:</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="w">  </span><span class="nt">PermissionsBucketA</span><span class="p">:</span><span class="w">
 </span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;AWS::IAM::ManagedPolicy&#39;</span><span class="w">
 </span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
 </span><span class="w">      </span><span class="nt">ManagedPolicyName</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;permissions.bucket.a&#39;</span><span class="w">
@@ -147,7 +147,7 @@
 <p>Allow list and get objects from bucket</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 0
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 0
 </span><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
@@ -166,7 +166,7 @@
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yml" data-lang="yml"><span class="w">  </span><span class="nt">PolicyBucketB</span><span class="p">:</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="w">  </span><span class="nt">PolicyBucketB</span><span class="p">:</span><span class="w">
 </span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::IAM::ManagedPolicy</span><span class="w">
 </span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
 </span><span class="w">      </span><span class="nt">ManagedPolicyName</span><span class="p">:</span><span class="w"> </span>!<span class="l">Sub &#39;${Env}.policy.bucket.b&#39;</span><span class="w">
@@ -189,7 +189,7 @@
 <p>A group containing policies. Also depends on them to be created first.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">0
+<pre tabindex="0" class="chroma"><code><span class="lnt">0
 </span><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
@@ -201,7 +201,7 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yml" data-lang="yml"><span class="w">  </span><span class="nt">SimpleGroup</span><span class="p">:</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="w">  </span><span class="nt">SimpleGroup</span><span class="p">:</span><span class="w">
 </span><span class="w">    </span><span class="nt">DependsOn</span><span class="p">:</span><span class="w">
 </span><span class="w">      </span>- <span class="l">PolicyBucketA</span><span class="w">
 </span><span class="w">      </span>- <span class="l">PolicyBucketB</span><span class="w">
@@ -217,7 +217,7 @@
 <p>Simple user with reference to group we want to assign him to.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">0
+<pre tabindex="0" class="chroma"><code><span class="lnt">0
 </span><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
@@ -226,7 +226,7 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yml" data-lang="yml"><span class="w">  </span><span class="nt">SimpleUser</span><span class="p">:</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="w">  </span><span class="nt">SimpleUser</span><span class="p">:</span><span class="w">
 </span><span class="w">    </span><span class="nt">DependsOn</span><span class="p">:</span><span class="w"> </span><span class="l">SimpleGroup</span><span class="w">
 </span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;AWS::IAM::User&#39;</span><span class="w">
 </span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
@@ -236,7 +236,7 @@
 </div>
 </div>
 <h2 id="complete-template">Complete template</h2>
-<div class="highlight"><pre class="chroma"><code class="language-yml" data-lang="yml"><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;2010-09-09&#39;</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;2010-09-09&#39;</span><span class="w">
 </span><span class="w"></span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Example IAM user with s3 access.&#39;</span><span class="w">
 </span><span class="w">
 </span><span class="w"></span><span class="nt">Parameters</span><span class="p">:</span><span class="w">

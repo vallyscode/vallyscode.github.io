@@ -97,7 +97,7 @@
 <h2 id="cloudformation">Cloudformation</h2>
 <h4 id="permissions">Permissions</h4>
 <p>Allow trigger specified lambda by defined s3 bucket</p>
-<div class="highlight"><pre class="chroma"><code class="language-yml" data-lang="yml"><span class="w">  </span><span class="nt">TriggerLambdaPermission</span><span class="p">:</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="w">  </span><span class="nt">TriggerLambdaPermission</span><span class="p">:</span><span class="w">
 </span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::Lambda::Permission</span><span class="w">
 </span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
 </span><span class="w">      </span><span class="nt">Action</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;lambda:InvokeFunction&#39;</span><span class="w">
@@ -107,7 +107,7 @@
 </span><span class="w">      </span><span class="nt">SourceAccount</span><span class="p">:</span><span class="w"> </span>!<span class="l">Ref AWS::AccountId</span></code></pre></div>
 <h4 id="bucket-configuration">Bucket configuration</h4>
 <p>In this case lambda will be triggered by any upload of files with suffics &lsquo;.csv&rsquo; into any <strong>&lsquo;folder&rsquo;</strong> in the bucket. In order to capture by specific keys, prefix should be provided.</p>
-<div class="highlight"><pre class="chroma"><code class="language-yml" data-lang="yml"><span class="w">  </span><span class="nt">NotificationConfiguration</span><span class="p">:</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="w">  </span><span class="nt">NotificationConfiguration</span><span class="p">:</span><span class="w">
 </span><span class="w">    </span><span class="nt">LambdaConfigurations</span><span class="p">:</span><span class="w">
 </span><span class="w">      </span>- <span class="nt">Event</span><span class="p">:</span><span class="w"> </span><span class="l">s3:ObjectCreated:*</span><span class="w">
 </span><span class="w">        </span><span class="nt">Function</span><span class="p">:</span><span class="w"> </span>!<span class="l">GetAtt SimpleLambda.Arn</span><span class="w">
@@ -117,7 +117,7 @@
 </span><span class="w">              </span>- <span class="nt">Name</span><span class="p">:</span><span class="w"> </span><span class="l">suffix</span><span class="w">
 </span><span class="w">                </span><span class="nt">Value</span><span class="p">:</span><span class="w"> </span><span class="l">.csv</span></code></pre></div>
 <h2 id="template">Template</h2>
-<div class="highlight"><pre class="chroma"><code class="language-yml" data-lang="yml"><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;2010-09-09&#39;</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;2010-09-09&#39;</span><span class="w">
 </span><span class="w"></span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Simple s3 lambda trigger.&#39;</span><span class="w">
 </span><span class="w">
 </span><span class="w"></span><span class="nt">Parameters</span><span class="p">:</span><span class="w">

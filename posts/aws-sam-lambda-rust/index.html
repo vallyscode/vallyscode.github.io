@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AWS SAM Lambda Rust">
+    <meta name="author" content="Valerii Lysenko"/>
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/cloud.css">
+    <link rel="stylesheet" type="text/css" href="/css/syntax.css">
+    
+    
+    
+    <title>vally&#39;s code | AWS SAM Lambda Rust</title>
+
+    
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-142469594-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-142469594-1');
+</script>
+</head>
+<body><header>
+  <nav>
+    <ul>
+      
+      <li>
+        <a href="/">
+        
+        Blog
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags/">
+        
+        Tags
+        </a>
+      </li>
+      
+      <li>
+        <a href="/about/">
+        
+        About
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</header>
+
+
+<main>
+
+  <article class="article">
+
+    <section class="article-title">
+      <h2><a href="/posts/aws-sam-lambda-rust/">AWS SAM Lambda Rust</a></h2>
+    </section>
+
+    <section class="article-time">
+  
+  
+  <time datetime="2021-08-12">August 12, 2021</time>
+</section>
+
+
+<section class="tags">
+  
+    
+    
+    <a href="https://vallyscode.github.io/tags/aws">aws</a>
+    
+    
+    <a href="https://vallyscode.github.io/tags/sam">sam</a>
+    
+    
+    <a href="https://vallyscode.github.io/tags/lambda">lambda</a>
+    
+    
+    <a href="https://vallyscode.github.io/tags/rust">rust</a>
+    
+  
+</section>
+
+
+    <section class="article-content">
+      <p>Simple example of Rust lambda deployment. <a href="https://github.com/vallyscode/aws-sam-lambda-rust">Git</a></p>
+<h2 id="template">Template</h2>
+<p>SAM can build custom runtime for us, but with some additional guidance from out side.</p>
+<p>We need to define a type of runtime we want to use by setting its value to one of <strong>provided.al2</strong>(Amazon Linux 2 (AL2)) or <strong>provided</strong>(Amazon Linux).</p>
+<p>Next thing SAM needs to know is how to build our custom runtime, for this we must declare <strong>Metadata</strong> attribute with specified build method as <strong>makefile</strong>.</p>
+<p>Our <strong>Makefile</strong> must include a steps to build the runtime for each custom lambda resource with following format <strong>build-FUNCTION-LOGICAL-ID</strong>.</p>
+<p>Each lambda resource can have makefile located in different place, to set a location we need to provide <strong>CodeUri</strong> with relative path to <strong>Makefile</strong>.</p>
+<h4 id="example">Example:</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="w">  </span><span class="nt">HeyFunction</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::Serverless::Function</span><span class="w">
+</span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l">Says hey</span><span class="w">
+</span><span class="w">      </span><span class="nt">CodeUri</span><span class="p">:</span><span class="w"> </span><span class="l">.</span><span class="w">
+</span><span class="w">      </span><span class="nt">Handler</span><span class="p">:</span><span class="w"> </span><span class="l">bootstrap</span><span class="w">
+</span><span class="w">      </span><span class="nt">Runtime</span><span class="p">:</span><span class="w"> </span><span class="l">provided.al2</span><span class="w">
+</span><span class="w">      </span><span class="nt">Tracing</span><span class="p">:</span><span class="w"> </span><span class="l">Active</span><span class="w">
+</span><span class="w">      </span><span class="nt">Events</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">Greetings</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">Api</span><span class="w">
+</span><span class="w">          </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span><span class="w">            </span><span class="nt">RestApiId</span><span class="p">:</span><span class="w"> </span>!<span class="l">Ref RestApi</span><span class="w">
+</span><span class="w">            </span><span class="nt">Path</span><span class="p">:</span><span class="w"> </span><span class="l">/hey</span><span class="w">
+</span><span class="w">            </span><span class="nt">Method</span><span class="p">:</span><span class="w"> </span><span class="l">GET</span><span class="w">
+</span><span class="w">      </span><span class="nt">Tags</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">Environment</span><span class="p">:</span><span class="w"> </span>!<span class="l">Ref Env</span><span class="w">
+</span><span class="w">        </span><span class="nt">Application</span><span class="p">:</span><span class="w"> </span>!<span class="l">Ref App</span><span class="w">
+</span><span class="w">    </span><span class="nt">Metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">BuildMethod</span><span class="p">:</span><span class="w"> </span><span class="l">makefile</span><span class="w">
+</span></code></pre></div><h4 id="notes">Notes</h4>
+<blockquote>
+<p>In this example <strong>CodeUri</strong> is set to <strong>.</strong> it means that makefile is located in the same place with template.</p>
+</blockquote>
+<h2 id="makefile">Makefile</h2>
+<p>We must define a steps to build our Rust lambdas, as mentioned earlier target names must match to resource names from template.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Makefile" data-lang="Makefile"><span class="nf">build</span><span class="o">:</span>
+	rustup target add x86_64-unknown-linux-musl
+	cargo build --target x86_64-unknown-linux-musl --release
+	sam build
+
+<span class="nf">build-HeyFunction</span><span class="o">:</span>
+	cp ./target/x86_64-unknown-linux-musl/release/hey <span class="k">$(</span>ARTIFACTS_DIR<span class="k">)</span>/bootstrap
+	strip <span class="k">$(</span>ARTIFACTS_DIR<span class="k">)</span>/bootstrap
+</code></pre></div><h4 id="notes-1">Notes</h4>
+<blockquote>
+<p>In this example all binaries are built during general build target execution and each <strong>build-</strong>* is just moving them to destination folders with striping.</p>
+</blockquote>
+
+    </section>
+
+  </article>
+
+</main>
+
+<footer class="copyright">
+    <p>© 2021 VALERII LYSENKO</p>
+</footer>
+</body>
+
+</html>

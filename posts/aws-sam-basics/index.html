@@ -90,7 +90,7 @@
 </blockquote>
 <h1 id="sam-template">SAM template</h1>
 <p>Example template with s3 bucket as resource to be created in scope of this app.</p>
-<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;2010-09-09&#34;</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;2010-09-09&#34;</span><span class="w">
 </span><span class="w"></span><span class="nt">Transform</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::Serverless-2016-10-31</span><span class="w">
 </span><span class="w"></span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="p">&gt;</span><span class="sd">
 </span><span class="sd">   App01
@@ -114,7 +114,7 @@
 <h4 id="guided-flow">Guided flow</h4>
 <p><img src="/img/sam-basics/sam-guided-flow.png" alt="SAM Guided flow:"></p>
 <h4 id="resulting-config-after-guide">Resulting config after guide</h4>
-<div class="highlight"><pre class="chroma"><code class="language-toml" data-lang="toml"><span class="nx">version</span> <span class="p">=</span> <span class="mf">0.1</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="nx">version</span> <span class="p">=</span> <span class="mf">0.1</span>
 <span class="p">[</span><span class="nx">dev</span><span class="p">]</span>
 <span class="p">[</span><span class="nx">dev</span><span class="p">.</span><span class="nx">deploy</span><span class="p">]</span>
 <span class="p">[</span><span class="nx">dev</span><span class="p">.</span><span class="nx">deploy</span><span class="p">.</span><span class="nx">parameters</span><span class="p">]</span>
@@ -145,9 +145,9 @@
 <p><img src="/img/sam-basics/sam-cf-resources.png" alt="SAM cloudformation resources:"></p>
 <h1 id="sam-custom-configuration">SAM custom configuration</h1>
 <p>Start from creating custom s3 bucket SAM will use for future deployments</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">aws s3 mb s3://basicappdeployment --region eu-west-1
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">aws s3 mb s3://basicappdeployment --region eu-west-1
 </code></pre></div><p>Example configuration for deployment to different environments like dev, test</p>
-<div class="highlight"><pre class="chroma"><code class="language-toml" data-lang="toml"><span class="nx">version</span> <span class="p">=</span> <span class="mf">0.1</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="nx">version</span> <span class="p">=</span> <span class="mf">0.1</span>
 <span class="p">[</span><span class="nx">dev</span><span class="p">]</span>
 <span class="p">[</span><span class="nx">dev</span><span class="p">.</span><span class="nx">deploy</span><span class="p">]</span>
 <span class="p">[</span><span class="nx">dev</span><span class="p">.</span><span class="nx">deploy</span><span class="p">.</span><span class="nx">parameters</span><span class="p">]</span>
@@ -175,7 +175,7 @@
 </blockquote>
 <h2 id="sam-deploy-with-custom-config">SAM deploy with custom config</h2>
 <p>Deployment using specific profile and logical environment (dev, test etc).</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sam deploy --profile default --config-env dev --no-fail-on-empty-changeset
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sam deploy --profile default --config-env dev --no-fail-on-empty-changeset
 </code></pre></div><h5 id="notes-2">Notes</h5>
 <blockquote>
 <p>When deploynig using customly created s3 bucket SAM does not create a dedicated cloudformation stack.</p>
