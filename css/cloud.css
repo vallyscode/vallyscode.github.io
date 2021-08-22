@@ -1,4 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Philosopher:400,700&subset=latin,cyrillic);
+@import url(https://fonts.googleapis.com/css2?family=Source+Sans+Pro:400,700);
+@import url(https://fonts.googleapis.com/css2?family=Inconsolata);
+
 
 body {
     font-family: Philosopher;
@@ -55,9 +58,9 @@ header nav ul li {
 
 
 .article-content {
-    text-align: left;
+    text-align: justify;
     font-size: 16px;
-    font-family: source sans pro,helvetica neue,Arial,sans-serif;
+    font-family: "Source Sans Pro";
 }
 
 .article, .copyright {
@@ -98,7 +101,7 @@ header nav ul li {
     transition: 300ms background ease;
     display: inline-block;
     border-bottom: 3px solid #008abc;
-    font-family: 'Liberation Sans', Helvetica, 'Helvetica Neue', sans-serif;
+    font-family: "Source Sans Pro";
 }
 
 .tags a:hover {
@@ -107,8 +110,6 @@ header nav ul li {
   border-bottom: 3px solid #008abc;
   text-decoration: none;
 }
-
-
 
 p {
   margin-top: 0.5em;
@@ -122,9 +123,8 @@ pre {
 }
 
 code, pre {
-    font-size: 14px;
-    /* background-color: #eeeeee; */
-    /* padding: 4px; */
+    font-family: Inconsolata;
+    font-size: 16px;
 }
 
 blockquote {
