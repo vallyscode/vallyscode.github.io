@@ -3,12 +3,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Simple example template for sqs lambda trigger">
-    <meta name="author" content="Valerii Lysenko"/>
-    
+    <meta name="author" content="Valerii Lysenko" />
+
     <link rel="stylesheet" type="text/css" href="/css/normalize.css">
     <link rel="stylesheet" type="text/css" href="/css/cloud.css">
-    <link rel="stylesheet" type="text/css" href="/css/syntax.css">
     
+    <link rel="stylesheet" type="text/css" href="/css/syntax2.css">
+
     
     
     <title>vally&#39;s code | Aws Cloudformation Sqs Lambda Trigger</title>
@@ -22,73 +23,48 @@
 
   gtag('config', 'UA-142469594-1');
 </script>
-</head>
-<body><header>
-  <nav>
-    <ul>
-      
-      <li>
+</head><body><header class="navigation">
+    <nav>
+        
         <a href="/">
-        
-        Blog
+            
+            Blog
         </a>
-      </li>
-      
-      <li>
+        
         <a href="/tags/">
-        
-        Tags
+            
+            Tags
         </a>
-      </li>
-      
-      <li>
+        
         <a href="/about/">
-        
-        About
+            
+            About
         </a>
-      </li>
-      
-    </ul>
-  </nav>
+        
+    </nav>
 </header>
-
-
-<main>
-
-  <article class="article">
-
-    <section class="article-title">
-      <h2><a href="/posts/aws-cloudformation-sqs-lambda-trigger/">Aws Cloudformation Sqs Lambda Trigger</a></h2>
-    </section>
-
-    <section class="article-time">
-  
-  
-  <time datetime="2020-09-28">September 28, 2020</time>
-</section>
-
-
-<section class="tags">
-  
-    
-    
-    <a href="https://vallyscode.github.io/tags/aws">aws</a>
-    
-    
-    <a href="https://vallyscode.github.io/tags/lambda">lambda</a>
-    
-    
-    <a href="https://vallyscode.github.io/tags/cloudformation">cloudformation</a>
-    
-    
-    <a href="https://vallyscode.github.io/tags/sqs">sqs</a>
-    
-  
-</section>
-
-
-    <section class="article-content">
-      <p>Simple example template for lambda trigger whe event published on SQS queue.</p>
+<main class="article">
+    <article>
+        <header class="title">
+            <h2>Aws Cloudformation Sqs Lambda Trigger</h2>
+            
+            
+            <time class="published" datetime='2020-09-28'>
+                September 28, 2020
+            </time>
+            <nav class="tags">
+                
+                <a href='https://vallyscode.github.io/tags/aws'>aws</a>
+                
+                <a href='https://vallyscode.github.io/tags/lambda'>lambda</a>
+                
+                <a href='https://vallyscode.github.io/tags/cloudformation'>cloudformation</a>
+                
+                <a href='https://vallyscode.github.io/tags/sqs'>sqs</a>
+                
+            </nav>
+        </header>
+        <p>Simple example template for lambda trigger whe event published on SQS queue.</p>
 <h2 id="use-case">Use case</h2>
 <p>Simple use case when system is expected to react on SQS event and somehow process the data or perform an action.</p>
 <p><img src="/img/aws-cf-sqs-lambda-trigger/sqs-lambda-trigger-use-case.png" alt="Resources diagram:"></p>
@@ -214,15 +190,9 @@
 </span><span class="sd">          def handler(event, context):
 </span><span class="sd">            print(&#34;Event: {}&#34;.format(event))</span><span class="w">          </span></code></pre></div>
 
-    </section>
-
-  </article>
-
+    </article>
 </main>
-
 <footer class="copyright">
     <p>© 2021 VALERII LYSENKO</p>
-</footer>
-</body>
-
+</footer></body>
 </html>

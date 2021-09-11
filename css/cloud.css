@@ -1,141 +1,195 @@
-@import url(https://fonts.googleapis.com/css?family=Philosopher:400,700&subset=latin,cyrillic);
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700);
-@import url(https://fonts.googleapis.com/css?family=Inconsolata);
+/* @import url(https://fonts.googleapis.com/css?family=Philosopher:400,700&subset=latin,cyrillic); */
+/* @import url('https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Philosopher&display=swap');
+/* Futurice line-height: 28.7px*/
+/* Poppins line-height: 24px*/
+/* Lora line-height: 30px */
+/* Lato line-height: 25.2px */
+/* Open Sans line-height: 30px */
+/* Source Sans Pro line-height: 27.5px */
+/* Calibri */
+/* Calibre line-height: 30px */
+/* Merriweather lihe-height: 27.2px */
+/* stratos line-height: 27px */
+/* rgb(0,159,119) #009f77 */
+/* rgb(23, 129, 200) #1781c8 */
+/* rgb(128, 128, 128) #808080 */
 
+/* * { margin: 0; padding: 0; } */
 
 body {
-    font-family: Philosopher;
-    font-size: 16px;
-    line-height: 20px;
+    font-family: "Roboto";
+    font-size: 110%;
+    line-height: 1.5em;
     color: #454545;
-    background-color: #ffffff;
-}
-
-nav ul {
-    margin: 0;
-    padding: 0;
+    background-color: #fefefe;
 }
 
 a {
     color: #008abc;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
 }
 
 
-
-header nav {
-    width: 100%;
-    padding: 2vh 0;
+.navigation {
+    font-family: "Philosopher";
+    padding-top: 2vh;
 }
 
-header nav ul {
+.navigation nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-header nav ul li {
-    list-style-type: none;
-    font-size: 100%;
-    margin: 0 2vw;
-}
-
-
-
-
-
-.img-circle {
-    display: block;
-    border-radius: 50%;
-    max-width: 100%;
-    margin: 2.5rem auto;
-}
-
-
-
-.article-content {
-    text-align: justify;
-    font-size: 16px;
-    font-family: "Source Sans Pro";
-}
-
-.article, .copyright {
-    text-align: center;
-    max-width: 700px;
-    margin: auto;
-    padding: 2vh 0;
-}
-
-.article .article-time {
-    padding-top: 0.5vh;
-}
-
-
-
-.tag-count {
-    font-size: 0.6em;
-}
-
-.tag-name, .tags {
-    color: #646464;
-    text-align: center;
-}
-
-.tag-name span {
-    color: #646464;
-    text-transform: uppercase;
+.navigation nav a {
+    margin: 0 8px;
+    color: #008abc;
     text-decoration: none;
-    border-bottom: 3px solid #008abc;
 }
 
+.navigation nav a:hover {
+    text-decoration: underline;
+}
+
+.terms,
+.articles article {
+    text-align: center;
+    max-width: 800px;
+    width: 80vw;
+    margin: 0 auto 0 auto;
+    padding-bottom: 18px;
+}
+
+.article article header,
+.articles article header {
+    font-family: "Philosopher";
+}
+
+.articles article header a {
+    color: #008abc;
+    text-decoration: none;
+}
+
+.articles article header a:hover {
+    text-decoration: underline;
+}
+
+.article h2,
+.articles h2 {
+    margin-bottom: 0;
+}
+.articles .summary {
+    margin: 8px 0 0 0;
+}
+
+.published {
+    display: block;
+    color: #cacaca;
+    font-family: "Roboto Mono";
+    font-style: italic;
+    font-size: 0.8em;
+}
+
+.tags {
+    font-size: 0.7em;
+}
+
+.terms a,
 .tags a {
+    display: inline-block;
     color: #646464;
-    font-size: 0.6em;
-    padding: 5px 8px 0 8px;
     text-decoration: none;
     text-transform: uppercase;
     transition: 300ms background ease;
-    display: inline-block;
     border-bottom: 3px solid #008abc;
-    font-family: "Source Sans Pro";
+    padding: 5px 8px 0 8px;
+    margin: 0 4px;
 }
 
+.terms a:hover,
 .tags a:hover {
-  color: #ffffff;
-  background-color: #008abc;
-  border-bottom: 3px solid #008abc;
-  text-decoration: none;
+    display: inline-block;
+    color: #f1f1f1;
+    background-color: #008abc;
+    text-decoration: none;
+    margin: 0 4px;
 }
 
-p {
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
+
+.article {
+    text-align: justify;
+    max-width: 800px;
+    width: 80vw;
+    margin: 0 auto 0 auto;
 }
 
-pre {
-    word-break: break-all;
-    word-wrap: break-word;
-    white-space: pre-wrap;
+.article .title {
+    text-align: center;
+    color: #008abc;
+    font-family: "Philosopher";
 }
 
-code, pre {
-    font-family: Inconsolata;
-    font-size: 16px;
+.article .published {
+    color: #cacaca;
+}
+
+
+.tags {
+    font-family: "Roboto";
+}
+
+.copyright {
+    font-family: "Philosopher";
+    text-align: center;
+    max-width: 80vw;
+    margin: 20px auto 0 auto;
 }
 
 blockquote {
-    border-left: 4px solid #008abc;
-    padding-left: 1.5em;
-    color: #555;
+    color: #7e7e7e;
+    border-left: 3px solid #008abc;
+    padding-left: 1em;
 }
 
-img {
-    max-width: 100%;
-    height: auto;
-    vertical-align: middle;
-    border: 0;
+strong {
+    color: #0c0c0c;
+    font-weight: bolder;
 }
+
+pre {
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: pre-wrap;
+    font-size: 80%;
+    padding: .8em;
+    border: 1px solid #cacaca;
+    border-radius: 4px;
+}
+
+pre,
+code {
+    font-family: "Roboto Mono";
+}
+
+p code {
+    border: 1px solid #cacaca;
+    border-radius: 4px;
+    padding: 0 .2em;
+}
+
+.terms .count {
+    color: #cacaca;
+    font-family: "Roboto Mono";
+}
+
+img {        
+  display:block;
+  max-width: 100%;
+  margin-left:auto;
+  margin-right:auto;
+}
+

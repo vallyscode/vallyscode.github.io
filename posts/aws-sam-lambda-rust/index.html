@@ -3,12 +3,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="AWS SAM Lambda Rust">
-    <meta name="author" content="Valerii Lysenko"/>
-    
+    <meta name="author" content="Valerii Lysenko" />
+
     <link rel="stylesheet" type="text/css" href="/css/normalize.css">
     <link rel="stylesheet" type="text/css" href="/css/cloud.css">
-    <link rel="stylesheet" type="text/css" href="/css/syntax.css">
     
+    <link rel="stylesheet" type="text/css" href="/css/syntax2.css">
+
     
     
     <title>vally&#39;s code | AWS SAM Lambda Rust</title>
@@ -22,73 +23,48 @@
 
   gtag('config', 'UA-142469594-1');
 </script>
-</head>
-<body><header>
-  <nav>
-    <ul>
-      
-      <li>
+</head><body><header class="navigation">
+    <nav>
+        
         <a href="/">
-        
-        Blog
+            
+            Blog
         </a>
-      </li>
-      
-      <li>
+        
         <a href="/tags/">
-        
-        Tags
+            
+            Tags
         </a>
-      </li>
-      
-      <li>
+        
         <a href="/about/">
-        
-        About
+            
+            About
         </a>
-      </li>
-      
-    </ul>
-  </nav>
+        
+    </nav>
 </header>
-
-
-<main>
-
-  <article class="article">
-
-    <section class="article-title">
-      <h2><a href="/posts/aws-sam-lambda-rust/">AWS SAM Lambda Rust</a></h2>
-    </section>
-
-    <section class="article-time">
-  
-  
-  <time datetime="2021-08-12">August 12, 2021</time>
-</section>
-
-
-<section class="tags">
-  
-    
-    
-    <a href="https://vallyscode.github.io/tags/aws">aws</a>
-    
-    
-    <a href="https://vallyscode.github.io/tags/sam">sam</a>
-    
-    
-    <a href="https://vallyscode.github.io/tags/lambda">lambda</a>
-    
-    
-    <a href="https://vallyscode.github.io/tags/rust">rust</a>
-    
-  
-</section>
-
-
-    <section class="article-content">
-      <p>Simple example of Rust lambda deployment. <a href="https://github.com/vallyscode/aws-sam-lambda-rust">Git</a></p>
+<main class="article">
+    <article>
+        <header class="title">
+            <h2>AWS SAM Lambda Rust</h2>
+            
+            
+            <time class="published" datetime='2021-08-12'>
+                August 12, 2021
+            </time>
+            <nav class="tags">
+                
+                <a href='https://vallyscode.github.io/tags/aws'>aws</a>
+                
+                <a href='https://vallyscode.github.io/tags/sam'>sam</a>
+                
+                <a href='https://vallyscode.github.io/tags/lambda'>lambda</a>
+                
+                <a href='https://vallyscode.github.io/tags/rust'>rust</a>
+                
+            </nav>
+        </header>
+        <p>Simple example of Rust lambda deployment. <a href="https://github.com/vallyscode/aws-sam-lambda-rust">Git</a></p>
 <h2 id="template">Template</h2>
 <p>SAM can build custom runtime for us, but with some additional guidance from out side.</p>
 <p>We need to define a type of runtime we want to use by setting its value to one of <strong>provided.al2</strong>(Amazon Linux 2 (AL2)) or <strong>provided</strong>(Amazon Linux).</p>
@@ -135,15 +111,9 @@
 <p>In this example all binaries are built during general build target execution and each <strong>build-</strong>* is just moving them to destination folders with striping.</p>
 </blockquote>
 
-    </section>
-
-  </article>
-
+    </article>
 </main>
-
 <footer class="copyright">
     <p>© 2021 VALERII LYSENKO</p>
-</footer>
-</body>
-
+</footer></body>
 </html>
