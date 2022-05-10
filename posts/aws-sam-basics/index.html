@@ -68,42 +68,42 @@
 </blockquote>
 <h1 id="sam-template">SAM template</h1>
 <p>Example template with s3 bucket as resource to be created in scope of this app.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;2010-09-09&#34;</span><span class="w">
-</span><span class="w"></span><span class="nt">Transform</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::Serverless-2016-10-31</span><span class="w">
-</span><span class="w"></span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="p">&gt;</span><span class="sd">
-</span><span class="sd">   App01
-</span><span class="sd">
-</span><span class="sd">   SAM basics</span><span class="w">   
-</span><span class="w">
-</span><span class="w"></span><span class="nt">Parameters</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">Env</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">String</span><span class="w">
-</span><span class="w">    </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Logical environment like dev, test, prod etc&#34;</span><span class="w">
-</span><span class="w">    </span><span class="nt">Default</span><span class="p">:</span><span class="w"> </span><span class="l">dev</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="nt">Resources</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">AppBucket</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;AWS::S3::Bucket&#34;</span><span class="w">
-</span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="nt">BucketName</span><span class="p">:</span><span class="w"> </span>!<span class="l">Sub ${Env}-app01</span><span class="w">
-</span><span class="w">  
-</span></code></pre></div><h1 id="sam-guided-configuration">SAM guided configuration</h1>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;2010-09-09&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">Transform</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::Serverless-2016-10-31</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="p">&gt;</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">   App01
+</span></span></span><span class="line"><span class="cl"><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">   SAM basics</span><span class="w">   
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">Parameters</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">Env</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">String</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Logical environment like dev, test, prod etc&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Default</span><span class="p">:</span><span class="w"> </span><span class="l">dev</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">Resources</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">AppBucket</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;AWS::S3::Bucket&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">BucketName</span><span class="p">:</span><span class="w"> </span>!<span class="l">Sub ${Env}-app01</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  
+</span></span></span></code></pre></div><h1 id="sam-guided-configuration">SAM guided configuration</h1>
 <p>SAM can perform deployment through configuration flow with multiple questions before deploying the app. Resulting config can be saved for future reuse.</p>
 <h4 id="guided-flow">Guided flow</h4>
 <p><img src="/img/sam-basics/sam-guided-flow.png" alt="SAM Guided flow:"></p>
 <h4 id="resulting-config-after-guide">Resulting config after guide</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="nx">version</span> <span class="p">=</span> <span class="mf">0.1</span>
-<span class="p">[</span><span class="nx">dev</span><span class="p">]</span>
-<span class="p">[</span><span class="nx">dev</span><span class="p">.</span><span class="nx">deploy</span><span class="p">]</span>
-<span class="p">[</span><span class="nx">dev</span><span class="p">.</span><span class="nx">deploy</span><span class="p">.</span><span class="nx">parameters</span><span class="p">]</span>
-<span class="nx">stack_name</span> <span class="p">=</span> <span class="s2">&#34;app01&#34;</span>
-<span class="nx">s3_bucket</span> <span class="p">=</span> <span class="s2">&#34;aws-sam-cli-managed-default-samclisourcebucket-1f82bz09qi9s4&#34;</span>
-<span class="nx">s3_prefix</span> <span class="p">=</span> <span class="s2">&#34;app01&#34;</span>
-<span class="nx">region</span> <span class="p">=</span> <span class="s2">&#34;eu-west-1&#34;</span>
-<span class="nx">confirm_changeset</span> <span class="p">=</span> <span class="kc">true</span>
-<span class="nx">capabilities</span> <span class="p">=</span> <span class="s2">&#34;CAPABILITY_IAM&#34;</span>
-<span class="nx">parameter_overrides</span> <span class="p">=</span> <span class="s2">&#34;Env=\&#34;dev\&#34;&#34;</span>
-</code></pre></div><h5 id="notes">Notes</h5>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="nx">version</span> <span class="p">=</span> <span class="mf">0.1</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">dev</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">dev</span><span class="p">.</span><span class="nx">deploy</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">dev</span><span class="p">.</span><span class="nx">deploy</span><span class="p">.</span><span class="nx">parameters</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">stack_name</span> <span class="p">=</span> <span class="s2">&#34;app01&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">s3_bucket</span> <span class="p">=</span> <span class="s2">&#34;aws-sam-cli-managed-default-samclisourcebucket-1f82bz09qi9s4&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">s3_prefix</span> <span class="p">=</span> <span class="s2">&#34;app01&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">region</span> <span class="p">=</span> <span class="s2">&#34;eu-west-1&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">confirm_changeset</span> <span class="p">=</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl"><span class="nx">capabilities</span> <span class="p">=</span> <span class="s2">&#34;CAPABILITY_IAM&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">parameter_overrides</span> <span class="p">=</span> <span class="s2">&#34;Env=\&#34;dev\&#34;&#34;</span>
+</span></span></code></pre></div><h5 id="notes">Notes</h5>
 <blockquote>
 <p>There were no deployment bucket so SAM created one:</p>
 <p><strong>aws-sam-cli-managed-default-samclisourcebucket-1f82bz09qi9s4</strong></p>
@@ -123,38 +123,38 @@
 <p><img src="/img/sam-basics/sam-cf-resources.png" alt="SAM cloudformation resources:"></p>
 <h1 id="sam-custom-configuration">SAM custom configuration</h1>
 <p>Start from creating custom s3 bucket SAM will use for future deployments</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">aws s3 mb s3://basicappdeployment --region eu-west-1
-</code></pre></div><p>Example configuration for deployment to different environments like dev, test</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="nx">version</span> <span class="p">=</span> <span class="mf">0.1</span>
-<span class="p">[</span><span class="nx">dev</span><span class="p">]</span>
-<span class="p">[</span><span class="nx">dev</span><span class="p">.</span><span class="nx">deploy</span><span class="p">]</span>
-<span class="p">[</span><span class="nx">dev</span><span class="p">.</span><span class="nx">deploy</span><span class="p">.</span><span class="nx">parameters</span><span class="p">]</span>
-<span class="nx">stack_name</span> <span class="p">=</span> <span class="s2">&#34;dev-app01&#34;</span>
-<span class="nx">s3_bucket</span> <span class="p">=</span> <span class="s2">&#34;basicappdeployment&#34;</span>
-<span class="nx">s3_prefix</span> <span class="p">=</span> <span class="s2">&#34;dev-app01&#34;</span>
-<span class="nx">region</span> <span class="p">=</span> <span class="s2">&#34;eu-west-1&#34;</span>
-<span class="nx">confirm_changeset</span> <span class="p">=</span> <span class="kc">true</span>
-<span class="nx">capabilities</span> <span class="p">=</span> <span class="s2">&#34;CAPABILITY_NAMED_IAM&#34;</span>
-<span class="nx">parameter_overrides</span> <span class="p">=</span> <span class="s2">&#34;Env=\&#34;dev\&#34;&#34;</span>
-
-<span class="p">[</span><span class="nx">test</span><span class="p">]</span>
-<span class="p">[</span><span class="nx">test</span><span class="p">.</span><span class="nx">deploy</span><span class="p">]</span>
-<span class="p">[</span><span class="nx">test</span><span class="p">.</span><span class="nx">deploy</span><span class="p">.</span><span class="nx">parameters</span><span class="p">]</span>
-<span class="nx">stack_name</span> <span class="p">=</span> <span class="s2">&#34;test-app01&#34;</span>
-<span class="nx">s3_bucket</span> <span class="p">=</span> <span class="s2">&#34;basicappdeployment&#34;</span>
-<span class="nx">s3_prefix</span> <span class="p">=</span> <span class="s2">&#34;test-app01&#34;</span>
-<span class="nx">region</span> <span class="p">=</span> <span class="s2">&#34;eu-west-1&#34;</span>
-<span class="nx">confirm_changeset</span> <span class="p">=</span> <span class="kc">true</span>
-<span class="nx">capabilities</span> <span class="p">=</span> <span class="s2">&#34;CAPABILITY_NAMED_IAM&#34;</span>
-<span class="nx">parameter_overrides</span> <span class="p">=</span> <span class="s2">&#34;Env=\&#34;test\&#34;&#34;</span>
-</code></pre></div><h5 id="notes-1">Notes</h5>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">aws s3 mb s3://basicappdeployment --region eu-west-1
+</span></span></code></pre></div><p>Example configuration for deployment to different environments like dev, test</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="nx">version</span> <span class="p">=</span> <span class="mf">0.1</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">dev</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">dev</span><span class="p">.</span><span class="nx">deploy</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">dev</span><span class="p">.</span><span class="nx">deploy</span><span class="p">.</span><span class="nx">parameters</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">stack_name</span> <span class="p">=</span> <span class="s2">&#34;dev-app01&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">s3_bucket</span> <span class="p">=</span> <span class="s2">&#34;basicappdeployment&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">s3_prefix</span> <span class="p">=</span> <span class="s2">&#34;dev-app01&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">region</span> <span class="p">=</span> <span class="s2">&#34;eu-west-1&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">confirm_changeset</span> <span class="p">=</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl"><span class="nx">capabilities</span> <span class="p">=</span> <span class="s2">&#34;CAPABILITY_NAMED_IAM&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">parameter_overrides</span> <span class="p">=</span> <span class="s2">&#34;Env=\&#34;dev\&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">test</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">test</span><span class="p">.</span><span class="nx">deploy</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">test</span><span class="p">.</span><span class="nx">deploy</span><span class="p">.</span><span class="nx">parameters</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">stack_name</span> <span class="p">=</span> <span class="s2">&#34;test-app01&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">s3_bucket</span> <span class="p">=</span> <span class="s2">&#34;basicappdeployment&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">s3_prefix</span> <span class="p">=</span> <span class="s2">&#34;test-app01&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">region</span> <span class="p">=</span> <span class="s2">&#34;eu-west-1&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">confirm_changeset</span> <span class="p">=</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl"><span class="nx">capabilities</span> <span class="p">=</span> <span class="s2">&#34;CAPABILITY_NAMED_IAM&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">parameter_overrides</span> <span class="p">=</span> <span class="s2">&#34;Env=\&#34;test\&#34;&#34;</span>
+</span></span></code></pre></div><h5 id="notes-1">Notes</h5>
 <blockquote>
 <p>In order to disable configrmation for change set - remove or set to false <strong>confirm_changeset</strong> parameter</p>
 </blockquote>
 <h2 id="sam-deploy-with-custom-config">SAM deploy with custom config</h2>
 <p>Deployment using specific profile and logical environment (dev, test etc).</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sam deploy --profile default --config-env dev --no-fail-on-empty-changeset
-</code></pre></div><h5 id="notes-2">Notes</h5>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sam deploy --profile default --config-env dev --no-fail-on-empty-changeset
+</span></span></code></pre></div><h5 id="notes-2">Notes</h5>
 <blockquote>
 <p>When deploynig using customly created s3 bucket SAM does not create a dedicated cloudformation stack.</p>
 </blockquote>
@@ -164,6 +164,6 @@
     </article>
 </main>
 <footer class="copyright">
-    <p>© 2021 VALERII LYSENKO</p>
+    <p>© 2022 VALERII LYSENKO</p>
 </footer></body>
 </html>

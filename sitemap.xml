@@ -2,23 +2,29 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://vallyscode.github.io/tags/aws/</loc>
+    <lastmod>2022-05-10T07:09:48+00:00</lastmod>
+  </url><url>
+    <loc>https://vallyscode.github.io/posts/aws-cognito/</loc>
+    <lastmod>2022-05-10T07:09:48+00:00</lastmod>
+  </url><url>
+    <loc>https://vallyscode.github.io/tags/cognito/</loc>
+    <lastmod>2022-05-10T07:09:48+00:00</lastmod>
+  </url><url>
     <loc>https://vallyscode.github.io/posts/</loc>
-    <lastmod>2021-09-21T13:25:57+02:00</lastmod>
+    <lastmod>2022-05-10T07:09:48+00:00</lastmod>
+  </url><url>
+    <loc>https://vallyscode.github.io/tags/</loc>
+    <lastmod>2022-05-10T07:09:48+00:00</lastmod>
+  </url><url>
+    <loc>https://vallyscode.github.io/</loc>
+    <lastmod>2022-05-10T07:09:48+00:00</lastmod>
   </url><url>
     <loc>https://vallyscode.github.io/tags/rust/</loc>
     <lastmod>2021-09-21T13:25:57+02:00</lastmod>
   </url><url>
     <loc>https://vallyscode.github.io/posts/rust-errors-handling/</loc>
     <lastmod>2021-09-21T13:25:57+02:00</lastmod>
-  </url><url>
-    <loc>https://vallyscode.github.io/tags/</loc>
-    <lastmod>2021-09-21T13:25:57+02:00</lastmod>
-  </url><url>
-    <loc>https://vallyscode.github.io/</loc>
-    <lastmod>2021-09-21T13:25:57+02:00</lastmod>
-  </url><url>
-    <loc>https://vallyscode.github.io/tags/aws/</loc>
-    <lastmod>2021-08-12T09:09:07+02:00</lastmod>
   </url><url>
     <loc>https://vallyscode.github.io/posts/aws-sam-lambda-rust/</loc>
     <lastmod>2021-08-12T09:09:07+02:00</lastmod>

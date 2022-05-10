@@ -63,126 +63,126 @@
         <p>A basic overview of elisp to start crafting plugins and customizing Emacs. For more details see <a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/index.html">docs</a></p>
 <h2 id="comments">Comments</h2>
 <p>Semicolon <code>;;</code> defines comment enywhere in a line</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="c1">;; Some text as comment</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="c1">;; Some text as comment</span></span></span></code></pre></div>
 <h2 id="arithmetic">Arithmetic</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nf">+</span> <span class="mi">3</span> <span class="mi">2</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">;; 6</span>
-<span class="p">(</span><span class="nf">-</span> <span class="mi">8</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">;; 3</span>
-<span class="p">(</span><span class="nf">*</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">;; 12</span>
-<span class="p">(</span><span class="nf">/</span> <span class="mi">1</span> <span class="mf">2.0</span><span class="p">)</span> <span class="c1">;; 0.5</span>
-<span class="p">(</span><span class="nf">/</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">;; 0</span>
-<span class="p">(</span><span class="nf">%</span> <span class="mi">12</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">;; 2</span>
-<span class="p">(</span><span class="nf">expt</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">;; 81</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nf">+</span> <span class="mi">3</span> <span class="mi">2</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">;; 6</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nf">-</span> <span class="mi">8</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">;; 3</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nf">*</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">;; 12</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nf">/</span> <span class="mi">1</span> <span class="mf">2.0</span><span class="p">)</span> <span class="c1">;; 0.5</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nf">/</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">;; 0</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nf">%</span> <span class="mi">12</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">;; 2</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nf">expt</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">;; 81</span></span></span></code></pre></div>
 <h2 id="type-conversions">Type conversions</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nf">float</span> <span class="mi">6</span><span class="p">)</span> <span class="c1">;; 6.0</span>
-<span class="p">(</span><span class="nf">truncate</span> <span class="mf">6.3</span><span class="p">)</span> <span class="c1">;; 6</span>
-<span class="p">(</span><span class="nf">floor</span> <span class="mf">6.3</span><span class="p">)</span> <span class="c1">;; 6</span>
-<span class="p">(</span><span class="nf">ceiling</span> <span class="mf">6.3</span><span class="p">)</span> <span class="c1">;; 7</span>
-<span class="p">(</span><span class="nf">round</span> <span class="mf">6.3</span><span class="p">)</span> <span class="c1">;; 6</span>
-<span class="p">(</span><span class="nf">string-to-number</span> <span class="s">&#34;2&#34;</span><span class="p">)</span> <span class="c1">;; 2</span>
-<span class="p">(</span><span class="nf">number-to-string</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">;; &#34;2&#34;</span>
-<span class="p">(</span><span class="nf">char-to-string</span> <span class="mh">#xe0b0</span><span class="p">)</span> <span class="c1">;; &#34;&#34;</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nf">float</span> <span class="mi">6</span><span class="p">)</span> <span class="c1">;; 6.0</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nf">truncate</span> <span class="mf">6.3</span><span class="p">)</span> <span class="c1">;; 6</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nf">floor</span> <span class="mf">6.3</span><span class="p">)</span> <span class="c1">;; 6</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nf">ceiling</span> <span class="mf">6.3</span><span class="p">)</span> <span class="c1">;; 7</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nf">round</span> <span class="mf">6.3</span><span class="p">)</span> <span class="c1">;; 6</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nf">string-to-number</span> <span class="s">&#34;2&#34;</span><span class="p">)</span> <span class="c1">;; 2</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nf">number-to-string</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">;; &#34;2&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nf">char-to-string</span> <span class="mh">#xe0b0</span><span class="p">)</span> <span class="c1">;; &#34;&#34;</span></span></span></code></pre></div>
 <h2 id="variables">Variables</h2>
 <h3 id="global">Global</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">setq</span> <span class="nv">x</span> <span class="mi">1</span><span class="p">)</span>
-<span class="p">(</span><span class="nb">setq</span> <span class="nv">a</span> <span class="mi">3</span> <span class="nv">b</span> <span class="mi">2</span> <span class="nv">c</span> <span class="mi">7</span><span class="p">)</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">x</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">a</span> <span class="mi">3</span> <span class="nv">b</span> <span class="mi">2</span> <span class="nv">c</span> <span class="mi">7</span><span class="p">)</span></span></span></code></pre></div>
 <h3 id="local">Local</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">let</span> <span class="p">(</span><span class="nv">a</span> <span class="nv">b</span><span class="p">)</span>
- <span class="p">(</span><span class="nb">setq</span> <span class="nv">a</span> <span class="mi">3</span><span class="p">)</span>
- <span class="p">(</span><span class="nb">setq</span> <span class="nv">b</span> <span class="mi">4</span><span class="p">)</span>
- <span class="p">(</span><span class="nf">+</span> <span class="nv">a</span> <span class="nv">b</span><span class="p">))</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">let</span> <span class="p">(</span><span class="nv">a</span> <span class="nv">b</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"> <span class="p">(</span><span class="nb">setq</span> <span class="nv">a</span> <span class="mi">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"> <span class="p">(</span><span class="nb">setq</span> <span class="nv">b</span> <span class="mi">4</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"> <span class="p">(</span><span class="nf">+</span> <span class="nv">a</span> <span class="nv">b</span><span class="p">))</span></span></span></code></pre></div>
 <h3 id="buffer-local">Buffer-local</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"> <span class="p">(</span><span class="nb">setq-local</span> <span class="nv">x</span> <span class="s">&#34;some value&#34;</span><span class="p">)</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"> <span class="p">(</span><span class="nb">setq-local</span> <span class="nv">x</span> <span class="s">&#34;some value&#34;</span><span class="p">)</span></span></span></code></pre></div>
 <h2 id="constants">Constants</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">defconst</span> <span class="nv">a</span> <span class="s">&#34;some value&#34;</span>
-  <span class="s">&#34;Some documentation.&#34;</span><span class="p">)</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defconst</span> <span class="nv">a</span> <span class="s">&#34;some value&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="s">&#34;Some documentation.&#34;</span><span class="p">)</span></span></span></code></pre></div>
 <h2 id="functions">Functions</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">defun</span> <span class="nv">foo-bar</span> <span class="p">(</span><span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span><span class="p">)</span>
-  <span class="s">&#34;Some doc text A B C.&#34;</span>
-  <span class="p">(</span><span class="nf">concat</span> <span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span><span class="p">))</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">foo-bar</span> <span class="p">(</span><span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="s">&#34;Some doc text A B C.&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nf">concat</span> <span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span><span class="p">))</span></span></span></code></pre></div>
 <h2 id="lambdas">Lambdas</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">lambda</span> <span class="p">(</span><span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span><span class="p">)</span>
-  <span class="s">&#34;Some doc text A B C.&#34;</span>
-  <span class="p">(</span><span class="nf">concat</span> <span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span><span class="p">))</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">lambda</span> <span class="p">(</span><span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="s">&#34;Some doc text A B C.&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nf">concat</span> <span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span><span class="p">))</span></span></span></code></pre></div>
 <h2 id="control-structures">Control structures</h2>
 <h3 id="sequencing">Sequencing</h3>
 <p>Evaluates all of the forms, in textual order, returning the result of the final form.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"> <span class="p">(</span><span class="nb">progn</span> <span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span> <span class="o">...</span><span class="p">)</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"> <span class="p">(</span><span class="nb">progn</span> <span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span> <span class="o">...</span><span class="p">)</span></span></span></code></pre></div>
 <p>Example:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">progn</span> <span class="p">(</span><span class="nf">print</span> <span class="s">&#34;The first form&#34;</span><span class="p">)</span>
-       <span class="p">(</span><span class="nf">print</span> <span class="s">&#34;The second form&#34;</span><span class="p">)</span>
-       <span class="p">(</span><span class="nf">print</span> <span class="s">&#34;The third form&#34;</span><span class="p">))</span>
-    <span class="nv">-|</span> <span class="s">&#34;The first form&#34;</span>
-    <span class="nv">-|</span> <span class="s">&#34;The second form&#34;</span>
-    <span class="nv">-|</span> <span class="s">&#34;The third form&#34;</span>
-  <span class="err">⇒</span> <span class="s">&#34;The third form&#34;</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">progn</span> <span class="p">(</span><span class="nf">print</span> <span class="s">&#34;The first form&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">       <span class="p">(</span><span class="nf">print</span> <span class="s">&#34;The second form&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">       <span class="p">(</span><span class="nf">print</span> <span class="s">&#34;The third form&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">-|</span> <span class="s">&#34;The first form&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">-|</span> <span class="s">&#34;The second form&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">-|</span> <span class="s">&#34;The third form&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="err">⇒</span> <span class="s">&#34;The third form&#34;</span></span></span></code></pre></div>
 <h3 id="conditionals">Conditionals</h3>
 <p>If condition has the value nil, and no else-forms are given, <strong>if</strong> returns nil.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">if</span> <span class="no">nil</span>
-    <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;true&#34;</span><span class="p">)</span>
-  <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;false&#34;</span><span class="p">))</span>
-  <span class="err">⇒</span> <span class="s">&#34;false&#34;&#34;</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">if</span> <span class="no">nil</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;true&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;false&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="err">⇒</span> <span class="s">&#34;false&#34;&#34;</span></span></span></code></pre></div>
 <p>Variant of <strong>if</strong> where there are no else-forms, and possibly several then-forms.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">when</span> <span class="nv">condition</span> <span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span><span class="p">)</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">when</span> <span class="nv">condition</span> <span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span><span class="p">)</span></span></span></code></pre></div>
 <p>Same as can be represented using <strong>if</strong> expression</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">if</span> <span class="nv">condition</span> <span class="p">(</span><span class="nb">progn</span> <span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span><span class="p">)</span> <span class="no">nil</span><span class="p">)</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">if</span> <span class="nv">condition</span> <span class="p">(</span><span class="nb">progn</span> <span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span><span class="p">)</span> <span class="no">nil</span><span class="p">)</span></span></span></code></pre></div>
 <p>Variant of <strong>if</strong> where there is no then-form</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">unless</span> <span class="nv">condition</span> <span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span><span class="p">)</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">unless</span> <span class="nv">condition</span> <span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span><span class="p">)</span></span></span></code></pre></div>
 <p>Same as can be represented using <strong>if</strong> expression</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">if</span> <span class="nv">condition</span> <span class="no">nil</span> <span class="p">(</span><span class="nb">progn</span> <span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span><span class="p">))</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">if</span> <span class="nv">condition</span> <span class="no">nil</span> <span class="p">(</span><span class="nb">progn</span> <span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span><span class="p">))</span></span></span></code></pre></div>
 <p>Conditional selects matching expressions</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">setq</span> <span class="nv">a</span> <span class="mi">5</span><span class="p">)</span>
-<span class="p">(</span><span class="nb">cond</span> <span class="p">((</span><span class="nf">eq</span> <span class="nv">a</span> <span class="ss">&#39;hack</span><span class="p">)</span> <span class="ss">&#39;foo</span><span class="p">)</span>
-       <span class="p">(</span><span class="no">t</span> <span class="s">&#34;default&#34;</span><span class="p">))</span>
-  <span class="err">⇒</span> <span class="s">&#34;default&#34;</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">a</span> <span class="mi">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">cond</span> <span class="p">((</span><span class="nf">eq</span> <span class="nv">a</span> <span class="ss">&#39;hack</span><span class="p">)</span> <span class="ss">&#39;foo</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">       <span class="p">(</span><span class="no">t</span> <span class="s">&#34;default&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="err">⇒</span> <span class="s">&#34;default&#34;</span></span></span></code></pre></div>
 <h3 id="combining-conditions">Combining conditions</h3>
 <p><strong>not</strong> special form returns t if condition is nil, and nil otherwise.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nv">not</span> <span class="no">nil</span><span class="p">)</span>
-  <span class="err">⇒</span> <span class="nv">t</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nv">not</span> <span class="no">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="err">⇒</span> <span class="nv">t</span></span></span></code></pre></div>
 <p><strong>and</strong> special form tests whether all the conditions are true.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">and</span> <span class="nv">arg1</span> <span class="nv">arg2</span> <span class="nv">arg3</span><span class="p">)</span>
-  <span class="err">⇒</span> <span class="nv">t</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">and</span> <span class="nv">arg1</span> <span class="nv">arg2</span> <span class="nv">arg3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="err">⇒</span> <span class="nv">t</span></span></span></code></pre></div>
 <p><strong>or</strong> special form tests whether at least one of the conditions is true.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">or</span> <span class="nv">arg1</span> <span class="nv">arg2</span> <span class="nv">arg3</span><span class="p">)</span>
-  <span class="err">⇒</span> <span class="nv">t</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">or</span> <span class="nv">arg1</span> <span class="nv">arg2</span> <span class="nv">arg3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="err">⇒</span> <span class="nv">t</span></span></span></code></pre></div>
 <h3 id="pattern-matching">Pattern-Matching</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">pcase</span> <span class="p">(</span><span class="nv">get-return-code</span> <span class="nv">x</span><span class="p">)</span>
-       <span class="c1">;; string</span>
-       <span class="p">((</span><span class="nb">and</span> <span class="p">(</span><span class="nv">pred</span> <span class="nf">stringp</span><span class="p">)</span> <span class="nv">msg</span><span class="p">)</span>
-        <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;%s&#34;</span> <span class="nv">msg</span><span class="p">))</span>
-       <span class="c1">;; symbol</span>
-       <span class="p">(</span><span class="ss">&#39;success</span>       <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;Done!&#34;</span><span class="p">))</span>
-       <span class="p">(</span><span class="ss">&#39;would-block</span>   <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;Sorry, can&#39;t do it now&#34;</span><span class="p">))</span>
-       <span class="p">(</span><span class="ss">&#39;read-only</span>     <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;The shmliblick is read-only&#34;</span><span class="p">))</span>
-       <span class="p">(</span><span class="ss">&#39;access-denied</span> <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;You do not have the needed rights&#34;</span><span class="p">))</span>
-       <span class="c1">;; default</span>
-       <span class="p">(</span><span class="nv">code</span>           <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;Unknown return code %S&#34;</span> <span class="nv">code</span><span class="p">)))</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">pcase</span> <span class="p">(</span><span class="nv">get-return-code</span> <span class="nv">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">       <span class="c1">;; string</span>
+</span></span><span class="line"><span class="cl">       <span class="p">((</span><span class="nb">and</span> <span class="p">(</span><span class="nv">pred</span> <span class="nf">stringp</span><span class="p">)</span> <span class="nv">msg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;%s&#34;</span> <span class="nv">msg</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">       <span class="c1">;; symbol</span>
+</span></span><span class="line"><span class="cl">       <span class="p">(</span><span class="ss">&#39;success</span>       <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;Done!&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">       <span class="p">(</span><span class="ss">&#39;would-block</span>   <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;Sorry, can&#39;t do it now&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">       <span class="p">(</span><span class="ss">&#39;read-only</span>     <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;The shmliblick is read-only&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">       <span class="p">(</span><span class="ss">&#39;access-denied</span> <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;You do not have the needed rights&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">       <span class="c1">;; default</span>
+</span></span><span class="line"><span class="cl">       <span class="p">(</span><span class="nv">code</span>           <span class="p">(</span><span class="nf">message</span> <span class="s">&#34;Unknown return code %S&#34;</span> <span class="nv">code</span><span class="p">)))</span></span></span></code></pre></div>
 <h3 id="iteration">Iteration</h3>
 <p><strong>while</strong> first evaluates condition. If the result is non-nil, it evaluates forms in textual order then it reevaluates condition, and if the result is non-nil, it evaluates forms again.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">setq</span> <span class="nv">num</span> <span class="mi">0</span><span class="p">)</span>
-  <span class="err">⇒</span> <span class="mi">0</span>
-<span class="p">(</span><span class="nb">while</span> <span class="p">(</span><span class="nf">&lt;</span> <span class="nv">num</span> <span class="mi">4</span><span class="p">)</span>
-  <span class="p">(</span><span class="nf">princ</span> <span class="p">(</span><span class="nf">format</span> <span class="s">&#34;Iteration %d.&#34;</span> <span class="nv">num</span><span class="p">))</span>
-  <span class="p">(</span><span class="nb">setq</span> <span class="nv">num</span> <span class="p">(</span><span class="nf">1+</span> <span class="nv">num</span><span class="p">)))</span>
-      <span class="nv">-|</span> <span class="nv">Iteration</span> <span class="mi">0.</span>
-      <span class="nv">-|</span> <span class="nv">Iteration</span> <span class="mi">1.</span>
-      <span class="nv">-|</span> <span class="nv">Iteration</span> <span class="mi">2.</span>
-      <span class="nv">-|</span> <span class="nv">Iteration</span> <span class="mi">3.</span>
-  <span class="err">⇒</span> <span class="nv">nil</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">setq</span> <span class="nv">num</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="err">⇒</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">while</span> <span class="p">(</span><span class="nf">&lt;</span> <span class="nv">num</span> <span class="mi">4</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nf">princ</span> <span class="p">(</span><span class="nf">format</span> <span class="s">&#34;Iteration %d.&#34;</span> <span class="nv">num</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">setq</span> <span class="nv">num</span> <span class="p">(</span><span class="nf">1+</span> <span class="nv">num</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">-|</span> <span class="nv">Iteration</span> <span class="mi">0.</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">-|</span> <span class="nv">Iteration</span> <span class="mi">1.</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">-|</span> <span class="nv">Iteration</span> <span class="mi">2.</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">-|</span> <span class="nv">Iteration</span> <span class="mi">3.</span>
+</span></span><span class="line"><span class="cl">  <span class="err">⇒</span> <span class="nv">nil</span></span></span></code></pre></div>
 <p>Repeat-until loop, which will execute something on each iteration and then do the end-test</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">while</span> <span class="p">(</span><span class="nb">progn</span>
-        <span class="p">(</span><span class="nf">forward-line</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="p">(</span><span class="nv">not</span> <span class="p">(</span><span class="nf">looking-at</span> <span class="s">&#34;^$&#34;</span><span class="p">)))</span>
-    <span class="p">(</span><span class="nv">do-something</span><span class="p">))</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">while</span> <span class="p">(</span><span class="nb">progn</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nf">forward-line</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nv">not</span> <span class="p">(</span><span class="nf">looking-at</span> <span class="s">&#34;^$&#34;</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nv">do-something</span><span class="p">))</span></span></span></code></pre></div>
 <p>Executes body once for each element of list, binding the variable var locally to hold the current element.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">dolist</span> <span class="p">(</span><span class="nf">elt</span> <span class="nf">list</span><span class="p">)</span>
-            <span class="p">(</span><span class="nb">setq</span> <span class="nv">value</span> <span class="p">(</span><span class="nf">cons</span> <span class="nf">elt</span> <span class="nv">value</span><span class="p">)))</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">dolist</span> <span class="p">(</span><span class="nf">elt</span> <span class="nf">list</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">(</span><span class="nb">setq</span> <span class="nv">value</span> <span class="p">(</span><span class="nf">cons</span> <span class="nf">elt</span> <span class="nv">value</span><span class="p">)))</span></span></span></code></pre></div>
 <p>Executes body once for each integer from 0 (inclusive) to count (exclusive), binding the variable var to the integer for the current iteration.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="p">(</span><span class="nb">dotimes</span> <span class="p">(</span><span class="nv">i</span> <span class="mi">100</span><span class="p">)</span>
-          <span class="p">(</span><span class="nf">insert</span> <span class="p">(</span><span class="nf">format</span> <span class="s">&#34;i: %s&#34;</span> <span class="nv">i</span><span class="p">)))</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-elisp" data-lang="elisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">dotimes</span> <span class="p">(</span><span class="nv">i</span> <span class="mi">100</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">          <span class="p">(</span><span class="nf">insert</span> <span class="p">(</span><span class="nf">format</span> <span class="s">&#34;i: %s&#34;</span> <span class="nv">i</span><span class="p">)))</span></span></span></code></pre></div>
 
     </article>
 </main>
 <footer class="copyright">
-    <p>© 2021 VALERII LYSENKO</p>
+    <p>© 2022 VALERII LYSENKO</p>
 </footer></body>
 </html>
