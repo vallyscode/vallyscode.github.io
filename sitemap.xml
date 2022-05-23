@@ -3,21 +3,27 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://vallyscode.github.io/tags/aws/</loc>
-    <lastmod>2022-05-10T07:09:48+00:00</lastmod>
+    <lastmod>2022-05-23T07:56:03+00:00</lastmod>
+  </url><url>
+    <loc>https://vallyscode.github.io/posts/aws-s3-presigning/</loc>
+    <lastmod>2022-05-23T07:56:03+00:00</lastmod>
+  </url><url>
+    <loc>https://vallyscode.github.io/posts/</loc>
+    <lastmod>2022-05-23T07:56:03+00:00</lastmod>
+  </url><url>
+    <loc>https://vallyscode.github.io/tags/s3/</loc>
+    <lastmod>2022-05-23T07:56:03+00:00</lastmod>
+  </url><url>
+    <loc>https://vallyscode.github.io/tags/</loc>
+    <lastmod>2022-05-23T07:56:03+00:00</lastmod>
+  </url><url>
+    <loc>https://vallyscode.github.io/</loc>
+    <lastmod>2022-05-23T07:56:03+00:00</lastmod>
   </url><url>
     <loc>https://vallyscode.github.io/posts/aws-cognito/</loc>
     <lastmod>2022-05-10T07:09:48+00:00</lastmod>
   </url><url>
     <loc>https://vallyscode.github.io/tags/cognito/</loc>
-    <lastmod>2022-05-10T07:09:48+00:00</lastmod>
-  </url><url>
-    <loc>https://vallyscode.github.io/posts/</loc>
-    <lastmod>2022-05-10T07:09:48+00:00</lastmod>
-  </url><url>
-    <loc>https://vallyscode.github.io/tags/</loc>
-    <lastmod>2022-05-10T07:09:48+00:00</lastmod>
-  </url><url>
-    <loc>https://vallyscode.github.io/</loc>
     <lastmod>2022-05-10T07:09:48+00:00</lastmod>
   </url><url>
     <loc>https://vallyscode.github.io/tags/rust/</loc>
@@ -60,9 +66,6 @@
     <lastmod>2020-09-28T10:48:51+02:00</lastmod>
   </url><url>
     <loc>https://vallyscode.github.io/posts/aws-cloudformation-s3-lambda-trigger/</loc>
-    <lastmod>2020-09-16T15:34:26+02:00</lastmod>
-  </url><url>
-    <loc>https://vallyscode.github.io/tags/s3/</loc>
     <lastmod>2020-09-16T15:34:26+02:00</lastmod>
   </url><url>
     <loc>https://vallyscode.github.io/posts/aws-cloudformation-embedded-python-lambda/</loc>
