@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en-us"><head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="AWS Cognito">
     <meta name="author" content="Valerii Lysenko" />
 
     <link rel="stylesheet" type="text/css" href="/css/normalize.css">
     <link rel="stylesheet" type="text/css" href="/css/cloud.css">
-    
     <link rel="stylesheet" type="text/css" href="/css/syntax2.css">
 
     
@@ -15,16 +14,8 @@
     <title>vally&#39;s code | AWS Cognito</title>
 
     
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-142469594-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-142469594-1');
-</script>
-</head><body><header class="navigation">
-    <nav>
+</head><body><header class="blog-header">
+    <nav class="blog-header-navigation">
         
         <a href="/">
             
@@ -43,16 +34,14 @@
         
     </nav>
 </header>
-<main class="article">
+<main class="blog-article">
     <article>
-        <header class="title">
-            <h2>AWS Cognito</h2>
+        <header>
+            <h1 class="blog-article-title">AWS Cognito</h1>
             
             
-            <time class="published" datetime='2022-05-10'>
-                May 10, 2022
-            </time>
-            <nav class="tags">
+            <time class="blog-article-publish-date" datetime='2022-05-10'>May 10, 2022</time>
+            <nav class="blog-article-tags">
                 
                 <a href='https://vallyscode.github.io/tags/aws'>aws</a>
                 
@@ -200,7 +189,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Value</span><span class="p">:</span><span class="w"> </span>!<span class="l">Ref UserClient</span><span class="w">
 </span></span></span></code></pre></div><h4 id="notes-1"><strong>Notes</strong></h4>
 <blockquote>
-<p>Auth flow SRP (Safe Remote Password) prevents password exposure for Man in the middle scenario. [SRP](link here)</p>
+<p>Auth flow SRP (Safe Remote Password) prevents password exposure for Man in the middle scenario. <a href="https://en.wikipedia.org/wiki/Secure_Remote_Password_protocol">SRP</a></p>
 </blockquote>
 <h1 id="authentication-via-amplify">Authentication via Amplify</h1>
 <p>Nice thing about amplify is that it&rsquo;s highly modular and it&rsquo;s possible to take only <code>Auth</code> related packages like this one <code>@aws-amplify/auth</code>.
@@ -237,7 +226,7 @@ Current pool configuration allows admin only user registration <code>AllowAdminC
 
     </article>
 </main>
-<footer class="copyright">
+<footer class="blog-footer">
     <p>© 2022 VALERII LYSENKO</p>
 </footer></body>
 </html>

@@ -3,21 +3,27 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://vallyscode.github.io/tags/aws/</loc>
-    <lastmod>2022-05-23T07:56:03+00:00</lastmod>
+    <lastmod>2022-08-02T20:31:32+00:00</lastmod>
+  </url><url>
+    <loc>https://vallyscode.github.io/posts/aws-secrets-manager/</loc>
+    <lastmod>2022-08-02T20:31:32+00:00</lastmod>
+  </url><url>
+    <loc>https://vallyscode.github.io/posts/</loc>
+    <lastmod>2022-08-02T20:31:32+00:00</lastmod>
+  </url><url>
+    <loc>https://vallyscode.github.io/tags/secrets-manager/</loc>
+    <lastmod>2022-08-02T20:31:32+00:00</lastmod>
+  </url><url>
+    <loc>https://vallyscode.github.io/tags/</loc>
+    <lastmod>2022-08-02T20:31:32+00:00</lastmod>
+  </url><url>
+    <loc>https://vallyscode.github.io/</loc>
+    <lastmod>2022-08-02T20:31:32+00:00</lastmod>
   </url><url>
     <loc>https://vallyscode.github.io/posts/aws-s3-presigning/</loc>
     <lastmod>2022-05-23T07:56:03+00:00</lastmod>
   </url><url>
-    <loc>https://vallyscode.github.io/posts/</loc>
-    <lastmod>2022-05-23T07:56:03+00:00</lastmod>
-  </url><url>
     <loc>https://vallyscode.github.io/tags/s3/</loc>
-    <lastmod>2022-05-23T07:56:03+00:00</lastmod>
-  </url><url>
-    <loc>https://vallyscode.github.io/tags/</loc>
-    <lastmod>2022-05-23T07:56:03+00:00</lastmod>
-  </url><url>
-    <loc>https://vallyscode.github.io/</loc>
     <lastmod>2022-05-23T07:56:03+00:00</lastmod>
   </url><url>
     <loc>https://vallyscode.github.io/posts/aws-cognito/</loc>

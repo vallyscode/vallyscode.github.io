@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="AWS Secrets Manager">
+    <meta name="author" content="Valerii Lysenko" />
+
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/cloud.css">
+    <link rel="stylesheet" type="text/css" href="/css/syntax2.css">
+
+    
+    
+    <title>vally&#39;s code | AWS Secrets Manager</title>
+
+    
+</head><body><header class="blog-header">
+    <nav class="blog-header-navigation">
+        
+        <a href="/">
+            
+            Blog
+        </a>
+        
+        <a href="/tags/">
+            
+            Tags
+        </a>
+        
+        <a href="/about/">
+            
+            About
+        </a>
+        
+    </nav>
+</header>
+<main class="blog-article">
+    <article>
+        <header>
+            <h1 class="blog-article-title">AWS Secrets Manager</h1>
+            
+            
+            <time class="blog-article-publish-date" datetime='2022-08-02'>August 2, 2022</time>
+            <nav class="blog-article-tags">
+                
+                <a href='https://vallyscode.github.io/tags/aws'>aws</a>
+                
+                <a href='https://vallyscode.github.io/tags/secrets-manager'>secrets manager</a>
+                
+            </nav>
+        </header>
+        <p>Secrets Manager is a managed service which enables relatively easy rotation, retrieval and management of secrets like API <strong>keys</strong>, database <strong>credentials</strong>, and other sensitive information. Nicely integrates with <strong>RDS</strong>, <strong>Redshift</strong>, <strong>DocumentDB</strong>. Enables fine-grained access control and audit secret rotation in centralized way. Another great aspect of this service is <strong>pricing</strong> model - pay as you go (pay for number of secrest in Secrets Manager and number of API calls made).</p>
+<h1 id="storing">Storing</h1>
+<p>Using following cloudformation template, secret will have generated attribute named <code>secret</code> and provided attribute with <code>name</code> and value <code>foo</code>. Secret generation can be nicely configured to include/exclude certain characters, have specific length and letter uppercase/lowercase presence.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nt">SecretOne</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::SecretsManager::Secret</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Name</span><span class="p">:</span><span class="w"> </span>!<span class="l">Sub ${Env}-${App}-secret-one</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Generated secret&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">GenerateSecretString</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">SecretStringTemplate</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;{&#34;name&#34;: &#34;foo&#34;}&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">GenerateStringKey</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;secret&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">PasswordLength</span><span class="p">:</span><span class="w"> </span><span class="m">30</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">ExcludeCharacters</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#34;@/\&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Tags</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">Key</span><span class="p">:</span><span class="w"> </span><span class="l">App</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">Value</span><span class="p">:</span><span class="w"> </span>!<span class="l">Ref App</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">Key</span><span class="p">:</span><span class="w"> </span><span class="l">Env</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">Value</span><span class="p">:</span><span class="w"> </span>!<span class="l">Ref Env</span><span class="w">
+</span></span></span></code></pre></div><p>This template provides secret without generation, so it will contain static information. Both <code>name</code> and <code>secret</code> attrubute values will remain as provided and nothing will be added/changed.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nt">SecretTwo</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::SecretsManager::Secret</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Name</span><span class="p">:</span><span class="w"> </span>!<span class="l">Sub ${Env}-${App}-secret-two</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Secret without generation&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">SecretString</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;{&#34;name&#34;: &#34;foo&#34;, &#34;secret&#34;: &#34;(づ｡◕‿‿◕｡)づ&#34;}&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Tags</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">Key</span><span class="p">:</span><span class="w"> </span><span class="l">App</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">Value</span><span class="p">:</span><span class="w"> </span>!<span class="l">Ref App</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">Key</span><span class="p">:</span><span class="w"> </span><span class="l">Env</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">Value</span><span class="p">:</span><span class="w"> </span>!<span class="l">Ref Env</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">SecretThree</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::SecretsManager::Secret</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Name</span><span class="p">:</span><span class="w"> </span>!<span class="l">Sub ${Env}-${App}-secret-two</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Secret without generation&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">SecretString</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;{&#34;name&#34;: &#34;baz&#34;, &#34;secret&#34;: &#34;(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧&#34;}&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Tags</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">Key</span><span class="p">:</span><span class="w"> </span><span class="l">App</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">Value</span><span class="p">:</span><span class="w"> </span>!<span class="l">Ref App</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">Key</span><span class="p">:</span><span class="w"> </span><span class="l">Env</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">Value</span><span class="p">:</span><span class="w"> </span>!<span class="l">Ref Env</span><span class="w">
+</span></span></span></code></pre></div><h1 id="retrieving">Retrieving</h1>
+<p>Can be done in multiple ways. Here is a programmatic one, secrets are referenced and their <code>ARN</code>s are baked into lambda environment variables with corresponding names <code>SECRET_ONE</code> &amp; <code>SECRET_TWO</code>, another important thing is that lambda <strong>must</strong> have permissions to access those secrets (allow <code>secretsmanager:GetSecretValue</code> action). The last step is to fetch secrets via AWS SDK which is trivial.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="nx">Feature</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">Type</span><span class="p">:</span> <span class="nx">AWS</span><span class="p">::</span><span class="nx">Serverless</span><span class="p">::</span><span class="nx">Function</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">Properties</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Description</span><span class="p">:</span> <span class="nx">Feature</span> <span class="nx">using</span> <span class="nx">secrets</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">FunctionName</span><span class="p">:</span> <span class="p">!</span><span class="nx">Sub</span> <span class="err">$</span><span class="p">{</span><span class="nx">Env</span><span class="p">}</span><span class="o">-</span><span class="err">$</span><span class="p">{</span><span class="nx">App</span><span class="p">}</span><span class="o">-</span><span class="nx">feature</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">CodeUri</span><span class="p">:</span> <span class="nx">app</span><span class="o">/</span><span class="nx">feature</span><span class="o">/</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Handler</span><span class="p">:</span> <span class="nx">handler</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Runtime</span><span class="p">:</span> <span class="nx">go1</span><span class="p">.</span><span class="nx">x</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Environment</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">Variables</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">SECRET_ONE</span><span class="p">:</span> <span class="p">!</span><span class="nx">Ref</span> <span class="nx">SecretOne</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">SECRET_TWO</span><span class="p">:</span> <span class="p">!</span><span class="nx">Ref</span> <span class="nx">SecretTwo</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">SECRET_THREE</span><span class="p">:</span> <span class="err">&#39;</span><span class="p">{{</span><span class="nx">resolve</span><span class="p">:</span><span class="nx">secretsmanager</span><span class="p">:</span><span class="nx">SecretThree</span><span class="p">}}</span><span class="err">&#39;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">SECRET_THREE_NAME</span><span class="p">:</span> <span class="err">&#39;</span><span class="p">{{</span><span class="nx">resolve</span><span class="p">:</span><span class="nx">secretsmanager</span><span class="p">:</span><span class="nx">SecretThree</span><span class="p">:</span><span class="nx">SecretString</span><span class="p">:</span><span class="nx">name</span><span class="p">}}</span><span class="err">&#39;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">SECRET_THREE_VALUE</span><span class="p">:</span> <span class="err">&#39;</span><span class="p">{{</span><span class="nx">resolve</span><span class="p">:</span><span class="nx">secretsmanager</span><span class="p">:</span><span class="nx">SecretThree</span><span class="p">:</span><span class="nx">SecretString</span><span class="p">:</span><span class="nx">secret</span><span class="p">}}</span><span class="err">&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Policies</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">      <span class="o">-</span> <span class="nx">Version</span><span class="p">:</span> <span class="err">&#39;</span><span class="mi">2012</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">17</span><span class="err">&#39;</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">Statement</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">          <span class="o">-</span> <span class="nx">Effect</span><span class="p">:</span> <span class="nx">Allow</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">Action</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">              <span class="o">-</span> <span class="nx">secretsmanager</span><span class="p">:</span><span class="nx">GetSecretValue</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">Resource</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">              <span class="o">-</span> <span class="p">!</span><span class="nx">Ref</span> <span class="nx">SecretOne</span>
+</span></span><span class="line"><span class="cl">              <span class="o">-</span> <span class="p">!</span><span class="nx">Ref</span> <span class="nx">SecretTwo</span>
+</span></span><span class="line"><span class="cl">              <span class="o">-</span> <span class="p">!</span><span class="nx">Ref</span> <span class="nx">SecretThree</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Tags</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">App</span><span class="p">:</span> <span class="p">!</span><span class="nx">Ref</span> <span class="nx">App</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">Env</span><span class="p">:</span> <span class="p">!</span><span class="nx">Ref</span> <span class="nx">Env</span>
+</span></span></code></pre></div><p>Another handy option to retrieve secret is by referencing it in <code>Cloudformation</code> template in special way.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl">{{<span class="l">resolve:secretsmanager:secret-id:secret-string:json-key:version-stage:version-id}}</span><span class="w">
+</span></span></span></code></pre></div><p>While referencing it&rsquo;s possible to define which attribute we waht to fetch.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nt">SECRET_THREE</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;{{resolve:secretsmanager:SecretThree}}&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">SECRET_THREE_NAME</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;{{resolve:secretsmanager:SecretThree:SecretString:name}}&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">SECRET_THREE_VALUE</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;{{resolve:secretsmanager:SecretThree:SecretString:secret}}&#39;</span><span class="w">
+</span></span></span></code></pre></div><h1 id="rotation">Rotation</h1>
+<p>Secret manager delegater secret rotation logic to lambda function. Rotation happend according to schedule previously set. Lambda is called several times during rotation, every time with different set of parameters.</p>
+<p><strong>Stages</strong></p>
+<ul>
+<li>create a new version of the secret (createSecret)</li>
+<li>change the credentials in the database or service (setSecret)</li>
+<li>test the new secret version (testSecret)</li>
+<li>finish the rotation (finishSecret)</li>
+</ul>
+<h1 id="conclusion">Conclusion</h1>
+<p>Secret manager comes with additional cost per secret. Provides automatic secret rotation. Able to generate random secrets. Another important feature is ability to share secrets across accounts.</p>
+
+    </article>
+</main>
+<footer class="blog-footer">
+    <p>© 2022 VALERII LYSENKO</p>
+</footer></body>
+</html>

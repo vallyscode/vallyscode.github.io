@@ -1,30 +1,14 @@
-/* @import url(https://fonts.googleapis.com/css?family=Philosopher:400,700&subset=latin,cyrillic); */
-/* @import url('https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&display=swap'); */
-/* @import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans&display=swap'); */
-/* @import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap'); */
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Philosopher&display=swap');
-/* Futurice line-height: 28.7px*/
-/* Poppins line-height: 24px*/
-/* Lora line-height: 30px */
-/* Lato line-height: 25.2px */
-/* Open Sans line-height: 30px */
-/* Source Sans Pro line-height: 27.5px */
-/* Calibri */
-/* Calibre line-height: 30px */
-/* Merriweather lihe-height: 27.2px */
-/* stratos line-height: 27px */
-/* rgb(0,159,119) #009f77 */
-/* rgb(23, 129, 200) #1781c8 */
-/* rgb(128, 128, 128) #808080 */
-
-/* * { margin: 0; padding: 0; } */
+@import url('https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Overlock:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oxygen+Mono:wght@400;700&display=swap');
 
 body {
-    font-family: "Roboto";
-    font-size: 110%;
-    line-height: 1.5em;
+    font-family: "Poppins";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
     color: #454545;
     background-color: #fefefe;
 }
@@ -33,152 +17,130 @@ a {
     color: #008abc;
 }
 
-
-.navigation {
-    font-family: "Philosopher";
-    padding-top: 2vh;
+.blog-header {
+    padding: 1rem 0 1rem 0;
 }
 
-.navigation nav {
+.blog-header-navigation {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
     justify-content: center;
+    gap: 1.5rem;
+    font-family: "Philosopher";
+    font-size: 1.4rem;
 }
 
-.navigation nav a {
-    margin: 0 8px;
-    color: #008abc;
+.blog-header-navigation a {
     text-decoration: none;
 }
 
-.navigation nav a:hover {
+.blog-header-navigation a:hover {
     text-decoration: underline;
 }
 
-.terms,
-.articles article {
+.blog-footer {
     text-align: center;
+}
+
+.blog-articles article {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
     max-width: 800px;
     width: 80vw;
-    margin: 0 auto 0 auto;
-    padding-bottom: 18px;
+    margin-bottom: 1.5rem;
 }
 
-.article article header,
-.articles article header {
+.blog-article-title {
     font-family: "Philosopher";
+    color: #008abc;
+    margin: 0;
 }
 
-.articles article header a {
-    color: #008abc;
+.blog-article-title a {
     text-decoration: none;
 }
 
-.articles article header a:hover {
+.blog-article-title a:hover {
     text-decoration: underline;
 }
 
-.article h2,
-.articles h2 {
-    margin-bottom: 0;
-}
-.articles .summary {
-    margin: 8px 0 0 0;
+.blog-article-summary {
+    font-family: "Poppins";
+    margin: 0;
 }
 
-.published {
-    display: block;
-    color: #cacaca;
-    font-family: "Roboto Mono";
+.blog-article-publish-date {
+    margin: 0;
+    font-family: 'Roboto Mono';
     font-style: italic;
-    font-size: 0.8em;
+    font-size: 0.9rem;
+    color: #cacaca;
 }
 
-.tags {
-    font-size: 0.7em;
+.blog-article-tags {
+    margin: 0;
+    font-family: 'Poppins';
+    font-size: 1.2rem;
 }
 
-.terms a,
-.tags a {
-    display: inline-block;
-    color: #646464;
+.blog-article-tags a {
+    font-size: 0.9rem;
     text-decoration: none;
     text-transform: uppercase;
-    transition: 300ms background ease;
-    border-bottom: 3px solid #008abc;
-    padding: 5px 8px 0 8px;
-    margin: 0 4px;
+    padding: 0.4rem 0.4rem 0.2rem 0.4rem;
+    border-bottom: 0.2rem solid #008abc;
 }
 
-.terms a:hover,
-.tags a:hover {
-    display: inline-block;
+.blog-article-tags a:hover {
+    color: #fefefe;
+    background-color: #008abc;
+    text-decoration: none;
+    transition: 300ms background ease;
+}
+
+
+
+
+.blog-article article {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+    width: 80vw;
+    text-align: justify;
+}
+
+.blog-article article header {
+    text-align: center;
+}
+
+
+
+.terms {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+    width: 80vw;
+    text-align: center;
+}
+
+.terms a {
+    font-family: "Poppins";
+    font-size: 0.9rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 0.4rem 0.4rem 0.2rem 0.4rem;
+    border-bottom: 0.2rem solid #008abc;
+}
+
+.terms article {
+    margin-bottom: 1rem;
+}
+
+.terms a:hover {
     color: #f1f1f1;
     background-color: #008abc;
     text-decoration: none;
-    margin: 0 4px;
-}
-
-
-.article {
-    text-align: justify;
-    max-width: 800px;
-    width: 80vw;
-    margin: 0 auto 0 auto;
-}
-
-.article .title {
-    text-align: center;
-    color: #008abc;
-    font-family: "Philosopher";
-}
-
-.article .published {
-    color: #cacaca;
-}
-
-
-.tags {
-    font-family: "Roboto";
-}
-
-.copyright {
-    font-family: "Philosopher";
-    text-align: center;
-    max-width: 80vw;
-    margin: 20px auto 0 auto;
-}
-
-blockquote {
-    color: #7e7e7e;
-    border-left: 3px solid #008abc;
-    padding-left: 1em;
-}
-
-strong {
-    color: #0c0c0c;
-    font-weight: bolder;
-}
-
-pre {
-    word-wrap: break-word;
-    word-break: break-all;
-    white-space: pre-wrap;
-    font-size: 80%;
-    padding: .8em;
-    border: 1px solid #cacaca;
-    border-radius: 4px;
-}
-
-pre,
-code {
-    font-family: "Roboto Mono";
-}
-
-p code {
-    border: 1px solid #cacaca;
-    border-radius: 4px;
-    padding: 0 .2em;
 }
 
 .terms .count {
@@ -186,10 +148,51 @@ p code {
     font-family: "Roboto Mono";
 }
 
-img {        
-  display:block;
-  max-width: 100%;
-  margin-left:auto;
-  margin-right:auto;
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Philosopher';
 }
 
+blockquote {
+    font-family: 'Overlock';
+    color: #7e7e7e;
+    border-left: 3px solid #008abc;
+    padding-left: 1em;
+}
+
+code {
+    font-family: "Roboto Mono";
+    font-size: 0.8rem;
+}
+
+p code {
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: pre-wrap;
+    border: 1px solid #cacaca;
+    border-radius: 4px;
+    padding: 0 0.2rem;
+}
+
+pre {
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: pre-wrap;
+    font-family: "Roboto Mono";
+    border: 1px solid #cacaca;
+    border-radius: 4px;
+    padding: 0.4rem;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
