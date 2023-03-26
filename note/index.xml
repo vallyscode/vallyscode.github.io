@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Notes on </title>
+    <link>https://vallyscode.github.io/note/</link>
+    <description>Recent content in Notes on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 13 Dec 2020 07:41:10 +0200</lastBuildDate><atom:link href="https://vallyscode.github.io/note/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cron Expressions</title>
+      <link>https://vallyscode.github.io/note/cron-expressions/</link>
+      <pubDate>Sat, 20 Aug 2022 21:19:00 +0000</pubDate>
+      
+      <guid>https://vallyscode.github.io/note/cron-expressions/</guid>
+      <description>Basic guide and examples for commong use cases</description>
+    </item>
+    
+    <item>
+      <title>AWS Secrets Manager</title>
+      <link>https://vallyscode.github.io/note/aws-secrets-manager/</link>
+      <pubDate>Tue, 02 Aug 2022 20:31:32 +0000</pubDate>
+      
+      <guid>https://vallyscode.github.io/note/aws-secrets-manager/</guid>
+      <description>Storing secrets, retrieving and rotation scheduling</description>
+    </item>
+    
+    <item>
+      <title>AWS S3 presigning</title>
+      <link>https://vallyscode.github.io/note/aws-s3-presigning/</link>
+      <pubDate>Mon, 23 May 2022 07:56:03 +0000</pubDate>
+      
+      <guid>https://vallyscode.github.io/note/aws-s3-presigning/</guid>
+      <description>Sharing objects using presignied URLs</description>
+    </item>
+    
+    <item>
+      <title>AWS Cognito</title>
+      <link>https://vallyscode.github.io/note/aws-cognito/</link>
+      <pubDate>Tue, 10 May 2022 07:09:48 +0000</pubDate>
+      
+      <guid>https://vallyscode.github.io/note/aws-cognito/</guid>
+      <description>User pool and client configuration</description>
+    </item>
+    
+    <item>
+      <title>Rust Errors Handling</title>
+      <link>https://vallyscode.github.io/note/rust-errors-handling/</link>
+      <pubDate>Tue, 21 Sep 2021 13:25:57 +0200</pubDate>
+      
+      <guid>https://vallyscode.github.io/note/rust-errors-handling/</guid>
+      <description>Grokking errors handling patterns in Rust</description>
+    </item>
+    
+    <item>
+      <title>AWS SAM Lambda Rust</title>
+      <link>https://vallyscode.github.io/note/aws-sam-lambda-rust/</link>
+      <pubDate>Thu, 12 Aug 2021 09:09:07 +0200</pubDate>
+      
+      <guid>https://vallyscode.github.io/note/aws-sam-lambda-rust/</guid>
+      <description>AWS SAM Lambda setup for Rust custom runtime</description>
+    </item>
+    
+    <item>
+      <title>AWS SAM Lambda</title>
+      <link>https://vallyscode.github.io/note/aws-sam-lambda/</link>
+      <pubDate>Sun, 18 Apr 2021 14:16:41 +0200</pubDate>
+      
+      <guid>https://vallyscode.github.io/note/aws-sam-lambda/</guid>
+      <description>AWS SAM Lambda configuration and deployment</description>
+    </item>
+    
+    <item>
+      <title>AWS SAM Basics</title>
+      <link>https://vallyscode.github.io/note/aws-sam-basics/</link>
+      <pubDate>Sat, 10 Apr 2021 12:48:44 +0200</pubDate>
+      
+      <guid>https://vallyscode.github.io/note/aws-sam-basics/</guid>
+      <description>AWS SAM basics, configuration and deployment</description>
+    </item>
+    
+    <item>
+      <title>Sam Cli Linux</title>
+      <link>https://vallyscode.github.io/note/sam-cli-linux/</link>
+      <pubDate>Mon, 07 Dec 2020 10:10:28 +0100</pubDate>
+      
+      <guid>https://vallyscode.github.io/note/sam-cli-linux/</guid>
+      <description>Installing SAM cli on linux (NO Homebrew)</description>
+    </item>
+    
+    <item>
+      <title>Data Store Concepts</title>
+      <link>https://vallyscode.github.io/note/data-store-concepts/</link>
+      <pubDate>Mon, 12 Oct 2020 20:46:27 +0200</pubDate>
+      
+      <guid>https://vallyscode.github.io/note/data-store-concepts/</guid>
+      <description>Data store concepts &amp;amp; terminology</description>
+    </item>
+    
+    <item>
+      <title>Aws Billing Alarm</title>
+      <link>https://vallyscode.github.io/note/aws-billing-alarm/</link>
+      <pubDate>Tue, 29 Sep 2020 13:04:38 +0200</pubDate>
+      
+      <guid>https://vallyscode.github.io/note/aws-billing-alarm/</guid>
+      <description>Cloudformation configured billing alarms</description>
+    </item>
+    
+    <item>
+      <title>Aws Cloudformation Sqs Lambda Trigger</title>
+      <link>https://vallyscode.github.io/note/aws-cloudformation-sqs-lambda-trigger/</link>
+      <pubDate>Mon, 28 Sep 2020 10:48:51 +0200</pubDate>
+      
+      <guid>https://vallyscode.github.io/note/aws-cloudformation-sqs-lambda-trigger/</guid>
+      <description>Simple example template for sqs lambda trigger</description>
+    </item>
+    
+    <item>
+      <title>Aws Cloudformation S3 Lambda Trigger</title>
+      <link>https://vallyscode.github.io/note/aws-cloudformation-s3-lambda-trigger/</link>
+      <pubDate>Wed, 16 Sep 2020 15:34:26 +0200</pubDate>
+      
+      <guid>https://vallyscode.github.io/note/aws-cloudformation-s3-lambda-trigger/</guid>
+      <description>Simple example template for s3 lambda trigger</description>
+    </item>
+    
+    <item>
+      <title>Aws Cloudformation Embedded Python Lambda</title>
+      <link>https://vallyscode.github.io/note/aws-cloudformation-embedded-python-lambda/</link>
+      <pubDate>Tue, 15 Sep 2020 15:34:03 +0200</pubDate>
+      
+      <guid>https://vallyscode.github.io/note/aws-cloudformation-embedded-python-lambda/</guid>
+      <description>Cloudformation stack with embedded python lambda</description>
+    </item>
+    
+    <item>
+      <title>Aws Cloudformation IAM User</title>
+      <link>https://vallyscode.github.io/note/aws-cloudformation-iam-user/</link>
+      <pubDate>Mon, 14 Sep 2020 15:34:46 +0200</pubDate>
+      
+      <guid>https://vallyscode.github.io/note/aws-cloudformation-iam-user/</guid>
+      <description>Simple example of IAM user creation via Cloudformation</description>
+    </item>
+    
+    <item>
+      <title>VirtualBox Arch Guest</title>
+      <link>https://vallyscode.github.io/note/virtualbox-arch-guest/</link>
+      <pubDate>Mon, 14 Sep 2020 12:50:39 +0200</pubDate>
+      
+      <guid>https://vallyscode.github.io/note/virtualbox-arch-guest/</guid>
+      <description>Quick Arch (Guest OS) installation on VirtualBox</description>
+    </item>
+    
+    <item>
+      <title>Emacs tabulated list mode</title>
+      <link>https://vallyscode.github.io/note/tabulated-list-mode/</link>
+      <pubDate>Mon, 11 Nov 2019 17:23:10 +0100</pubDate>
+      
+      <guid>https://vallyscode.github.io/note/tabulated-list-mode/</guid>
+      <description>Example of tabulated-list-mode use.</description>
+    </item>
+    
+    <item>
+      <title>Intro to Emacs lisp</title>
+      <link>https://vallyscode.github.io/note/elisp-basics/</link>
+      <pubDate>Sat, 07 Sep 2019 13:23:10 +0100</pubDate>
+      
+      <guid>https://vallyscode.github.io/note/elisp-basics/</guid>
+      <description>Simple cheat sheet for elisp.</description>
+    </item>
+    
+    <item>
+      <title>Markdown Syntax Guide</title>
+      <link>https://vallyscode.github.io/note/markdown-syntax/</link>
+      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vallyscode.github.io/note/markdown-syntax/</guid>
+      <description>&lt;p&gt;This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

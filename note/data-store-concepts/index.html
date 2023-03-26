@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Data store concepts &amp; terminology">
+  <meta name="author" content="Valerii Lysenko" />
+
+  <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="/css/syntax.css">
+  
+  
+  <link rel="stylesheet" type="text/css" href="/css/cloud.css">
+
+  
+  
+  <title>vallyscode&#39;s notes | Data Store Concepts</title>
+  
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-142469594-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-142469594-1');
+</script>
+</head>
+    <body>
+        <header>
+  <nav class="navigation">
+    
+    <a href="/">
+      
+      Notes
+    </a>
+    
+    <a href="/tags/">
+      
+      Tags
+    </a>
+    
+    <a href="/about/">
+      
+      About
+    </a>
+    
+  </nav>
+</header>
+        
+<main>
+  <article class='note'>
+    <header>
+      <h1 class='title'>
+        Data Store Concepts
+      </h1>
+      
+      
+      <time class='published' datetime='2020-10-12'>
+        October 12, 2020
+      </time>
+      
+      <nav class='tags'>
+        
+        <a class="tag" href='/tags/aws/'>aws</a>
+        
+      </nav>
+      
+    </header>
+    <p>Notes regarding data store concepts and terminology</p>
+<h3 id="data-persistence">Data persistence</h3>
+<ul>
+<li>Persistent.</li>
+</ul>
+<blockquote>
+<p>Data is durable and survive restarts or power cycles.
+Glacier, RDS</p>
+</blockquote>
+<ul>
+<li>Transient.</li>
+</ul>
+<blockquote>
+<p>Data is just temporarily stored and passed along to another service or persistent store.
+SQS, SNS</p>
+</blockquote>
+<ul>
+<li>Ephemeral.</li>
+</ul>
+<blockquote>
+<p>Data is lost after service stop, restart, power cycles.
+EC2 instance store, Memcached</p>
+</blockquote>
+<h3 id="iops-vs-throughput">IOPS vs Throughput</h3>
+<p>Transfer speed and data volume that can be transferred</p>
+<h4 id="iops">IOPS</h4>
+<p>Input/Output Operations per second (IOPS).
+Measure of how fast we can read write to a device</p>
+<h4 id="throughput">Throughput</h4>
+<p>Measure of how much data can be moved at a time</p>
+<h3 id="consistency-models-acid--base">Consistency models (ACID &amp; BASE)</h3>
+<h4 id="acid">ACID</h4>
+<p><strong>Atomic</strong> - transactions are “all or nothing”</p>
+<p><strong>Consistent</strong> - transactions must be valid</p>
+<p><strong>Isolated</strong> - transactions can’t mess with one another.</p>
+<p><strong>Durable</strong> - completed transaction must stick around</p>
+<h4 id="base">BASE</h4>
+<p><strong>Basic Availability</strong> - values availability event if stale</p>
+<p><strong>Soft-state</strong> - might not be instantly consistent across stores</p>
+<p><strong>Eventual consistency</strong> - will achieve consistency at some point</p>
+
+  </article>
+</main>
+
+        <footer class="copyright">
+  
+  <p>© 2023 VALERII LYSENKO</p>
+  
+</footer>
+    </body>
+</html>

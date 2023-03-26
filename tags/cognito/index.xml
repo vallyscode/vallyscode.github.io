@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>cognito on vally&#39;s code</title>
+    <title>cognito on </title>
     <link>https://vallyscode.github.io/tags/cognito/</link>
-    <description>Recent content in cognito on vally&#39;s code</description>
+    <description>Recent content in cognito on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 10 May 2022 07:09:48 +0000</lastBuildDate><atom:link href="https://vallyscode.github.io/tags/cognito/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AWS Cognito</title>
-      <link>https://vallyscode.github.io/posts/aws-cognito/</link>
+      <link>https://vallyscode.github.io/note/aws-cognito/</link>
       <pubDate>Tue, 10 May 2022 07:09:48 +0000</pubDate>
       
-      <guid>https://vallyscode.github.io/posts/aws-cognito/</guid>
+      <guid>https://vallyscode.github.io/note/aws-cognito/</guid>
       <description>User pool and client configuration</description>
     </item>
     

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AWS Cognito">
+  <meta name="author" content="Valerii Lysenko" />
+
+  <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="/css/syntax.css">
+  
+  
+  <link rel="stylesheet" type="text/css" href="/css/cloud.css">
+
+  
+  
+  <title>vallyscode&#39;s notes | AWS Cognito</title>
+  
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-142469594-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-142469594-1');
+</script>
+</head>
+    <body>
+        <header>
+  <nav class="navigation">
+    
+    <a href="/">
+      
+      Notes
+    </a>
+    
+    <a href="/tags/">
+      
+      Tags
+    </a>
+    
+    <a href="/about/">
+      
+      About
+    </a>
+    
+  </nav>
+</header>
+        
+<main>
+  <article class='note'>
+    <header>
+      <h1 class='title'>
+        AWS Cognito
+      </h1>
+      
+      
+      <time class='published' datetime='2022-05-10'>
+        May 10, 2022
+      </time>
+      
+      <nav class='tags'>
+        
+        <a class="tag" href='/tags/aws/'>aws</a>
+        
+        <a class="tag" href='/tags/cognito/'>cognito</a>
+        
+      </nav>
+      
+    </header>
+    <p>Amazon Cognito is a relatively simple and secure service offering sign-up, sign-in and access control to web, mobile apps in a simple and easy way. Supports sign-in using social identity providers such as Google, Facebook, Apple, Amazon.</p>
+<h1 id="user-pool">User pool</h1>
+<p>Cognito user pool is a user directory that provides a sign-in/sign-up option.</p>
+<h1 id="identity-pool">Identity pool</h1>
+<p>Enables access grant to other AWS services.</p>
+<h1 id="use-case">Use case</h1>
+<p>Assume following requirements:</p>
+<ul>
+<li>users sign-in and sign-up in the system</li>
+<li>system features are accessible only after successful sign-in</li>
+</ul>
+<h2 id="diagram">Diagram</h2>
+<p>Following setup consists of multiple users interacting with the sistem using different client types like web interface, mobile, or both. In all cases users can login and will access system features only while being logged in the system.</p>
+<p><img src="/img/aws-cognito-use-case/aws-cognito-use-case.png" alt="AWS Cognito use case"></p>
+<h4 id="notes"><strong>Notes</strong></h4>
+<blockquote>
+<p>User flow starts at login page, which leads to user authentication via Cognito and depending on configuration can result in session token generation. This token will be used during client (web/mobile) and server interaction, <code>API Gateway</code> will use <code>Cognito</code> service for token verification, so that only valid active sessions can access the system.</p>
+</blockquote>
+<h1 id="sam-template">SAM Template</h1>
+<p>Following configuration contains Cognito <em><strong>user pool</strong></em> and <em><strong>client</strong></em>, few API Gateway V1 <em><strong>rest endpoints</strong></em> representing the system features. API Gateway <em><strong>Authorizer</strong></em> is responsible for access control by verifying JWT token via Cognito service.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;2010-09-09&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">Transform</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::Serverless-2016-10-31</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="p">&gt;</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">  </span><span class="w">  </span><span class="l">AWS Cognito User pool and client configuration example</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">Parameters</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">Env</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">String</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l">Logical sandbox prefix</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Default</span><span class="p">:</span><span class="w"> </span><span class="l">val</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">AllowedValues</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">val</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">test</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">App</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">String</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l">Application name</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Default</span><span class="p">:</span><span class="w"> </span><span class="l">cognito-example</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">Globals</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">Function</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Timeout</span><span class="p">:</span><span class="w"> </span><span class="m">3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">MemorySize</span><span class="p">:</span><span class="w"> </span><span class="m">128</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">Resources</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">UserPool</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::Cognito::UserPool</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">UserPoolName</span><span class="p">:</span><span class="w"> </span>!<span class="l">Sub ${Env}-user-pool</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">Schema</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">Name</span><span class="p">:</span><span class="w"> </span><span class="l">email</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">Required</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">Mutable</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">AutoVerifiedAttributes</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">AdminCreateUserConfig</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">AllowAdminCreateUserOnly</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">Policies</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">PasswordPolicy</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">MinimumLength</span><span class="p">:</span><span class="w"> </span><span class="m">6</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">RequireLowercase</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">RequireUppercase</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">RequireNumbers</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">RequireSymbols</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">TemporaryPasswordValidityDays</span><span class="p">:</span><span class="w"> </span><span class="m">15</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">UsernameAttributes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">email</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">UsernameConfiguration</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">CaseSensitive</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">UserPoolTags</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">Key</span><span class="p">:</span><span class="w"> </span><span class="l">App</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">Value</span><span class="p">:</span><span class="w"> </span>!<span class="l">Ref App</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">UserClient</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::Cognito::UserPoolClient</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">ClientName</span><span class="p">:</span><span class="w"> </span>!<span class="l">Sub ${Env}-user-pool-client</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">UserPoolId</span><span class="p">:</span><span class="w"> </span>!<span class="l">Ref UserPool</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">AccessTokenValidity</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">IdTokenValidity</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">ExplicitAuthFlows</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">ALLOW_USER_SRP_AUTH</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">ALLOW_REFRESH_TOKEN_AUTH</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">GenerateSecret</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">RestApi</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::Serverless::Api</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l">Rest API for foo bar</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">StageName</span><span class="p">:</span><span class="w"> </span>!<span class="l">Ref Env</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">Auth</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">Authorizers</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">CognitoAuth</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">UserPoolArn</span><span class="p">:</span><span class="w"> </span>!<span class="l">GetAtt UserPool.Arn</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">AuthType</span><span class="p">:</span><span class="w"> </span><span class="l">COGNITO_USER_POOLS</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">DefaultAuthorizer</span><span class="p">:</span><span class="w"> </span><span class="l">CognitoAuth</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">Tags</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">App</span><span class="p">:</span><span class="w"> </span>!<span class="l">Ref App</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">Env</span><span class="p">:</span><span class="w"> </span>!<span class="l">Ref Env</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">FooFunction</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::Serverless::Function</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l">Foo feature</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">FunctionName</span><span class="p">:</span><span class="w"> </span>!<span class="l">Sub ${Env}-${App}-foo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">CodeUri</span><span class="p">:</span><span class="w"> </span><span class="l">app/foo/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">Handler</span><span class="p">:</span><span class="w"> </span><span class="l">handler</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">Runtime</span><span class="p">:</span><span class="w"> </span><span class="l">go1.x</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">Tracing</span><span class="p">:</span><span class="w"> </span><span class="l">Active</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">Events</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">Foo</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">Api</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">Method</span><span class="p">:</span><span class="w"> </span><span class="l">get</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">Path</span><span class="p">:</span><span class="w"> </span><span class="l">/foo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">RestApiId</span><span class="p">:</span><span class="w"> </span>!<span class="l">Ref RestApi</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">Tags</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">App</span><span class="p">:</span><span class="w"> </span>!<span class="l">Ref App</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">Env</span><span class="p">:</span><span class="w"> </span>!<span class="l">Ref Env</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">BarFunction</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::Serverless::Function</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l">Bar feature</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">FunctionName</span><span class="p">:</span><span class="w"> </span>!<span class="l">Sub ${Env}-${App}-bar</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">CodeUri</span><span class="p">:</span><span class="w"> </span><span class="l">app/foo/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">Handler</span><span class="p">:</span><span class="w"> </span><span class="l">handler</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">Runtime</span><span class="p">:</span><span class="w"> </span><span class="l">go1.x</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">Tracing</span><span class="p">:</span><span class="w"> </span><span class="l">Active</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">Tags</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">App</span><span class="p">:</span><span class="w"> </span>!<span class="l">Ref App</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">Env</span><span class="p">:</span><span class="w"> </span>!<span class="l">Ref Env</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">Outputs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">PoolId</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l">User pool identifier</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Value</span><span class="p">:</span><span class="w"> </span>!<span class="l">Ref UserPool</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">ClientId</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l">User pool client identifier</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Value</span><span class="p">:</span><span class="w"> </span>!<span class="l">Ref UserClient</span><span class="w">
+</span></span></span></code></pre></div><h4 id="notes-1"><strong>Notes</strong></h4>
+<blockquote>
+<p>Auth flow SRP (Safe Remote Password) prevents password exposure for Man in the middle scenario. <a href="https://en.wikipedia.org/wiki/Secure_Remote_Password_protocol">SRP</a></p>
+</blockquote>
+<h1 id="authentication-via-amplify">Authentication via Amplify</h1>
+<p>Nice thing about amplify is that it&rsquo;s highly modular and it&rsquo;s possible to take only <code>Auth</code> related packages like this one <code>@aws-amplify/auth</code>.
+Current pool configuration allows admin only user registration <code>AllowAdminCreateUserOnly: true</code> (either via web cli or programmatically via SDK).</p>
+<h3 id="user-confirmation--signin">User Confirmation &amp; SignIn</h3>
+<p>Amplify setup requires user pool identifier and client indentifier.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-typescript" data-lang="typescript"><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">Auth</span> <span class="p">}</span> <span class="kr">from</span> <span class="s2">&#34;@aws-amplify/auth&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">Auth</span><span class="p">.</span><span class="nx">configure</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">Auth</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">userPoolId</span><span class="o">:</span> <span class="s1">&#39;XXX&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">userPoolWebClientId</span><span class="o">:</span> <span class="s1">&#39;XXX&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">region</span><span class="o">:</span> <span class="s1">&#39;eu-west-1&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span></code></pre></div><p>Next step is sign in attempt using <strong>temporary</strong> password (that was sent by cognito to specified user email) and changing it to new one, this will result in valid cofgirmed user.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="s1">&#39;foo@bar.com&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">pass</span> <span class="o">=</span> <span class="s1">&#39;7uJ,q9&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">newPass</span> <span class="o">=</span> <span class="s1">&#39;secret&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">cognitoUser</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">Auth</span><span class="p">.</span><span class="nx">signIn</span><span class="p">(</span><span class="nx">user</span><span class="p">,</span> <span class="nx">pass</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">user</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">challengeName</span> <span class="o">===</span> <span class="s1">&#39;NEW_PASSWORD_REQUIRED&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">Auth</span><span class="p">.</span><span class="nx">completeNewPassword</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">user</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">newPass</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">user</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">user</span>
+</span></span><span class="line"><span class="cl">      <span class="p">})</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">user</span>
+</span></span><span class="line"><span class="cl">  <span class="p">})</span>
+</span></span></code></pre></div><p>Successful sign in &amp; confirmation will result in cognito user details provided to the client, and cognito access token requird for lambda api gateway authorizers.</p>
+<p>All related code sits in <a href="https://github.com/vallyscode/aws-cognito">Git</a></p>
+
+  </article>
+</main>
+
+        <footer class="copyright">
+  
+  <p>© 2023 VALERII LYSENKO</p>
+  
+</footer>
+    </body>
+</html>

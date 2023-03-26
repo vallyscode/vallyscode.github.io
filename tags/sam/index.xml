@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>sam on vally&#39;s code</title>
+    <title>sam on </title>
     <link>https://vallyscode.github.io/tags/sam/</link>
-    <description>Recent content in sam on vally&#39;s code</description>
+    <description>Recent content in sam on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 12 Aug 2021 09:09:07 +0200</lastBuildDate><atom:link href="https://vallyscode.github.io/tags/sam/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AWS SAM Lambda Rust</title>
-      <link>https://vallyscode.github.io/posts/aws-sam-lambda-rust/</link>
+      <link>https://vallyscode.github.io/note/aws-sam-lambda-rust/</link>
       <pubDate>Thu, 12 Aug 2021 09:09:07 +0200</pubDate>
       
-      <guid>https://vallyscode.github.io/posts/aws-sam-lambda-rust/</guid>
+      <guid>https://vallyscode.github.io/note/aws-sam-lambda-rust/</guid>
       <description>AWS SAM Lambda setup for Rust custom runtime</description>
     </item>
     
     <item>
       <title>AWS SAM Lambda</title>
-      <link>https://vallyscode.github.io/posts/aws-sam-lambda/</link>
+      <link>https://vallyscode.github.io/note/aws-sam-lambda/</link>
       <pubDate>Sun, 18 Apr 2021 14:16:41 +0200</pubDate>
       
-      <guid>https://vallyscode.github.io/posts/aws-sam-lambda/</guid>
+      <guid>https://vallyscode.github.io/note/aws-sam-lambda/</guid>
       <description>AWS SAM Lambda configuration and deployment</description>
     </item>
     
     <item>
       <title>AWS SAM Basics</title>
-      <link>https://vallyscode.github.io/posts/aws-sam-basics/</link>
+      <link>https://vallyscode.github.io/note/aws-sam-basics/</link>
       <pubDate>Sat, 10 Apr 2021 12:48:44 +0200</pubDate>
       
-      <guid>https://vallyscode.github.io/posts/aws-sam-basics/</guid>
+      <guid>https://vallyscode.github.io/note/aws-sam-basics/</guid>
       <description>AWS SAM basics, configuration and deployment</description>
     </item>
     
     <item>
       <title>Sam Cli Linux</title>
-      <link>https://vallyscode.github.io/posts/sam-cli-linux/</link>
+      <link>https://vallyscode.github.io/note/sam-cli-linux/</link>
       <pubDate>Mon, 07 Dec 2020 10:10:28 +0100</pubDate>
       
-      <guid>https://vallyscode.github.io/posts/sam-cli-linux/</guid>
+      <guid>https://vallyscode.github.io/note/sam-cli-linux/</guid>
       <description>Installing SAM cli on linux (NO Homebrew)</description>
     </item>
     

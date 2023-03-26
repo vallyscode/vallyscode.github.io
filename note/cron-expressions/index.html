@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Cron Expressions">
+  <meta name="author" content="Valerii Lysenko" />
+
+  <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="/css/syntax.css">
+  
+  
+  <link rel="stylesheet" type="text/css" href="/css/cloud.css">
+
+  
+  
+  <title>vallyscode&#39;s notes | Cron Expressions</title>
+  
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-142469594-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-142469594-1');
+</script>
+</head>
+    <body>
+        <header>
+  <nav class="navigation">
+    
+    <a href="/">
+      
+      Notes
+    </a>
+    
+    <a href="/tags/">
+      
+      Tags
+    </a>
+    
+    <a href="/about/">
+      
+      About
+    </a>
+    
+  </nav>
+</header>
+        
+<main>
+  <article class='note'>
+    <header>
+      <h1 class='title'>
+        Cron Expressions
+      </h1>
+      
+      
+      <time class='published' datetime='2022-08-20'>
+        August 20, 2022
+      </time>
+      
+      <nav class='tags'>
+        
+        <a class="tag" href='/tags/cron/'>cron</a>
+        
+      </nav>
+      
+    </header>
+    <p>The cron utility is responsible for job/task scheduling. These cron jobs can be configured to run <strong>periodically</strong> at defined intervals of time. That&rsquo;s a nice and simple way to automate execution of repetitive tasks (starting/stopping services, initiating some pipeline jobs, watching disk space utilisation, automating backups).</p>
+<h1 id="crontab">Crontab</h1>
+<p>Cron stores it&rsquo;s instructions in a file (crontab) using a simple format like what to run and when.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="m">15</span> <span class="m">10</span> * * MON-FRI /home/user/scripts/service/export-snapshot.sh
+</span></span></code></pre></div><h3 id="note">Note</h3>
+<blockquote>
+<p>“At 10:15 on every day-of-week from Monday through Friday.”</p>
+</blockquote>
+<h2 id="commands">Commands</h2>
+<ul>
+<li>Edit crontab file: <em>crontab -e</em></li>
+<li>List tasks: <em>crontab -l</em></li>
+<li>Remove task: <em>crontab -r</em></li>
+<li>Show last time crontab file was changed: <em>crontab -v</em></li>
+</ul>
+<h2 id="format">Format</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> ┌───────────── minute
+</span></span><span class="line"><span class="cl"> │ ┌───────────── hour
+</span></span><span class="line"><span class="cl"> │ │ ┌───────────── day of the month
+</span></span><span class="line"><span class="cl"> │ │ │ ┌───────────── month
+</span></span><span class="line"><span class="cl"> │ │ │ │ ┌───────────── day of the week
+</span></span><span class="line"><span class="cl"> │ │ │ │ │
+</span></span><span class="line"><span class="cl"> │ │ │ │ │
+</span></span><span class="line"><span class="cl"> │ │ │ │ │
+</span></span><span class="line"><span class="cl"> * * * * * &lt;<span class="nb">command</span> to execute&gt;
+</span></span></code></pre></div><h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Values</th>
+<th>Wildcards</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Minutes</td>
+<td><em>0-59</em></td>
+<td>,-*/</td>
+</tr>
+<tr>
+<td>Hours</td>
+<td><em>0-23</em></td>
+<td>,-*/</td>
+</tr>
+<tr>
+<td>Day-of-month</td>
+<td><em>1-31</em></td>
+<td>,-*?/LW</td>
+</tr>
+<tr>
+<td>Month</td>
+<td><em>1-12</em> or <em>JAN-DEC</em></td>
+<td>,-*/</td>
+</tr>
+<tr>
+<td>Day-of-week</td>
+<td><em>1-7</em> or <em>SUN-SAT</em></td>
+<td>,-*?L#</td>
+</tr>
+</tbody>
+</table>
+<h2 id="wildcards">Wildcards</h2>
+<table>
+<thead>
+<tr>
+<th>Wildcard</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>*</code></td>
+<td>all values in the field</td>
+<td><code>*</code></td>
+</tr>
+<tr>
+<td><code>,</code></td>
+<td>value list separator</td>
+<td><code>0,10,15</code></td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>range of values</td>
+<td><code>MON-FRI</code></td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td>step values</td>
+<td><code>*/15</code></td>
+</tr>
+<tr>
+<td><code>W</code></td>
+<td>week day</td>
+<td><code>10W</code></td>
+</tr>
+<tr>
+<td><code>L</code></td>
+<td>last (last day of week, month)</td>
+<td><code>6L</code></td>
+</tr>
+<tr>
+<td><code>#</code></td>
+<td>N-th occurence</td>
+<td><code>6#3</code></td>
+</tr>
+<tr>
+<td><code>?</code></td>
+<td>any</td>
+<td><code>?</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="minutes">Minutes</h2>
+<p>At every minute:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">* * * * * &lt;command&gt;
+</span></span></code></pre></div><p>At every 10th minute:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">*/10 * * * * &lt;command&gt;
+</span></span></code></pre></div><p>At minute 0, 10, 20, 30, 40, and 50:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">0,10,20,30,40,50 * * * * &lt;command&gt;
+</span></span></code></pre></div><h2 id="hours">Hours</h2>
+<p>At minute 0 past every hour:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="m">0</span> */1 * * * &lt;command&gt;
+</span></span></code></pre></div><p>At 00:00:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="m">0</span> <span class="m">0</span> * * * &lt;command&gt;
+</span></span></code></pre></div><p>At minute 0 past every 3rd hour:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="m">0</span> */3 * * * &lt;command&gt;
+</span></span></code></pre></div><h2 id="day-of-month">Day of month</h2>
+<p>At 10:00 on day-of-month 5 and 10:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="m">0</span> <span class="m">10</span> 5,10 * * &lt;command&gt;
+</span></span></code></pre></div><h2 id="month">Month</h2>
+<p>At every minute in April:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">* * * <span class="m">4</span> * &lt;command&gt;
+</span></span></code></pre></div><p>At minute 0 past every hour in April:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="m">0</span> */1 * <span class="m">4</span> * &lt;command&gt;
+</span></span></code></pre></div><p>At 09:00 on day-of-month 1 in every 2nd month:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="m">0</span> <span class="m">9</span> <span class="m">1</span> */2 * &lt;command&gt;
+</span></span></code></pre></div><h2 id="day-of-week">Day of week</h2>
+<p>At 09:00 on every day-of-week from Monday through Friday:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="m">0</span> <span class="m">9</span> * * 1-5 &lt;command&gt;
+</span></span><span class="line"><span class="cl"><span class="m">0</span> <span class="m">9</span> * * MON-FRI &lt;command&gt;
+</span></span></code></pre></div>
+  </article>
+</main>
+
+        <footer class="copyright">
+  
+  <p>© 2023 VALERII LYSENKO</p>
+  
+</footer>
+    </body>
+</html>
