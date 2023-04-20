@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Java Records overview">
+  <meta name="author" content="Valerii Lysenko" />
+
+  <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="/css/syntax.css">
+  
+  
+  <link rel="stylesheet" type="text/css" href="/css/cloud.css">
+
+  
+  
+  <title>vallyscode&#39;s notes | Java Records</title>
+  
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-142469594-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-142469594-1');
+</script>
+</head>
+    <body>
+        <header>
+  <nav class="navigation">
+    
+    <a href="/">
+      
+      Notes
+    </a>
+    
+    <a href="/tags/">
+      
+      Tags
+    </a>
+    
+    <a href="/about/">
+      
+      About
+    </a>
+    
+  </nav>
+</header>
+        
+<main>
+  <article class='note'>
+    <header>
+      <h1 class='title'>
+        Java Records
+      </h1>
+      
+      
+      <time class='published' datetime='2023-04-12'>
+        April 12, 2023
+      </time>
+      
+      <nav class='tags'>
+        
+        <a class="tag" href='/tags/java/'>java</a>
+        
+      </nav>
+      
+    </header>
+    <p>In JDK 14 was introduced a new type declaration called <code>record</code> which is a restricted form of class. Ideal for data carrying, containig only constructor and accessors methods, <strong>immutable</strong>.</p>
+<p>Example record representation:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="n">record</span> <span class="nf">Player</span><span class="o">(</span>
+</span></span><span class="line"><span class="cl">  <span class="n">String</span> <span class="n">firstName</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">String</span> <span class="n">lastName</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Position</span> <span class="n">position</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">short</span> <span class="n">jersey</span>
+</span></span><span class="line"><span class="cl"><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
+</span></span></code></pre></div><h2 id="accessors">Accessors</h2>
+<p>Each field of this record is automatically <code>private</code> and <code>final</code>. At the same time each component of the record gets public accessor method with the same name and type.</p>
+<p>In this case those are:</p>
+<pre tabindex="0"><code>Player::firstName();
+Player::lastName();
+Player::position();
+Player::jersey();
+</code></pre><h2 id="constructors">Constructors</h2>
+<p>Record has public constructor derived from it&rsquo;s components.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">var</span> <span class="n">player</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Player</span><span class="o">(</span><span class="s">&#34;Json&#34;</span><span class="o">,</span> <span class="s">&#34;Hardcoded&#34;</span><span class="o">,</span> <span class="n">Position</span><span class="o">.</span><span class="na">QB</span><span class="o">,</span> <span class="o">(</span><span class="kt">short</span><span class="o">)</span> <span class="mi">3</span><span class="o">);</span>
+</span></span></code></pre></div><p>At the same time it&rsquo;s possible to define additional constructors.</p>
+<p>Like this one to ensure that the <code>firstName</code> and <code>lastName</code> are not <code>null</code> :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="n">record</span> <span class="nf">Player</span><span class="o">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">String</span> <span class="n">firstName</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">String</span> <span class="n">lastName</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Position</span> <span class="n">position</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">short</span> <span class="n">jersey</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">Player</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Objects</span><span class="o">.</span><span class="na">requireNonNull</span><span class="o">(</span><span class="n">firstName</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Objects</span><span class="o">.</span><span class="na">requireNonNull</span><span class="o">(</span><span class="n">lastName</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><p>Or separate constructor with different arguments:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="n">record</span> <span class="nf">Player</span><span class="o">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">String</span> <span class="n">firstName</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">String</span> <span class="n">lastName</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Position</span> <span class="n">position</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">short</span> <span class="n">jersey</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="nf">Player</span><span class="o">(</span><span class="n">String</span> <span class="n">firstName</span><span class="o">,</span> <span class="n">String</span> <span class="n">lastName</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">(</span><span class="n">firstName</span><span class="o">,</span> <span class="n">lastName</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">Short</span><span class="o">.</span><span class="na">MIN_VALUE</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><p>Records constructors follow the same rules and requirements as regular Java classes.</p>
+<h2 id="interfaces">Interfaces</h2>
+<p>Record can&rsquo;t extend class but can implement interfaces.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="n">record</span> <span class="nf">Player</span><span class="o">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">String</span> <span class="n">firstName</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">String</span> <span class="n">lastName</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Position</span> <span class="n">position</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">short</span> <span class="n">jersey</span><span class="o">)</span> <span class="kd">implements</span> <span class="n">Whatever</span><span class="o">,</span> <span class="n">Nice</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="n">FOO_BAR</span> <span class="o">=</span> <span class="s">&#34;FooBar&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="n">Player</span> <span class="nf">quarterback</span><span class="o">(</span><span class="n">String</span> <span class="n">sirstName</span><span class="o">,</span> <span class="n">String</span> <span class="n">lastName</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="n">Player</span><span class="o">(</span><span class="n">sirstName</span><span class="o">,</span> <span class="n">lastName</span><span class="o">,</span> <span class="n">Position</span><span class="o">.</span><span class="na">QB</span><span class="o">,</span> <span class="o">(</span><span class="kt">short</span><span class="o">)</span> <span class="mi">6</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><h2 id="equals--hash-code">Equals &amp; Hash Code</h2>
+<p>Additionally record get <code>equals</code> and <code>hashCode</code> generated.</p>
+<p>Implementation of <code>equals</code> return <code>true</code> only when supplied object has the same type and all it&rsquo;s fields match corresponding ones.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">  <span class="nd">@Test</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">shouldBeEqual</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// given
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">var</span> <span class="n">player1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Player</span><span class="o">(</span><span class="s">&#34;Json&#34;</span><span class="o">,</span> <span class="s">&#34;Hardcoded&#34;</span><span class="o">,</span> <span class="n">Position</span><span class="o">.</span><span class="na">QB</span><span class="o">,</span> <span class="o">(</span><span class="kt">short</span><span class="o">)</span> <span class="mi">6</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">var</span> <span class="n">player2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Player</span><span class="o">(</span><span class="s">&#34;Json&#34;</span><span class="o">,</span> <span class="s">&#34;Hardcoded&#34;</span><span class="o">,</span> <span class="n">Position</span><span class="o">.</span><span class="na">QB</span><span class="o">,</span> <span class="o">(</span><span class="kt">short</span><span class="o">)</span> <span class="mi">6</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// when
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">var</span> <span class="n">actual</span> <span class="o">=</span> <span class="n">player1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">player2</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// then
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">assertTrue</span><span class="o">(</span><span class="s">&#34;Players must be equal&#34;</span><span class="o">,</span> <span class="n">actual</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>
+</span></span></code></pre></div><p>Implementation of <code>hashCode</code> returns the same value for two records if all their fields match.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl">  <span class="nd">@Test</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">shouldHaveSameHashCode</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// given
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">var</span> <span class="n">player1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Player</span><span class="o">(</span><span class="s">&#34;Json&#34;</span><span class="o">,</span> <span class="s">&#34;Hardcoded&#34;</span><span class="o">,</span> <span class="n">Position</span><span class="o">.</span><span class="na">QB</span><span class="o">,</span> <span class="o">(</span><span class="kt">short</span><span class="o">)</span> <span class="mi">6</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">var</span> <span class="n">player2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Player</span><span class="o">(</span><span class="s">&#34;Json&#34;</span><span class="o">,</span> <span class="s">&#34;Hardcoded&#34;</span><span class="o">,</span> <span class="n">Position</span><span class="o">.</span><span class="na">QB</span><span class="o">,</span> <span class="o">(</span><span class="kt">short</span><span class="o">)</span> <span class="mi">6</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// when
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">var</span> <span class="n">player1Hash</span> <span class="o">=</span> <span class="n">player1</span><span class="o">.</span><span class="na">hashCode</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">var</span> <span class="n">player2Hash</span> <span class="o">=</span> <span class="n">player2</span><span class="o">.</span><span class="na">hashCode</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// then
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">assertEquals</span><span class="o">(</span><span class="s">&#34;Players must have same hash code&#34;</span><span class="o">,</span> <span class="n">player1Hash</span><span class="o">,</span> <span class="n">player2Hash</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>
+</span></span></code></pre></div><h2 id="to-string">To String</h2>
+<p>Another nice to have feature is pretty human readable <code>toString</code> implementation containig the field name and value pairs.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Player</span><span class="o">[</span><span class="n">firstName</span><span class="o">=</span><span class="n">Json</span><span class="o">,</span> <span class="n">lastName</span><span class="o">=</span><span class="n">Hardcoded</span><span class="o">,</span> <span class="n">position</span><span class="o">=</span><span class="n">QB</span><span class="o">,</span> <span class="n">jersey</span><span class="o">=</span><span class="mi">6</span><span class="o">]</span>
+</span></span></code></pre></div><h2 id="static">Static</h2>
+<p>Static variables are declared in the same way as it&rsquo;s done in class.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="n">record</span> <span class="nf">Player</span><span class="o">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">String</span> <span class="n">firstName</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">String</span> <span class="n">lastName</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Position</span> <span class="n">position</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">short</span> <span class="n">jersey</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="n">FOO_BAR</span> <span class="o">=</span> <span class="s">&#34;FooBar&#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><p>Static methods can be declared in a similar way.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="n">record</span> <span class="nf">Player</span><span class="o">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">String</span> <span class="n">firstName</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">String</span> <span class="n">lastName</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Position</span> <span class="n">position</span><span class="o">,</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">short</span> <span class="n">jersey</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="n">Player</span> <span class="nf">quarterback</span><span class="o">(</span><span class="n">String</span> <span class="n">sirstName</span><span class="o">,</span> <span class="n">String</span> <span class="n">lastName</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="n">Player</span><span class="o">(</span><span class="n">sirstName</span><span class="o">,</span> <span class="n">lastName</span><span class="o">,</span> <span class="n">Position</span><span class="o">.</span><span class="na">QB</span><span class="o">,</span> <span class="o">(</span><span class="kt">short</span><span class="o">)</span> <span class="mi">6</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><p>Those can then be used as following</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">var</span> <span class="n">fooBar</span> <span class="o">=</span> <span class="n">Player</span><span class="o">.</span><span class="na">FOO_BAR</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">var</span> <span class="n">quarterbackPlayer</span> <span class="o">=</span> <span class="n">Player</span><span class="o">.</span><span class="na">quarterback</span><span class="o">(</span><span class="s">&#34;Json&#34;</span><span class="o">,</span> <span class="s">&#34;Hardcoded&#34;</span><span class="o">);</span>
+</span></span></code></pre></div><h2 id="restrictions">Restrictions</h2>
+<ul>
+<li>No inheritance, record can&rsquo;t extend class.</li>
+<li>No instance fields other that those declared in record component list (only static fields allowed)</li>
+<li>Record can&rsquo;t be <code>abstract</code> as those are implicitely <code>final</code></li>
+<li>All record components are implicitely <code>final</code></li>
+<li>Can be declared inside classes and are implicitely <code>static</code></li>
+<li>Can implement interfaces</li>
+<li>Can be generic</li>
+<li>Can contain nested types</li>
+<li>Can have components annotated</li>
+<li>Can be annoted itself</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>Another awesome addition to Java language tool belt, one more step towards reduction of boilerplate code, great alternative to old POJO used as DTOs.</p>
+
+  </article>
+</main>
+
+        <footer class="copyright">
+  
+  <p>© 2023 VALERII LYSENKO</p>
+  
+</footer>
+    </body>
+</html>

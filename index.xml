@@ -6,7 +6,16 @@
     <description>Recent content in Homepage on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 20 Aug 2022 21:19:00 +0000</lastBuildDate><atom:link href="https://vallyscode.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 12 Apr 2023 14:36:52 +0000</lastBuildDate><atom:link href="https://vallyscode.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Java Records</title>
+      <link>https://vallyscode.github.io/note/java-records/</link>
+      <pubDate>Wed, 12 Apr 2023 14:36:52 +0000</pubDate>
+      
+      <guid>https://vallyscode.github.io/note/java-records/</guid>
+      <description>Java Records overview</description>
+    </item>
+    
     <item>
       <title>Cron Expressions</title>
       <link>https://vallyscode.github.io/note/cron-expressions/</link>
