@@ -8,6 +8,15 @@
     <language>en-us</language>
     <lastBuildDate>Sun, 13 Dec 2020 07:41:10 +0200</lastBuildDate><atom:link href="https://vallyscode.github.io/note/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Java Sealed</title>
+      <link>https://vallyscode.github.io/note/java-sealed-interfaces-and-classes/</link>
+      <pubDate>Mon, 08 May 2023 11:20:52 +0000</pubDate>
+      
+      <guid>https://vallyscode.github.io/note/java-sealed-interfaces-and-classes/</guid>
+      <description>Java Sealed Interfaces and Classes overview</description>
+    </item>
+    
+    <item>
       <title>Java Records</title>
       <link>https://vallyscode.github.io/note/java-records/</link>
       <pubDate>Wed, 12 Apr 2023 14:36:52 +0000</pubDate>
