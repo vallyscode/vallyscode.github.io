@@ -6,7 +6,16 @@
     <description>Recent content in Homepage on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 08 May 2023 11:20:52 +0000</lastBuildDate><atom:link href="https://vallyscode.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 15 Jun 2023 13:18:14 +0000</lastBuildDate><atom:link href="https://vallyscode.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ecs Fargate ALB</title>
+      <link>https://vallyscode.github.io/note/ecs-fargate-alb/</link>
+      <pubDate>Thu, 15 Jun 2023 13:18:14 +0000</pubDate>
+      
+      <guid>https://vallyscode.github.io/note/ecs-fargate-alb/</guid>
+      <description>Setup for ECS/Fargate with application load balancer</description>
+    </item>
+    
     <item>
       <title>Java Sealed</title>
       <link>https://vallyscode.github.io/note/java-sealed-interfaces-and-classes/</link>
@@ -195,15 +204,6 @@
       <guid>https://vallyscode.github.io/about/</guid>
       <description>I&amp;rsquo;m a software engineer, here I gather notes on different topics that I find to be interesting to me or simply those having practical use.
 Topics I am interested in are: Cloud development and achitecture Programming languages Algorithms Github: https://github.com/vallyscode</description>
-    </item>
-    
-    <item>
-      <title>Markdown Syntax Guide</title>
-      <link>https://vallyscode.github.io/note/markdown-syntax/</link>
-      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://vallyscode.github.io/note/markdown-syntax/</guid>
-      <description>&lt;p&gt;This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p&gt;</description>
     </item>
     
   </channel>
