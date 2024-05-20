@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Concurrency controlling in serverless archihtecture">
+  <meta name="author" content="Valerii Lysenko" />
+
+  <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="/css/syntax.css">
+  
+  
+  <link rel="stylesheet" type="text/css" href="/css/cloud.css">
+
+  
+  
+  <title>vallyscode&#39;s notes | Serverless Concurrency Controlling</title>
+  
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-142469594-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '367129371');
+</script>
+</head>
+
+<body>
+    <header>
+  <nav class="navigation">
+    <ul>
+      
+      <li>
+        <a href="/">
+          
+          Notes
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags/">
+          
+          Tags
+        </a>
+      </li>
+      
+      <li>
+        <a href="/about/">
+          
+          About
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</header>
+    
+<main>
+  <article class='note'>
+    <h1 class='title'>
+      Serverless Concurrency Controlling
+    </h1>
+    
+    
+    <time class='published' datetime='2024-05-20'>
+      May 20, 2024
+    </time>
+    
+    <nav class='tags'>
+      
+      <a class="tag" href='/tags/aws/'>Aws</a>
+      
+      <a class="tag" href='/tags/lambda/'>Lambda</a>
+      
+      <a class="tag" href='/tags/architecture/'>Architecture</a>
+      
+    </nav>
+    
+    <p>AWS Lambda has an impressive scalability, allowing it to quickly skyrocket up to tens of thousands instancess in seconds <a href="https://docs.aws.amazon.com/lambda/latest/operatorguide/scaling-concurrency.html">doc</a>. This can lead to problems when integrated with services that scale with slower rates, forcing them to deal with unpredictable load spikes.</p>
+<h2 id="scenario">Scenario</h2>
+<p>Service to process events and store the results in the database.</p>
+<p>At first glance it could look as simple as an integration of event bridge with lambda for events processing and later storing the results in the dynamo.</p>
+<p><img src="/img/aws-lambda-scalability-controlling/eventbridge-lambda-dynamo-v1.png" alt="eventbridge-&gt;lambda-&gt;dynamo"></p>
+<p>Feels like a nice cost-effective solution:</p>
+<ul>
+<li>Processing events only when there are some.</li>
+<li>Paying for compute only when there&rsquo;s a work to be done.</li>
+<li>Storing results to dynamo and also paying only for <strong>WCU</strong>/<strong>RCU</strong> that were consumed.</li>
+</ul>
+<h2 id="problems">Problems</h2>
+<p>Everything may work nicely untill event flow start to be spiky and unpredictable. Say we got a bunch of events in really short period of time, event bus started delivering those to lambda, forcing it to spawn new instances (aws lambda process one event at a time). Processed data will be stored into the table as it goes and this works until we hit the first limit of WCU, and database start throttling the requests. This is where we start loosing the data as in naive scenario lambda will try few more attempts (JS SDK v3 has 3 attempts by default) and fail.</p>
+<p>Data loss points:</p>
+<ul>
+<li>lambda hit the limit of concurrently running instances (account level quota)</li>
+<li>lambda failed to process the request (hard timeout or bugs)</li>
+<li>database failed to process the request (throttling)</li>
+</ul>
+<h2 id="solution">Solution</h2>
+<p>Ingress data losses because of downstream service issues like lambda hitting the concurrency limit or event processing related failures can be solved by introducing retry configuration and DLQ (dead-letter queue) for event bus rule. So that unprocessed events will be stored in dedicated queue wating for the review or bug fix with following redrive.</p>
+<p><img src="/img/aws-lambda-scalability-controlling/eventbridge-lambda-dynamo-v2.png" alt="eventbridge(DLQ)-&gt;lambda-&gt;dynamo"></p>
+<p>While current approach helps dealing with processing issues during ingress stage, it still allow already processes data to be lost due to database related issues. As we want to avoid porcessing the same ingress data after each rejection from downstream service, processing lambda places the result into the queue again (leveraging <strong>Storage-First</strong> design pattern) with own DLQ to guarantee that nothing was lost down the road.</p>
+<p><img src="/img/aws-lambda-scalability-controlling/eventbridge-lambda-dynamo-v3.png" alt="eventbridge(DLQ)-&gt;lambda-&gt;dynamo"></p>
+<p>This time there&rsquo;s a dedicated lambda only for handling the data persistence and it&rsquo;s issues. Current approach uses active polling of the queue to adjust itself to database possibilities, data will be stored eventually, all spikes will get flattened in the queue.</p>
+<p><img src="/img/aws-lambda-scalability-controlling/eventbridge-lambda-dynamo-v4.png" alt="eventbridge(DLQ)-&gt;lambda-&gt;dynamo"></p>
+<p>Alternative approach is to use SQS to pass the data to lambda. This one allows to define the boundaries for lambda concurrency in a more elegant manner than setting lambda reserverd concurrency limits (as it just throttles the lambda instances with all the consequences after that), but requires SQS FIFO with small redesign to introduce additional message grouping after processing phase. This will allow processing the data simultaneously by multiple lambda instances (number of instances denepnds on the number of separate message groups) and the concurrency level is directly controlled via event source mapping configuration.</p>
+<h2 id="summary">Summary</h2>
+<p>That&rsquo;s how initially simple design can get compilcated really fast whilt solving the problems. Active polling and reactive triggering by SQS together with storage-first gives a good level of reliability in data processing while requiers to pick one visely.</p>
+
+  </article>
+</main>
+
+    <footer class="copyright">
+  
+  <p>© 2024 VALERII LYSENKO</p>
+  
+</footer>
+</body>
+
+</html>

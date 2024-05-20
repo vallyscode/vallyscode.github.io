@@ -8,8 +8,15 @@
     <language>en-us</language>
     <managingEditor>vallyscode@gmail.com (Valerii Lysenko)</managingEditor>
     <webMaster>vallyscode@gmail.com (Valerii Lysenko)</webMaster>
-    <lastBuildDate>Thu, 12 Aug 2021 09:09:07 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 20 May 2024 10:03:28 +0000</lastBuildDate>
     <atom:link href="https://vallyscode.github.io/tags/lambda/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Serverless Concurrency Controlling</title>
+      <link>https://vallyscode.github.io/note/aws-lambda-scalability-controlling/</link>
+      <pubDate>Mon, 20 May 2024 10:03:28 +0000</pubDate><author>vallyscode@gmail.com (Valerii Lysenko)</author>
+      <guid>https://vallyscode.github.io/note/aws-lambda-scalability-controlling/</guid>
+      <description>Ways of concurrency controlling in serverless archihtecture</description>
+    </item>
     <item>
       <title>AWS SAM Lambda Rust</title>
       <link>https://vallyscode.github.io/note/aws-sam-lambda-rust/</link>
