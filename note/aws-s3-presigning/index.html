@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <head>
+<head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="AWS S3 Presigned URL">
@@ -27,49 +27,56 @@
   gtag('config', '367129371');
 </script>
 </head>
-    <body>
-        <header>
+
+<body>
+    <header>
   <nav class="navigation">
-    
-    <a href="/">
+    <ul>
       
-      Notes
-    </a>
-    
-    <a href="/tags/">
+      <li>
+        <a href="/">
+          
+          Notes
+        </a>
+      </li>
       
-      Tags
-    </a>
-    
-    <a href="/about/">
+      <li>
+        <a href="/tags/">
+          
+          Tags
+        </a>
+      </li>
       
-      About
-    </a>
-    
+      <li>
+        <a href="/about/">
+          
+          About
+        </a>
+      </li>
+      
+    </ul>
   </nav>
 </header>
-        
+    
 <main>
   <article class='note'>
-    <header>
-      <h1 class='title'>
-        AWS S3 presigning
-      </h1>
+    <h1 class='title'>
+      AWS S3 presigning
+    </h1>
+    
+    
+    <time class='published' datetime='2022-05-23'>
+      May 23, 2022
+    </time>
+    
+    <nav class='tags'>
       
+      <a class="tag" href='/tags/aws/'>Aws</a>
       
-      <time class='published' datetime='2022-05-23'>
-        May 23, 2022
-      </time>
+      <a class="tag" href='/tags/s3/'>S3</a>
       
-      <nav class='tags'>
-        
-        <a class="tag" href='/tags/aws/'>aws</a>
-        
-        <a class="tag" href='/tags/s3/'>s3</a>
-        
-      </nav>
-      
-    </header>
+    </nav>
+    
     <p>Assume we have private buckets and objects, and we want them to remain private. But at some cases we also need to allow user access without security credentials or permissions. Presigned URLs can be used to access the buckets, when creating we associate it with a specific action. Then URL can be shared and anyone will be able to perform the action embedded into it.</p>
 <h4 id="notes"><em>Notes</em></h4>
 <blockquote>
@@ -121,10 +128,11 @@
   </article>
 </main>
 
-        <footer class="copyright">
+    <footer class="copyright">
   
-  <p>© 2023 VALERII LYSENKO</p>
+  <p>© 2024 VALERII LYSENKO</p>
   
 </footer>
-    </body>
+</body>
+
 </html>
