@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VirtualBox Arch Guest | vallyscode&#39;s notes</title>
+<link
+  rel="stylesheet" 
+  type="text/css" 
+  href="/css/normalize.css">
+      <link
+        rel="stylesheet"
+        href="/css/main.min.5df69139bf8095179462d808fa65d7e605521c213ccb4e5e96d516033314c141.css"
+        integrity="sha256-XfaROb&#43;AlReUYtgI&#43;mXX5gVSHCE8y05eltUWAzMUwUE="
+        crossorigin="anonymous">
+
+
+      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-142469594-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '367129371');
+</script>
+
+
+</head>
+
+<body>
+  <header>
+    <nav>
+  <ul class="menu">
+    <li><a href="/">Notes</a></li>
+    <li><a href="/categories/">Categories</a></li>
+    <li><a href="/tags/">Tags</a></li>
+    <li><a href="/about/">About</a></li>
+  </ul>
+</nav>
+  </header>
+  <main>
+    
+<article>
+  <header>
+    <h1 class="title">VirtualBox Arch Guest</h1><time class="publish-date" datetime="2020-09-14T12:50:39&#43;02:00">September 14, 2020</time>
+    <nav>
+  <ul class="tags">
+    
+    <li>
+      <a href='https://example.org/tags/arch'>
+        ARCH
+      </a>
+    </li>
+    
+  </ul>
+</nav>
+  </header>
+  <main class="single">
+    <p>Quick Arch (Guest OS) installation on VirtualBox.</p>
+<h2 id="arch-linux-iso">Arch linux iso</h2>
+<p>Download Arch iso from <a href="https://www.archlinux.org/download/">official page</a> and launch a machine using iso image.</p>
+<h2 id="disk-partitioning">Disk partitioning</h2>
+<p>Legacy mode approach.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> cfdisk /dev/sda</span></span></code></pre></div>
+<p>Screen will look like this, <strong>dos</strong> label type should be selected.</p>
+<p><img src="/img/arch-guest/1.png" alt="Tabulated list:"></p>
+<p>Create partitions as following</p>
+<p><img src="/img/arch-guest/2.png" alt="Tabulated list:"></p>
+<p>Format and mount partitions</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> mkswap /dev/sda2
+</span></span><span class="line"><span class="cl"> swapon /dev/sda2
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> mkfs.ext2 /dev/sda1
+</span></span><span class="line"><span class="cl"> mkfs.ext4 /dev/sda3
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> mount /dev/sda3 /mnt
+</span></span><span class="line"><span class="cl"> mkdir /mnt/boot
+</span></span><span class="line"><span class="cl"> mount /dev/sda1 /mnt/boot</span></span></code></pre></div>
+<h2 id="installing-the-system">Installing the system</h2>
+<h4 id="installing-base-packages">Installing base packages</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> pacstrap /mnt base linux-lts linux-firmware</span></span></code></pre></div>
+<h4 id="generating-fstab">Generating fstab</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> genfstab -U /mnt &gt;&gt; /mnt/etc/fstab</span></span></code></pre></div>
+<p>Result should look like this</p>
+<p><img src="/img/arch-guest/3.png" alt="Tabulated list:"></p>
+<h4 id="chroot">Chroot</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> arch-chroot /mnt</span></span></code></pre></div>
+<h4 id="time-zone">Time zone</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
+</span></span><span class="line"><span class="cl"> hwclock --systohc</span></span></code></pre></div>
+<h4 id="localization">Localization</h4>
+<p>Edit /etc/locale.gen and uncomment en_US.UTF-8 UTF-8 and other needed locales. Generate the locales by running</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> locale-gen</span></span></code></pre></div>
+<p>Edit /etc/locale.conf</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8</span></span></code></pre></div>
+<h4 id="network">Network</h4>
+<p>Edit /etc/hostname</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> arch</span></span></code></pre></div>
+<p>Edit /etc/hosts</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> 127.0.0.1       localhost
+</span></span><span class="line"><span class="cl"> ::1             localhost
+</span></span><span class="line"><span class="cl"> 127.0.0.1       arch.localdomain arch</span></span></code></pre></div>
+<p>Add dhcp</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> pacman -S dhcpcd
+</span></span><span class="line"><span class="cl"> systemctl <span class="nb">enable</span> dhcpcd</span></span></code></pre></div>
+<h4 id="root-password">Root password</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> passwd</span></span></code></pre></div>
+<h4 id="boot-loader">Boot loader</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> pacman -S grub
+</span></span><span class="line"><span class="cl"> grub-install /dev/sda
+</span></span><span class="line"><span class="cl"> grub-mkconfig -o /boot/grub/grub.cfg</span></span></code></pre></div>
+<h4 id="add-regular-user">Add regular user</h4>
+<p><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> useradd -m user
+</span></span><span class="line"><span class="cl"> gpasswd -a user group
+</span></span><span class="line"><span class="cl"> visudo</span></span></code></pre></div>
+Or
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> useradd -m -G wheel -s /bin/bash user
+</span></span><span class="line"><span class="cl"> passwd user
+</span></span><span class="line"><span class="cl"> visudo</span></span></code></pre></div></p>
+<h2 id="post-install">Post-install</h2>
+<h4 id="update">Update</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> sudo pacman -Syu</span></span></code></pre></div>
+<h4 id="install-xorg">Install xorg</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> sudo pacman -S xorg-server linux-lts-headers</span></span></code></pre></div>
+<h4 id="virtualbox">VirtualBox</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> sudo pacman -S virtualbox-guest-utils
+</span></span><span class="line"><span class="cl"> sudo systemctl <span class="nb">enable</span> vboxservice</span></span></code></pre></div>
+<h4 id="kde">KDE</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> sudo pacman -S plasma-meta dolphin konsole
+</span></span><span class="line"><span class="cl"> sudo systemctl <span class="nb">enable</span> sddm</span></span></code></pre></div>
+<h4 id="general-purpose">General purpose</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> sudo pacman -S firefox vim git man spectacle unzip zsh</span></span></code></pre></div>
+
+  </main>
+</article>
+
+  </main>
+  <footer class="copyright">
+    
+
+<p>© 2024 VALERII LYSENKO</p>
+
+  </footer>
+</body>
+
+</html>

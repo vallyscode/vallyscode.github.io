@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AWS SAM Lambda | vallyscode&#39;s notes</title>
+<link
+  rel="stylesheet" 
+  type="text/css" 
+  href="/css/normalize.css">
+      <link
+        rel="stylesheet"
+        href="/css/main.min.5df69139bf8095179462d808fa65d7e605521c213ccb4e5e96d516033314c141.css"
+        integrity="sha256-XfaROb&#43;AlReUYtgI&#43;mXX5gVSHCE8y05eltUWAzMUwUE="
+        crossorigin="anonymous">
+
+
+      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-142469594-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '367129371');
+</script>
+
+
+</head>
+
+<body>
+  <header>
+    <nav>
+  <ul class="menu">
+    <li><a href="/">Notes</a></li>
+    <li><a href="/categories/">Categories</a></li>
+    <li><a href="/tags/">Tags</a></li>
+    <li><a href="/about/">About</a></li>
+  </ul>
+</nav>
+  </header>
+  <main>
+    
+<article>
+  <header>
+    <h1 class="title">AWS SAM Lambda</h1><time class="publish-date" datetime="2021-04-18T14:16:41&#43;02:00">April 18, 2021</time>
+    <nav>
+  <ul class="tags">
+    
+    <li>
+      <a href='https://example.org/tags/aws'>
+        AWS
+      </a>
+    </li>
+    
+    <li>
+      <a href='https://example.org/tags/sam'>
+        SAM
+      </a>
+    </li>
+    
+    <li>
+      <a href='https://example.org/tags/lambda'>
+        LAMBDA
+      </a>
+    </li>
+    
+  </ul>
+</nav>
+  </header>
+  <main class="single">
+    <p>AWS SAM Lambda configuration and deployment.</p>
+<p>AWS Lambda is a service from serverless compute group, allows running code without servers provisioning, cluster scaling, maintaining runtimes.</p>
+<h2 id="template">Template</h2>
+<p>Template for AWS Lambda is almost the same for officially supported languages, it varies more only in case of custom runtimes (custom runtimes are not covered here).</p>
+<p>Example template for AWS Lambda in Golang.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;2010-09-09&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">Transform</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::Serverless-2016-10-31</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="p">&gt;</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">  app02
+</span></span></span><span class="line"><span class="cl"><span class="sd">  
+</span></span></span><span class="line"><span class="cl"><span class="sd">  SAM Template for lambda golang </span><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">Parameters</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">Env</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">String</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Logical environment like dev, test, prod etc&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Default</span><span class="p">:</span><span class="w"> </span><span class="l">dev</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">Globals</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">Function</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Timeout</span><span class="p">:</span><span class="w"> </span><span class="m">3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">Resources</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">FeatureOneFunction</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::Serverless::Function</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">CodeUri</span><span class="p">:</span><span class="w"> </span><span class="l">app02/featureone/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">Handler</span><span class="p">:</span><span class="w"> </span><span class="l">handler</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">Runtime</span><span class="p">:</span><span class="w"> </span><span class="l">go1.x</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">Tracing</span><span class="p">:</span><span class="w"> </span><span class="l">Active</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">Environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">Variables</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">PARAM1</span><span class="p">:</span><span class="w"> </span><span class="l">VALUE</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">Outputs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">FeatureOneFunction</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Feature one function ARN&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Value</span><span class="p">:</span><span class="w"> </span>!<span class="l">GetAtt FeatureOneFunction.Arn</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">FeatureOneFunctionIamRole</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;IAM Role created for feature one function&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Value</span><span class="p">:</span><span class="w"> </span>!<span class="l">GetAtt FeatureOneFunctionRole.Arn</span><span class="w">
+</span></span></span></code></pre></div><h2 id="catalog-structure">Catalog structure</h2>
+<p>Code Uri and handler name must be matching to catalog structure and final lambda binary name</p>
+<p><img src="/img/aws-lambda-go/sam-lambda-go.png" alt="SAM catalog structure:"></p>
+<h2 id="golang-lambda-code">Golang lambda code</h2>
+<p>Probably the simplest lambda, returns stringified request back to caller.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;context&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;github.com/aws/aws-lambda-go/lambda&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">handler</span><span class="p">(</span><span class="nx">ctx</span> <span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span> <span class="nx">request</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span><span class="p">{})</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// simply return string representation of the request
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;Response: %v&#34;</span><span class="p">,</span> <span class="nx">request</span><span class="p">),</span> <span class="kc">nil</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">lambda</span><span class="p">.</span><span class="nf">Start</span><span class="p">(</span><span class="nx">handler</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="sam-configuration">SAM Configuration</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="nx">version</span> <span class="p">=</span> <span class="mf">0.1</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">dev</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">dev</span><span class="p">.</span><span class="nx">deploy</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">dev</span><span class="p">.</span><span class="nx">deploy</span><span class="p">.</span><span class="nx">parameters</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">stack_name</span> <span class="p">=</span> <span class="s2">&#34;dev-app02&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">s3_bucket</span> <span class="p">=</span> <span class="s2">&#34;basicappdeployment&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">s3_prefix</span> <span class="p">=</span> <span class="s2">&#34;dev-app02&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">region</span> <span class="p">=</span> <span class="s2">&#34;eu-west-1&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">confirm_changeset</span> <span class="p">=</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl"><span class="nx">capabilities</span> <span class="p">=</span> <span class="s2">&#34;CAPABILITY_NAMED_IAM&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">parameter_overrides</span> <span class="p">=</span> <span class="s2">&#34;Env=\&#34;dev\&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">test</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">test</span><span class="p">.</span><span class="nx">deploy</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">test</span><span class="p">.</span><span class="nx">deploy</span><span class="p">.</span><span class="nx">parameters</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">stack_name</span> <span class="p">=</span> <span class="s2">&#34;test-app02&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">s3_bucket</span> <span class="p">=</span> <span class="s2">&#34;basicappdeployment&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">s3_prefix</span> <span class="p">=</span> <span class="s2">&#34;test-app02&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">region</span> <span class="p">=</span> <span class="s2">&#34;eu-west-1&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">confirm_changeset</span> <span class="p">=</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl"><span class="nx">capabilities</span> <span class="p">=</span> <span class="s2">&#34;CAPABILITY_NAMED_IAM&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">parameter_overrides</span> <span class="p">=</span> <span class="s2">&#34;Env=\&#34;test\&#34;&#34;</span>
+</span></span></code></pre></div><h2 id="building">Building</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sam build
+</span></span></code></pre></div><h2 id="deployment">Deployment</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sam deploy --profile default --config-env dev --no-fail-on-empty-changeset
+</span></span></code></pre></div><h2 id="deployed-cloudformation-template">Deployed cloudformation template</h2>
+<p><img src="/img/aws-lambda-go/lambda-go-cf.png" alt="SAM deployed template:"></p>
+<h2 id="deployed-resources">Deployed resources</h2>
+<p>Resources are nicely prefixed with stack name and remain redable</p>
+<p><img src="/img/aws-lambda-go/lambda-go-cf-resources.png" alt="SAM deployed resources:"></p>
+<h2 id="conclusions">Conclusions</h2>
+<p>Lambda building, packaging and deployment is done by SAM. Nice, easy to perform deployments.</p>
+
+  </main>
+</article>
+
+  </main>
+  <footer class="copyright">
+    
+
+<p>© 2024 VALERII LYSENKO</p>
+
+  </footer>
+</body>
+
+</html>

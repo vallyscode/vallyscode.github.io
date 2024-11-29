@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Iam on </title>
-    <link>https://vallyscode.github.io/tags/iam/</link>
-    <description>Recent content in Iam on </description>
-    <generator>Hugo -- gohugo.io</generator>
+    <title>Iam on vallyscode&#39;s notes</title>
+    <link>https://example.org/tags/iam/</link>
+    <description>Recent content in Iam on vallyscode&#39;s notes</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
     <managingEditor>vallyscode@gmail.com (Valerii Lysenko)</managingEditor>
     <webMaster>vallyscode@gmail.com (Valerii Lysenko)</webMaster>
     <lastBuildDate>Mon, 14 Sep 2020 15:34:46 +0200</lastBuildDate>
-    <atom:link href="https://vallyscode.github.io/tags/iam/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://example.org/tags/iam/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Aws Cloudformation IAM User</title>
-      <link>https://vallyscode.github.io/note/aws-cloudformation-iam-user/</link>
+      <link>https://example.org/notes/aws-cloudformation-iam-user/</link>
       <pubDate>Mon, 14 Sep 2020 15:34:46 +0200</pubDate><author>vallyscode@gmail.com (Valerii Lysenko)</author>
-      <guid>https://vallyscode.github.io/note/aws-cloudformation-iam-user/</guid>
+      <guid>https://example.org/notes/aws-cloudformation-iam-user/</guid>
       <description>Simple example of IAM user creation via Cloudformation</description>
     </item>
   </channel>

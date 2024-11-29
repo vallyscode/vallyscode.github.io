@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Java Sealed | vallyscode&#39;s notes</title>
+<link
+  rel="stylesheet" 
+  type="text/css" 
+  href="/css/normalize.css">
+      <link
+        rel="stylesheet"
+        href="/css/main.min.5df69139bf8095179462d808fa65d7e605521c213ccb4e5e96d516033314c141.css"
+        integrity="sha256-XfaROb&#43;AlReUYtgI&#43;mXX5gVSHCE8y05eltUWAzMUwUE="
+        crossorigin="anonymous">
+
+
+      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-142469594-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '367129371');
+</script>
+
+
+</head>
+
+<body>
+  <header>
+    <nav>
+  <ul class="menu">
+    <li><a href="/">Notes</a></li>
+    <li><a href="/categories/">Categories</a></li>
+    <li><a href="/tags/">Tags</a></li>
+    <li><a href="/about/">About</a></li>
+  </ul>
+</nav>
+  </header>
+  <main>
+    
+<article>
+  <header>
+    <h1 class="title">Java Sealed</h1><time class="publish-date" datetime="2023-05-08T11:20:52&#43;00:00">May 8, 2023</time>
+    <nav>
+  <ul class="tags">
+    
+    <li>
+      <a href='https://example.org/tags/java'>
+        JAVA
+      </a>
+    </li>
+    
+  </ul>
+</nav>
+  </header>
+  <main class="single">
+    <p>In JDK 17 brought us an implementation of <code>sealed</code> interfaces and classes <a href="https://openjdk.org/jeps/409">JEP-409</a>, allowing to restrict which other interface or class is allowed to extend/implement them.</p>
+<p>Some imaginary scenario for this feature can be in business domain modeling, allowing to define strict relations betweed objects, like allowing only specific subset of implementors for interface or specific classes to extend base abstract class representing some business domain element.</p>
+<h2 id="sealed-interface">Sealed Interface</h2>
+<p>In order to define a sealed interface the only thing required is adding <code>sealed</code> to it&rsquo;s declaration, then specify the list of classes/interfaces allowed to implement/extend it.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">sealed</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">Flyable</span><span class="w"> </span><span class="n">permits</span><span class="w"> </span><span class="n">Duck</span><span class="p">,</span><span class="w"> </span><span class="n">Owl</span><span class="p">,</span><span class="w"> </span><span class="n">Airplane</span><span class="p">,</span><span class="w"> </span><span class="n">Boom</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">String</span><span class="w"> </span><span class="nf">fly</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>At the same time interface implementors can looks as usual.</p>
+<p>Record implementiong a <code>sealed</code> interface:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">record</span> <span class="nc">Duck</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Flyable</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">fly</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">String</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="s">&#34;Flying duck %s&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><h4 id="note">Note</h4>
+<blockquote>
+<p>In case of <code>record</code> our Duch is implicitely final, disallowing anything else to extend it.</p>
+</blockquote>
+<p>Abstract class implementing a <code>sealed</code> interface:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">sealed</span><span class="w"> </span><span class="kd">abstract</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Airplane</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Flyable</span><span class="w"> </span><span class="n">permits</span><span class="w"> </span><span class="n">GlobeMaster</span><span class="p">,</span><span class="w"> </span><span class="n">Hercules</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">protected</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">id</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">protected</span><span class="w"> </span><span class="nf">Airplane</span><span class="p">(</span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">abstract</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getWeight</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><h4 id="note-1">Note</h4>
+<blockquote>
+<p>In case of class or <code>abstract</code> class, those must be one of: <code>sealed</code>, <code>final</code> or <code>non-sealed</code>.</p>
+</blockquote>
+<p>Another interface extending sealed one:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="n">non</span><span class="o">-</span><span class="kd">sealed</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">Boom</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Flyable</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">foo</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><h4 id="note-2">Note</h4>
+<blockquote>
+<p>Interface must be one of: <code>non-sealed</code>, <code>sealed</code>.</p>
+</blockquote>
+<h2 id="sealed-class">Sealed Class</h2>
+<p>Same thing with classes, othe only thing needed is to declate it to be <code>sealed</code> and a list of classes allowed to extend it.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">abstract</span><span class="w"> </span><span class="kd">sealed</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Airplane</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Flyable</span><span class="w"> </span><span class="n">permits</span><span class="w"> </span><span class="n">GlobeMaster</span><span class="p">,</span><span class="w"> </span><span class="n">Hercules</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">protected</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">id</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">protected</span><span class="w"> </span><span class="nf">Airplane</span><span class="p">(</span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">abstract</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getWeight</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><h4 id="note-3">Note</h4>
+<blockquote>
+<p>As was mentiond previously class or abstract class must be one of: <code>final</code>, <code>sealed</code>, <code>non-sealed</code>.</p>
+</blockquote>
+<h2 id="conclusion">Conclusion</h2>
+<p>Sealing is a powerful tool giving control over relations. Before this feature, there was no way to restrict inheritance of interface or class, the only thing that was available was <code>final</code> which completely disallowed inheritance without any way to allow it for subset and disallow for others. Nice addition to java developer tool belt.</p>
+
+  </main>
+</article>
+
+  </main>
+  <footer class="copyright">
+    
+
+<p>© 2024 VALERII LYSENKO</p>
+
+  </footer>
+</body>
+
+</html>
