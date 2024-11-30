@@ -2,154 +2,154 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://example.org/tags/architecture/</loc>
+    <loc>https://vallyscode.github.io/tags/architecture/</loc>
     <lastmod>2024-05-20T10:03:28+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/tags/aws/</loc>
+    <loc>https://vallyscode.github.io/tags/aws/</loc>
     <lastmod>2024-05-20T10:03:28+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/categories/</loc>
+    <loc>https://vallyscode.github.io/categories/</loc>
     <lastmod>2024-05-20T10:03:28+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/categories/devops/</loc>
+    <loc>https://vallyscode.github.io/categories/devops/</loc>
     <lastmod>2024-05-20T10:03:28+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/tags/lambda/</loc>
+    <loc>https://vallyscode.github.io/tags/lambda/</loc>
     <lastmod>2024-05-20T10:03:28+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/notes/</loc>
+    <loc>https://vallyscode.github.io/notes/</loc>
     <lastmod>2024-05-20T10:03:28+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/notes/aws-lambda-scalability-controlling/</loc>
+    <loc>https://vallyscode.github.io/notes/aws-lambda-scalability-controlling/</loc>
     <lastmod>2024-05-20T10:03:28+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/tags/</loc>
+    <loc>https://vallyscode.github.io/tags/</loc>
     <lastmod>2024-05-20T10:03:28+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/</loc>
+    <loc>https://vallyscode.github.io/</loc>
     <lastmod>2024-05-20T10:03:28+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/tags/java/</loc>
+    <loc>https://vallyscode.github.io/tags/java/</loc>
     <lastmod>2023-05-08T11:20:52+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/notes/java-sealed-interfaces-and-classes/</loc>
+    <loc>https://vallyscode.github.io/notes/java-sealed-interfaces-and-classes/</loc>
     <lastmod>2023-05-08T11:20:52+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/categories/programming/</loc>
+    <loc>https://vallyscode.github.io/categories/programming/</loc>
     <lastmod>2023-05-08T11:20:52+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/notes/java-records/</loc>
+    <loc>https://vallyscode.github.io/notes/java-records/</loc>
     <lastmod>2023-04-12T14:36:52+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/tags/cron/</loc>
+    <loc>https://vallyscode.github.io/tags/cron/</loc>
     <lastmod>2022-08-20T21:19:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/notes/cron-expressions/</loc>
+    <loc>https://vallyscode.github.io/notes/cron-expressions/</loc>
     <lastmod>2022-08-20T21:19:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/notes/aws-secrets-manager/</loc>
+    <loc>https://vallyscode.github.io/notes/aws-secrets-manager/</loc>
     <lastmod>2022-08-02T20:31:32+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/tags/secrets-manager/</loc>
+    <loc>https://vallyscode.github.io/tags/secrets-manager/</loc>
     <lastmod>2022-08-02T20:31:32+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/notes/aws-s3-presigning/</loc>
+    <loc>https://vallyscode.github.io/notes/aws-s3-presigning/</loc>
     <lastmod>2022-05-23T07:56:03+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/tags/s3/</loc>
+    <loc>https://vallyscode.github.io/tags/s3/</loc>
     <lastmod>2022-05-23T07:56:03+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/notes/aws-cognito/</loc>
+    <loc>https://vallyscode.github.io/notes/aws-cognito/</loc>
     <lastmod>2022-05-10T07:09:48+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/tags/cognito/</loc>
+    <loc>https://vallyscode.github.io/tags/cognito/</loc>
     <lastmod>2022-05-10T07:09:48+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/tags/rust/</loc>
+    <loc>https://vallyscode.github.io/tags/rust/</loc>
     <lastmod>2021-09-21T13:25:57+02:00</lastmod>
   </url><url>
-    <loc>https://example.org/notes/rust-errors-handling/</loc>
+    <loc>https://vallyscode.github.io/notes/rust-errors-handling/</loc>
     <lastmod>2021-09-21T13:25:57+02:00</lastmod>
   </url><url>
-    <loc>https://example.org/notes/aws-sam-lambda-rust/</loc>
+    <loc>https://vallyscode.github.io/notes/aws-sam-lambda-rust/</loc>
     <lastmod>2021-08-12T09:09:07+02:00</lastmod>
   </url><url>
-    <loc>https://example.org/tags/sam/</loc>
+    <loc>https://vallyscode.github.io/tags/sam/</loc>
     <lastmod>2021-08-12T09:09:07+02:00</lastmod>
   </url><url>
-    <loc>https://example.org/notes/aws-sam-lambda/</loc>
+    <loc>https://vallyscode.github.io/notes/aws-sam-lambda/</loc>
     <lastmod>2021-04-18T14:16:41+02:00</lastmod>
   </url><url>
-    <loc>https://example.org/notes/aws-sam-basics/</loc>
+    <loc>https://vallyscode.github.io/notes/aws-sam-basics/</loc>
     <lastmod>2021-04-10T12:48:44+02:00</lastmod>
   </url><url>
-    <loc>https://example.org/notes/sam-cli-linux/</loc>
+    <loc>https://vallyscode.github.io/notes/sam-cli-linux/</loc>
     <lastmod>2020-12-07T10:10:28+01:00</lastmod>
   </url><url>
-    <loc>https://example.org/notes/data-store-concepts/</loc>
+    <loc>https://vallyscode.github.io/notes/data-store-concepts/</loc>
     <lastmod>2020-10-12T20:46:27+02:00</lastmod>
   </url><url>
-    <loc>https://example.org/notes/aws-billing-alarm/</loc>
+    <loc>https://vallyscode.github.io/notes/aws-billing-alarm/</loc>
     <lastmod>2020-09-29T13:04:38+02:00</lastmod>
   </url><url>
-    <loc>https://example.org/tags/cloudformation/</loc>
+    <loc>https://vallyscode.github.io/tags/cloudformation/</loc>
     <lastmod>2020-09-29T13:04:38+02:00</lastmod>
   </url><url>
-    <loc>https://example.org/notes/aws-cloudformation-sqs-lambda-trigger/</loc>
+    <loc>https://vallyscode.github.io/notes/aws-cloudformation-sqs-lambda-trigger/</loc>
     <lastmod>2020-09-28T10:48:51+02:00</lastmod>
   </url><url>
-    <loc>https://example.org/tags/sqs/</loc>
+    <loc>https://vallyscode.github.io/tags/sqs/</loc>
     <lastmod>2020-09-28T10:48:51+02:00</lastmod>
   </url><url>
-    <loc>https://example.org/notes/aws-cloudformation-s3-lambda-trigger/</loc>
+    <loc>https://vallyscode.github.io/notes/aws-cloudformation-s3-lambda-trigger/</loc>
     <lastmod>2020-09-16T15:34:26+02:00</lastmod>
   </url><url>
-    <loc>https://example.org/notes/aws-cloudformation-embedded-python-lambda/</loc>
+    <loc>https://vallyscode.github.io/notes/aws-cloudformation-embedded-python-lambda/</loc>
     <lastmod>2020-09-15T15:34:03+02:00</lastmod>
   </url><url>
-    <loc>https://example.org/notes/aws-cloudformation-iam-user/</loc>
+    <loc>https://vallyscode.github.io/notes/aws-cloudformation-iam-user/</loc>
     <lastmod>2020-09-14T15:34:46+02:00</lastmod>
   </url><url>
-    <loc>https://example.org/tags/iam/</loc>
+    <loc>https://vallyscode.github.io/tags/iam/</loc>
     <lastmod>2020-09-14T15:34:46+02:00</lastmod>
   </url><url>
-    <loc>https://example.org/tags/arch/</loc>
+    <loc>https://vallyscode.github.io/tags/arch/</loc>
     <lastmod>2020-09-14T12:50:39+02:00</lastmod>
   </url><url>
-    <loc>https://example.org/notes/virtualbox-arch-guest/</loc>
+    <loc>https://vallyscode.github.io/notes/virtualbox-arch-guest/</loc>
     <lastmod>2020-09-14T12:50:39+02:00</lastmod>
   </url><url>
-    <loc>https://example.org/tags/elisp/</loc>
+    <loc>https://vallyscode.github.io/tags/elisp/</loc>
     <lastmod>2019-11-11T17:23:10+01:00</lastmod>
   </url><url>
-    <loc>https://example.org/tags/emacs/</loc>
+    <loc>https://vallyscode.github.io/tags/emacs/</loc>
     <lastmod>2019-11-11T17:23:10+01:00</lastmod>
   </url><url>
-    <loc>https://example.org/notes/tabulated-list-mode/</loc>
+    <loc>https://vallyscode.github.io/notes/tabulated-list-mode/</loc>
     <lastmod>2019-11-11T17:23:10+01:00</lastmod>
   </url><url>
-    <loc>https://example.org/notes/elisp-basics/</loc>
+    <loc>https://vallyscode.github.io/notes/elisp-basics/</loc>
     <lastmod>2019-09-07T13:23:10+01:00</lastmod>
   </url><url>
-    <loc>https://example.org/about/</loc>
+    <loc>https://vallyscode.github.io/about/</loc>
     <lastmod>2019-09-06T13:23:10+01:00</lastmod>
   </url><url>
-    <loc>https://example.org/tags/css/</loc>
+    <loc>https://vallyscode.github.io/tags/css/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/tags/html/</loc>
+    <loc>https://vallyscode.github.io/tags/html/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/tags/markdown/</loc>
+    <loc>https://vallyscode.github.io/tags/markdown/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/notes/markdown-syntax/</loc>
+    <loc>https://vallyscode.github.io/notes/markdown-syntax/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/categories/syntax/</loc>
+    <loc>https://vallyscode.github.io/categories/syntax/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.org/categories/themes/</loc>
+    <loc>https://vallyscode.github.io/categories/themes/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
   </url>
 </urlset>

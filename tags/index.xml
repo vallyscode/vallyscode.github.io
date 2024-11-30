@@ -2,145 +2,145 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on vallyscode&#39;s notes</title>
-    <link>https://example.org/tags/</link>
+    <link>https://vallyscode.github.io/tags/</link>
     <description>Recent content in Tags on vallyscode&#39;s notes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <managingEditor>vallyscode@gmail.com (Valerii Lysenko)</managingEditor>
     <webMaster>vallyscode@gmail.com (Valerii Lysenko)</webMaster>
     <lastBuildDate>Mon, 20 May 2024 10:03:28 +0000</lastBuildDate>
-    <atom:link href="https://example.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://vallyscode.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Architecture</title>
-      <link>https://example.org/tags/architecture/</link>
+      <link>https://vallyscode.github.io/tags/architecture/</link>
       <pubDate>Mon, 20 May 2024 10:03:28 +0000</pubDate><author>vallyscode@gmail.com (Valerii Lysenko)</author>
-      <guid>https://example.org/tags/architecture/</guid>
+      <guid>https://vallyscode.github.io/tags/architecture/</guid>
       <description></description>
     </item>
     <item>
       <title>Aws</title>
-      <link>https://example.org/tags/aws/</link>
+      <link>https://vallyscode.github.io/tags/aws/</link>
       <pubDate>Mon, 20 May 2024 10:03:28 +0000</pubDate><author>vallyscode@gmail.com (Valerii Lysenko)</author>
-      <guid>https://example.org/tags/aws/</guid>
+      <guid>https://vallyscode.github.io/tags/aws/</guid>
       <description></description>
     </item>
     <item>
       <title>Lambda</title>
-      <link>https://example.org/tags/lambda/</link>
+      <link>https://vallyscode.github.io/tags/lambda/</link>
       <pubDate>Mon, 20 May 2024 10:03:28 +0000</pubDate><author>vallyscode@gmail.com (Valerii Lysenko)</author>
-      <guid>https://example.org/tags/lambda/</guid>
+      <guid>https://vallyscode.github.io/tags/lambda/</guid>
       <description></description>
     </item>
     <item>
       <title>Java</title>
-      <link>https://example.org/tags/java/</link>
+      <link>https://vallyscode.github.io/tags/java/</link>
       <pubDate>Mon, 08 May 2023 11:20:52 +0000</pubDate><author>vallyscode@gmail.com (Valerii Lysenko)</author>
-      <guid>https://example.org/tags/java/</guid>
+      <guid>https://vallyscode.github.io/tags/java/</guid>
       <description></description>
     </item>
     <item>
       <title>Cron</title>
-      <link>https://example.org/tags/cron/</link>
+      <link>https://vallyscode.github.io/tags/cron/</link>
       <pubDate>Sat, 20 Aug 2022 21:19:00 +0000</pubDate><author>vallyscode@gmail.com (Valerii Lysenko)</author>
-      <guid>https://example.org/tags/cron/</guid>
+      <guid>https://vallyscode.github.io/tags/cron/</guid>
       <description></description>
     </item>
     <item>
       <title>Secrets Manager</title>
-      <link>https://example.org/tags/secrets-manager/</link>
+      <link>https://vallyscode.github.io/tags/secrets-manager/</link>
       <pubDate>Tue, 02 Aug 2022 20:31:32 +0000</pubDate><author>vallyscode@gmail.com (Valerii Lysenko)</author>
-      <guid>https://example.org/tags/secrets-manager/</guid>
+      <guid>https://vallyscode.github.io/tags/secrets-manager/</guid>
       <description></description>
     </item>
     <item>
       <title>S3</title>
-      <link>https://example.org/tags/s3/</link>
+      <link>https://vallyscode.github.io/tags/s3/</link>
       <pubDate>Mon, 23 May 2022 07:56:03 +0000</pubDate><author>vallyscode@gmail.com (Valerii Lysenko)</author>
-      <guid>https://example.org/tags/s3/</guid>
+      <guid>https://vallyscode.github.io/tags/s3/</guid>
       <description></description>
     </item>
     <item>
       <title>Cognito</title>
-      <link>https://example.org/tags/cognito/</link>
+      <link>https://vallyscode.github.io/tags/cognito/</link>
       <pubDate>Tue, 10 May 2022 07:09:48 +0000</pubDate><author>vallyscode@gmail.com (Valerii Lysenko)</author>
-      <guid>https://example.org/tags/cognito/</guid>
+      <guid>https://vallyscode.github.io/tags/cognito/</guid>
       <description></description>
     </item>
     <item>
       <title>Rust</title>
-      <link>https://example.org/tags/rust/</link>
+      <link>https://vallyscode.github.io/tags/rust/</link>
       <pubDate>Tue, 21 Sep 2021 13:25:57 +0200</pubDate><author>vallyscode@gmail.com (Valerii Lysenko)</author>
-      <guid>https://example.org/tags/rust/</guid>
+      <guid>https://vallyscode.github.io/tags/rust/</guid>
       <description></description>
     </item>
     <item>
       <title>Sam</title>
-      <link>https://example.org/tags/sam/</link>
+      <link>https://vallyscode.github.io/tags/sam/</link>
       <pubDate>Thu, 12 Aug 2021 09:09:07 +0200</pubDate><author>vallyscode@gmail.com (Valerii Lysenko)</author>
-      <guid>https://example.org/tags/sam/</guid>
+      <guid>https://vallyscode.github.io/tags/sam/</guid>
       <description></description>
     </item>
     <item>
       <title>Cloudformation</title>
-      <link>https://example.org/tags/cloudformation/</link>
+      <link>https://vallyscode.github.io/tags/cloudformation/</link>
       <pubDate>Tue, 29 Sep 2020 13:04:38 +0200</pubDate><author>vallyscode@gmail.com (Valerii Lysenko)</author>
-      <guid>https://example.org/tags/cloudformation/</guid>
+      <guid>https://vallyscode.github.io/tags/cloudformation/</guid>
       <description></description>
     </item>
     <item>
       <title>Sqs</title>
-      <link>https://example.org/tags/sqs/</link>
+      <link>https://vallyscode.github.io/tags/sqs/</link>
       <pubDate>Mon, 28 Sep 2020 10:48:51 +0200</pubDate><author>vallyscode@gmail.com (Valerii Lysenko)</author>
-      <guid>https://example.org/tags/sqs/</guid>
+      <guid>https://vallyscode.github.io/tags/sqs/</guid>
       <description></description>
     </item>
     <item>
       <title>Iam</title>
-      <link>https://example.org/tags/iam/</link>
+      <link>https://vallyscode.github.io/tags/iam/</link>
       <pubDate>Mon, 14 Sep 2020 15:34:46 +0200</pubDate><author>vallyscode@gmail.com (Valerii Lysenko)</author>
-      <guid>https://example.org/tags/iam/</guid>
+      <guid>https://vallyscode.github.io/tags/iam/</guid>
       <description></description>
     </item>
     <item>
       <title>Arch</title>
-      <link>https://example.org/tags/arch/</link>
+      <link>https://vallyscode.github.io/tags/arch/</link>
       <pubDate>Mon, 14 Sep 2020 12:50:39 +0200</pubDate><author>vallyscode@gmail.com (Valerii Lysenko)</author>
-      <guid>https://example.org/tags/arch/</guid>
+      <guid>https://vallyscode.github.io/tags/arch/</guid>
       <description></description>
     </item>
     <item>
       <title>Elisp</title>
-      <link>https://example.org/tags/elisp/</link>
+      <link>https://vallyscode.github.io/tags/elisp/</link>
       <pubDate>Mon, 11 Nov 2019 17:23:10 +0100</pubDate><author>vallyscode@gmail.com (Valerii Lysenko)</author>
-      <guid>https://example.org/tags/elisp/</guid>
+      <guid>https://vallyscode.github.io/tags/elisp/</guid>
       <description></description>
     </item>
     <item>
       <title>Emacs</title>
-      <link>https://example.org/tags/emacs/</link>
+      <link>https://vallyscode.github.io/tags/emacs/</link>
       <pubDate>Mon, 11 Nov 2019 17:23:10 +0100</pubDate><author>vallyscode@gmail.com (Valerii Lysenko)</author>
-      <guid>https://example.org/tags/emacs/</guid>
+      <guid>https://vallyscode.github.io/tags/emacs/</guid>
       <description></description>
     </item>
     <item>
       <title>Css</title>
-      <link>https://example.org/tags/css/</link>
+      <link>https://vallyscode.github.io/tags/css/</link>
       <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate><author>vallyscode@gmail.com (Valerii Lysenko)</author>
-      <guid>https://example.org/tags/css/</guid>
+      <guid>https://vallyscode.github.io/tags/css/</guid>
       <description></description>
     </item>
     <item>
       <title>Html</title>
-      <link>https://example.org/tags/html/</link>
+      <link>https://vallyscode.github.io/tags/html/</link>
       <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate><author>vallyscode@gmail.com (Valerii Lysenko)</author>
-      <guid>https://example.org/tags/html/</guid>
+      <guid>https://vallyscode.github.io/tags/html/</guid>
       <description></description>
     </item>
     <item>
       <title>Markdown</title>
-      <link>https://example.org/tags/markdown/</link>
+      <link>https://vallyscode.github.io/tags/markdown/</link>
       <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate><author>vallyscode@gmail.com (Valerii Lysenko)</author>
-      <guid>https://example.org/tags/markdown/</guid>
+      <guid>https://vallyscode.github.io/tags/markdown/</guid>
       <description></description>
     </item>
   </channel>

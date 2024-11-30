@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Architecture on vallyscode&#39;s notes</title>
-    <link>https://example.org/tags/architecture/</link>
+    <link>https://vallyscode.github.io/tags/architecture/</link>
     <description>Recent content in Architecture on vallyscode&#39;s notes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <managingEditor>vallyscode@gmail.com (Valerii Lysenko)</managingEditor>
     <webMaster>vallyscode@gmail.com (Valerii Lysenko)</webMaster>
     <lastBuildDate>Mon, 20 May 2024 10:03:28 +0000</lastBuildDate>
-    <atom:link href="https://example.org/tags/architecture/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://vallyscode.github.io/tags/architecture/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Serverless Concurrency Controlling</title>
-      <link>https://example.org/notes/aws-lambda-scalability-controlling/</link>
+      <link>https://vallyscode.github.io/notes/aws-lambda-scalability-controlling/</link>
       <pubDate>Mon, 20 May 2024 10:03:28 +0000</pubDate><author>vallyscode@gmail.com (Valerii Lysenko)</author>
-      <guid>https://example.org/notes/aws-lambda-scalability-controlling/</guid>
+      <guid>https://vallyscode.github.io/notes/aws-lambda-scalability-controlling/</guid>
       <description>Ways of concurrency controlling in serverless archihtecture</description>
     </item>
   </channel>
